@@ -2,6 +2,7 @@ public class Pessoa{
     private String nome;
     private String ocupacao;
     private String cpf;
+    private float peso;
     private int telefone;
 
     public String getNome(){
@@ -18,6 +19,10 @@ public class Pessoa{
 
     public int getTelefone(){
         return telefone;
+    }
+
+    public float getPeso(){
+        return peso;
     }
 
     public void setNome(String nome){ 
@@ -39,12 +44,19 @@ public class Pessoa{
         }
     }
 
+    public void setPeso(float peso){
+        if(peso > 0){
+            this.peso = peso;
+        }
+    }
+
     public Pessoa(){}
-    public Pessoa(String nome, String ocupacao, String cpf, int telefone){
+    public Pessoa(String nome, String ocupacao, String cpf, int telefone, float peso){
         setNome(nome);
         setOcupaçao(ocupacao);
         setTelefone(telefone);
         setCpf(cpf);
+        setPeso(peso);
     }
 
     public boolean validarCpf(String cpf){

@@ -1,16 +1,24 @@
+import java.util.*;
+
 public abstract class Embarcacao{
-    private float largura;
-    private float comprimento;
-    private float cargaMaxima;
-    private String portoOrigem;
-    private String portoDestino;
-    private String pais;
-    private String codigoID;
-    private Pessoa capitao;
-    private char sentido; // R = indo do Rio pro mar, M = indo do Mar pro rio
+    protected  float largura;
+    protected  float comprimento;
+    protected  float cargaMaxima; // ainda nao sei pra que isso serve
+    protected  float pesoAdicional;
+    protected  String portoOrigem;
+    protected  String portoDestino;
+    protected  String pais;
+    protected  String codigoID;
+    protected  Pessoa capitao;
+    protected  ArrayList<Pessoa> tripulacao = new ArrayList<>();
+    protected  char sentido; // R = indo do Rio pro mar, M = indo do Mar pro rio
 
     public float getLargura(){
         return largura;
+    }
+
+    public float getPeso(){
+        return pesoAdicional;
     }
 
     public float getComprimento(){
@@ -23,6 +31,10 @@ public abstract class Embarcacao{
 
     public String getPortoOrigem(){
         return portoOrigem;
+    }
+
+    public ArrayList getTripulacao(){
+        return tripulacao;
     }
 
     public String getPortoDestino(){
@@ -55,6 +67,12 @@ public abstract class Embarcacao{
         if(comprimento > 0){
             this.comprimento = comprimento;
 
+        }
+    }
+
+    public void setTripulacao(Pessoa pessoa){
+        if (pessoa != null){
+            tripulacao.add(pessoa);
         }
     }
 
@@ -97,4 +115,16 @@ public abstract class Embarcacao{
             this.sentido = sentido;
         }
     }
+
+    public void calcularPeso(){
+        pesoAdicional += capitao.getPeso();
+        if(tripulacao.isEmpty() == false){
+            for (Object pessoa : tripulacao) {
+                Pessoa p = (Pessoa) pessoa;
+                pesoAdicional += p.getPeso();
+            }
+        }
+    }
+
+
 }
