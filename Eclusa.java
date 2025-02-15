@@ -12,7 +12,7 @@ public class Eclusa {
     private boolean comportaAlta; // Em direção ao mar
     private float vazao; // m³ segundo
     private int quantidadeTuneis;
-    private float valor = 0;//salva o valor diario 
+    private float valorApurado = 0;//salva o valorApurado diario 
     private char status; // E = Enchendo, S = secando, N = parado
     private ArrayList<Embarcacao> filaMar = new ArrayList<>();
     private ArrayList<Embarcacao> filaRio = new ArrayList<>();
@@ -58,8 +58,8 @@ public class Eclusa {
         return quantidadeTuneis;
     }
 
-    public float getvalor() {
-        return valor;
+    public float getvalorApurado() {
+        return valorApurado;
     }
 
     public char getStatus() {
@@ -144,13 +144,13 @@ public class Eclusa {
         }
     }
 
-    public void setvalor(Embarcacao embarcacao) {
+    public void setvalorApurado(Embarcacao embarcacao) {
         if (embarcacao instanceof Lancha){
-            valor += 25;
+            valorApurado += 25;
         }else if (embarcacao instanceof NavioTurismo){
-            valor += 40;
+            valorApurado += 40;
         }else {
-            valor += 50;
+            valorApurado += 50;
         }
     }
 

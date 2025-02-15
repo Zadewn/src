@@ -5,7 +5,7 @@ public abstract class Embarcacao {
 
     protected float largura;
     protected float comprimento;
-    protected float cargaMaxima; // ainda nao sei pra que isso serve
+    protected float cargaMaxima; 
     protected float pesoAdicional;
     protected String portoOrigem;
     protected String portoDestino;
