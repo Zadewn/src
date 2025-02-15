@@ -28,7 +28,9 @@ public class Pessoa {
     }
 
     public void setNome(String nome) {
-        this.nome = nome.toUpperCase();
+        if(nome != null){
+            this.nome = nome.toUpperCase();
+        }
     }
 
     public void setCpf(String cpf) {

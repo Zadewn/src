@@ -13,7 +13,7 @@ public class Main{
         for(Object nn : n.getConteineres()){
             Container l = (Container) nn;
             System.out.println(l.getEmpresa());
-        }*/
+        }
 
         Eclusa e = new Eclusa();
         e.setCapacidadeMAX(100);
@@ -21,7 +21,10 @@ public class Main{
         e.setCapacidadeAtual(100);
         e.setQuantidadeTuneis(3);
         e.setVazao(10);
-        e.esvaziarEclusa(1);
+        e.fecharComportaAlta();
+        e.fecharComportaBaixa();
+        e.esvaziarEclusa(2);
+        */
 
 
     }

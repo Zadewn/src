@@ -123,7 +123,9 @@ public abstract class Embarcacao {
         if (tripulacao.isEmpty() == false) {
             for (Object pessoa : tripulacao) {
                 Pessoa p = (Pessoa) pessoa;
-                pesoAdicional += p.getPeso();
+                if(pesoAdicional + p.getPeso() <= cargaMaxima){
+                    pesoAdicional += p.getPeso();
+                }
             }
         }
     }

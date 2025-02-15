@@ -20,13 +20,17 @@ public class NavioCargueiro extends Embarcacao {
         if (tripulacao.isEmpty() == false) {
             for (Object pessoa : tripulacao) {
                 Pessoa p = (Pessoa) pessoa;
-                pesoAdicional += p.getPeso();
+                if(pesoAdicional + p.getPeso() <= cargaMaxima){
+                    pesoAdicional += p.getPeso(); 
+                }
             }
         }
         if (conteineres.isEmpty() == false) {
             for (Object container : conteineres) {
                 Container c = (Container) container;
-                pesoAdicional += c.getPeso();
+                if(pesoAdicional + c.getPeso() <= cargaMaxima){
+                    pesoAdicional += c.getPeso();
+                }
             }
         }
     }
