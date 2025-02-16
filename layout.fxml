@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+  <children>
+    <AnchorPane layoutX="200.0" maxHeight="-1.0" maxWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <ImageView id="Fundo" fitHeight="339.0" fitWidth="653.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Navios/BG/Eclusa.png" />
+               </image>
+            </ImageView>
+            <ImageView id="AguaEclusa" fx:id="AguaEclusa" fitHeight="339.0" fitWidth="653.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Navios/BG/AguaEclusa.png" />
+               </image>
+            </ImageView>
+            <ImageView id="Concreto" fitHeight="339.0" fitWidth="653.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Navios/BG/Concreto.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ComportaMar" fitHeight="339.0" fitWidth="653.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../Navios/BG/ComportaMar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ComportaRio" fitHeight="339.0" fitWidth="653.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../Navios/BG/ComportaRio.png" />
+               </image>
+            </ImageView>
+            <ImageView id="MenuRio" fitHeight="204.0" fitWidth="108.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Navios/BG/RIO.png" />
+               </image>
+            </ImageView>
+            <ImageView id="MenuPrincipal" fitHeight="204.0" fitWidth="292.0" layoutX="115.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Navios/BG/MENU.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="EncherEclusa" layoutX="236.0" layoutY="25.0" mnemonicParsing="false" onAction="#encherEclusa" prefHeight="25.0" prefWidth="58.0" text="Encher" />
+            <Button fx:id="SecarEclusa" layoutX="132.0" layoutY="25.0" mnemonicParsing="false" onAction="#secarEclusa" text="Secar" textAlignment="CENTER" />
+            <Button fx:id="comportaRioButton" layoutX="132.0" layoutY="55.0" mnemonicParsing="false" onAction="#toggleComportaRio" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #ff0000;" text="Comporta Rio" textAlignment="CENTER" textFill="WHITE" />
+            <Button fx:id="PararEclusa" layoutX="185.0" layoutY="25.0" mnemonicParsing="false" onAction="#pararEclusa" text="Parar" textAlignment="CENTER" />
+            <Button fx:id="RequesitarLanchaRio" layoutX="19.0" layoutY="30.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="77.0" text="Requisitar Lancha" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="RequesitarCruzeiroRio" layoutX="19.0" layoutY="85.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="77.0" text="Requisitar Cruzeiro" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="RequesitarCargueiroRio" layoutX="19.0" layoutY="139.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="77.0" text="Requisitar Cargueiro" textAlignment="CENTER" wrapText="true" />
+            <ImageView id="MenuMar" fitHeight="204.0" fitWidth="108.0" layoutX="542.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Navios/BG/MAR.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="RequesitarLanchaMar" layoutX="559.0" layoutY="30.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="77.0" text="Requisitar Lancha" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="RequesitarCruzeiroMar" layoutX="559.0" layoutY="85.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="77.0" text="Requisitar Cruzeiro" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="RequesitarCargueiroMar" layoutX="559.0" layoutY="139.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="77.0" text="Requisitar Cargueiro" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="comportaMarButton" layoutX="132.0" layoutY="85.0" mnemonicParsing="false" onAction="#toggleComportaMar" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #ff0000;" text="Comporta Mar" textAlignment="CENTER" textFill="WHITE" />
+            <ProgressBar fx:id="progressBar" layoutX="158.0" layoutY="144.0" prefWidth="200.0" progress="0.0" />
+            <Label layoutX="221.0" layoutY="122.0" text="Nível da água" />
+            <Label layoutX="191.0" layoutY="163.0" text="Tempo Estimado:" />
+            <Label layoutX="295.0" layoutY="164.0" text="00:00" />
+            <Label layoutX="302.0" layoutY="29.0" text="Canos abertos:" />
+            <Button layoutX="236.0" layoutY="85.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" text="Liberar" />
+            <Button layoutX="301.0" layoutY="55.0" mnemonicParsing="false" text="1" />
+            <Button layoutX="331.0" layoutY="55.0" mnemonicParsing="false" text="2" />
+            <Button layoutX="361.0" layoutY="55.0" mnemonicParsing="false" text="3" />
+            <Button layoutX="236.0" layoutY="55.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" text="Abortar" />
+            <ImageView id="Dados" fitHeight="204.0" fitWidth="137.0" layoutX="402.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Navios/BG/DADOS.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="301.0" layoutY="85.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="Verificar" />
+            <CheckBox layoutX="437.0" layoutY="153.0" mnemonicParsing="false" text="Liberado" />
+            <Label layoutX="437.0" layoutY="30.0" text="Tipo:" />
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>

@@ -5,6 +5,7 @@ public class NavioCargueiro extends Embarcacao {
 
     private ArrayList<Container> conteineres = new ArrayList<Container>();
 
+    @SuppressWarnings("rawtypes")
     public ArrayList getConteineres() {
         return conteineres;
     }

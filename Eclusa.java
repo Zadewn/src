@@ -1,5 +1,4 @@
-
-import java.util.ArrayList;
+import java.util.*;
 
 public class Eclusa {
 
@@ -8,11 +7,11 @@ public class Eclusa {
     private float capacidadeMAX;
     private float capacidadeMIN;
     private float capacidadeAtual;
-    private boolean comportaBaixa; // Em direção ao rio, true = aberta, false = fechada
-    private boolean comportaAlta; // Em direção ao mar
+    private boolean comportaRio; // Em direção ao rio, true = aberta, false = fechada
+    private boolean comportaMar; // Em direção ao mar
     private float vazao; // m³ segundo
-    private int quantidadeTuneis;
-    private float valorApurado = 0;//salva o valorApurado diario 
+    private int quantidadeCanos;
+    private float valor = 0; // salva o valor diario 
     private char status; // E = Enchendo, S = secando, N = parado
     private ArrayList<Embarcacao> filaMar = new ArrayList<>();
     private ArrayList<Embarcacao> filaRio = new ArrayList<>();
@@ -22,14 +21,17 @@ public class Eclusa {
         return capacidadeAtual;
     }
 
+    @SuppressWarnings("rawtypes")
     public ArrayList getfilaMar() {
         return filaMar;
     }
 
+    @SuppressWarnings("rawtypes")
     public ArrayList getfilaRio() {
         return filaRio;
     }
 
+    @SuppressWarnings("rawtypes")
     public ArrayList getNaviosEncaixados() {
         return naviosEncaixados;
     }
@@ -54,24 +56,24 @@ public class Eclusa {
         return vazao;
     }
 
-    public int getQuantidadeTuneis() {
-        return quantidadeTuneis;
+    public int getQuantidadeCanos() {
+        return quantidadeCanos;
     }
 
-    public float getvalorApurado() {
-        return valorApurado;
+    public float getValor() {
+        return valor;
     }
 
     public char getStatus() {
         return status;
     }
 
-    public boolean getComportaAlta() {
-        return comportaAlta;
+    public boolean getComportaMar() {
+        return comportaMar;
     }
 
-    public boolean getComportaBaixa() {
-        return comportaBaixa;
+    public boolean getComportaRio() {
+        return comportaRio;
     }
 
     public void setLargura(float largura) {
@@ -86,7 +88,7 @@ public class Eclusa {
         }
     }
 
-    public void setfilaMar(Embarcacao embarcacao) {
+    public void setFilaMar(Embarcacao embarcacao) {
         if (embarcacao != null) {
             if (embarcacao.getLargura() < largura && embarcacao.getComprimento() < comprimento) {
                 filaMar.add(embarcacao);
@@ -94,7 +96,7 @@ public class Eclusa {
         }
     }
 
-    public void setfilaRio(Embarcacao embarcacao) {
+    public void setFilaRio(Embarcacao embarcacao) {
         if (embarcacao != null) {
             if (embarcacao.getLargura() < largura && embarcacao.getComprimento() < comprimento) {
                 filaRio.add(embarcacao);
@@ -138,41 +140,37 @@ public class Eclusa {
         }
     }
 
-    public void setQuantidadeTuneis(int quantidadeTuneis) {
-        if (quantidadeTuneis > 0) {
-            this.quantidadeTuneis = quantidadeTuneis;
+    public void setQuantidadeCanos(int quantidadeCanos) {
+        if (quantidadeCanos > 0) {
+            this.quantidadeCanos = quantidadeCanos;
         }
     }
 
-    public void setvalorApurado(Embarcacao embarcacao) {
+    public void setvalor(Embarcacao embarcacao) {
         if (embarcacao instanceof Lancha){
-            valorApurado += 25;
+            valor += 25;
         }else if (embarcacao instanceof NavioTurismo){
-            valorApurado += 40;
+            valor += 40;
         }else {
-            valorApurado += 50;
+            valor += 50;
         }
     }
 
     public void setStatus(char status) {
-        if (status == 'E' || status == 'S' || status == 'N') {
+        if (status == 'E' || status == 'S') {
             this.status = status;
         }
     }
 
-    public void alterarComportaAlta() {
-        if(capacidadeAtual == capacidadeMAX && comportaAlta == false && status == 'N'){
-            comportaAlta = true;
-        }else{
-            comportaAlta = false;
+    public void alterarComportaMar() {
+        if(capacidadeAtual == capacidadeMAX){
+            comportaMar = true;
         }
     }
 
-    public void alterarComportaBaixa() {
-        if(capacidadeAtual == capacidadeMIN && comportaBaixa == false && status == 'N'){
-            comportaBaixa = true;
-        }else{
-            comportaBaixa = false;
+    public void alterarComportaRio() {
+        if(capacidadeAtual == capacidadeMIN){
+            comportaRio = true;
         }
     }
 
@@ -185,15 +183,16 @@ public class Eclusa {
         }
     }
 
-    public void esvaziarEclusa(int tuneisAbertos) throws ComportaAbertaException{
-        if(comportaAlta == false && comportaBaixa == false && capacidadeAtual > capacidadeMIN){
+
+    public void esvaziarEclusa(int CanosAbertos) {
+        if(comportaMar == false && comportaRio == false && capacidadeAtual > capacidadeMIN){
             status = 'S';
             float porcentagemBruta;
             int porcentagemArredondada = 0;
-            if (tuneisAbertos <= quantidadeTuneis && tuneisAbertos > 0) {
+            if (CanosAbertos <= quantidadeCanos && CanosAbertos > 0) {
                 while (capacidadeAtual > capacidadeMIN) {
-                    if (capacidadeAtual - (vazao * tuneisAbertos) > capacidadeMIN) {
-                        capacidadeAtual -= (vazao * tuneisAbertos);
+                    if (capacidadeAtual - (vazao * CanosAbertos) > capacidadeMIN) {
+                        capacidadeAtual -= (vazao * CanosAbertos);
                     } else {
                         capacidadeAtual = capacidadeMIN;
                     }
@@ -209,25 +208,22 @@ public class Eclusa {
                     }
                     if (capacidadeAtual == capacidadeMIN){
                         System.out.println("Esse nivel de agua e o minimo");
-                        status = 'N';
                         break;
                     }
                 }
             }
-        }else{
-            throw new ComportaAbertaException();
         }
     }
 
-    public void encherEclusa(int tuneisAbertos) {
-        if(comportaAlta == false && comportaBaixa == false && capacidadeAtual < capacidadeMAX){
+    public void encherEclusa(int CanosAbertos) {
+        if(comportaMar == false && comportaRio == false && capacidadeAtual < capacidadeMAX){
             status = 'E';
             float porcentagemBruta;
             int porcentagemArredondada = 0;
-            if (tuneisAbertos <= quantidadeTuneis && tuneisAbertos > 0) {
+            if (CanosAbertos <= quantidadeCanos && CanosAbertos > 0) {
                 while (capacidadeAtual < capacidadeMAX) {
-                    if (capacidadeAtual + (vazao * tuneisAbertos) < capacidadeMAX) {
-                        capacidadeAtual += (vazao * tuneisAbertos);
+                    if (capacidadeAtual + (vazao * CanosAbertos) < capacidadeMAX) {
+                        capacidadeAtual += (vazao * CanosAbertos);
                     } else {
                         capacidadeAtual = capacidadeMAX;
                     }
@@ -243,7 +239,6 @@ public class Eclusa {
                     }
                     if (capacidadeAtual == capacidadeMAX){
                         System.out.println("Esse nivel de agua e o maximo");
-                        status = 'N';
                         break;
                     }
                 }
@@ -252,7 +247,7 @@ public class Eclusa {
     }
 
     public void encaixarNaviosMar() {
-        if (filaMar.isEmpty() == false && comportaAlta == true) {
+        if (filaMar.isEmpty() == false && comportaMar == true) {
             float larguraRestante = largura;
             float comprimentoRestante = comprimento;
             for (Object navio : filaMar) {
@@ -266,12 +261,12 @@ public class Eclusa {
                     break;
                 }
             }
-            alterarComportaAlta();
+            alterarComportaMar();
         }
     }
 
     public void encaixarNaviosRio() {
-        if (filaRio.isEmpty() == false && comportaBaixa == true) {
+        if (filaRio.isEmpty() == false && comportaRio == true) {
             float larguraRestante = largura;
             float comprimentoRestante = comprimento;
             for (Object navio : filaRio) {
@@ -285,15 +280,14 @@ public class Eclusa {
                     break;
                 }
             }
-            alterarComportaBaixa();
+            alterarComportaRio();
         }
     }
 
     public Eclusa() {
         super();
-        status = 'N';
-        comportaAlta = false;
-        comportaBaixa = false;
+        comportaMar = false;
+        comportaRio = false;
     }
 
 }
