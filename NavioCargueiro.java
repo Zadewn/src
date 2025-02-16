@@ -10,13 +10,13 @@ public class NavioCargueiro extends Embarcacao {
     }
     
     public void setLargura(float largura) {
-        if (largura >= 10) {
+        if (largura >= 10 && largura <= 61) {
             this.largura = largura;
         }
     }
 
     public void setComprimento(float comprimento) {
-        if (comprimento >= 60) {
+        if (comprimento >= 60 && comprimento <= 400) {
             this.comprimento = comprimento;
 
         }

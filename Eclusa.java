@@ -185,7 +185,7 @@ public class Eclusa {
         }
     }
 
-    public void esvaziarEclusa(int tuneisAbertos) {
+    public void esvaziarEclusa(int tuneisAbertos) throws ComportaAbertaException{
         if(comportaAlta == false && comportaBaixa == false && capacidadeAtual > capacidadeMIN){
             status = 'S';
             float porcentagemBruta;
@@ -199,13 +199,13 @@ public class Eclusa {
                     }
                     porcentagemBruta = 100 * capacidadeAtual / capacidadeMAX;
                     try {
-                        Thread.sleep(1000); // 1000 milissegundos = 1 segundo
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();//Alterar isso para caso de erro
+                        e.printStackTrace();
                     }
                     if((int) porcentagemBruta != porcentagemArredondada){
                         porcentagemArredondada = (int) porcentagemBruta;
-                        System.out.println("a porcentagem de agua atual e " + porcentagemArredondada + "% (" + capacidadeAtual + "m³)");
+                        System.out.println("a porcentagem de agua atual e " + porcentagemArredondada + "% (" + String.format("%.2f", capacidadeAtual) + "m3)");
                     }
                     if (capacidadeAtual == capacidadeMIN){
                         System.out.println("Esse nivel de agua e o minimo");
@@ -214,6 +214,8 @@ public class Eclusa {
                     }
                 }
             }
+        }else{
+            throw new ComportaAbertaException();
         }
     }
 
@@ -231,13 +233,13 @@ public class Eclusa {
                     }
                     porcentagemBruta = 100 * capacidadeAtual / capacidadeMAX;
                     try {
-                        Thread.sleep(1000); // 1000 milissegundos = 1 segundo
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();//Alterar isso para caso de erro
+                        e.printStackTrace();
                     }
                     if((int) porcentagemBruta != porcentagemArredondada){
                         porcentagemArredondada = (int) porcentagemBruta;
-                        System.out.println("a porcentagem de agua atual e " + porcentagemArredondada + "% (" + capacidadeAtual + "m³)");
+                        System.out.println("a porcentagem de agua atual e " + porcentagemArredondada + "% (" + String.format("%.2f", capacidadeAtual) + "m3)");
                     }
                     if (capacidadeAtual == capacidadeMAX){
                         System.out.println("Esse nivel de agua e o maximo");
