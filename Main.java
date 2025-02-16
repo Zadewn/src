@@ -19,13 +19,13 @@ public class Main{
         e.setCapacidadeMAX(100);
         e.setCapacidadeMIN(10);
         e.setCapacidadeAtual(100);
-        e.setQuantidadeTuneis(3);
+        e.setQuantidadeCanos(3);
         e.setVazao(10);
-        try {
-            e.esvaziarEclusa(2);
-        } catch (ComportaAbertaException o) {
-            System.out.println("oie");
-        }
+        //try {
+        //    e.esvaziarEclusa(2);
+        //} catch (ComportaAbertaException o) {
+        //    System.out.println("oie");
+        //}
         
         e.encherEclusa(1);
         

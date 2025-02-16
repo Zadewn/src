@@ -146,7 +146,7 @@ public class Eclusa {
         }
     }
 
-    public void setvalor(Embarcacao embarcacao) {
+    public void setValor(Embarcacao embarcacao) {
         if (embarcacao instanceof Lancha){
             valor += 25;
         }else if (embarcacao instanceof NavioTurismo){
