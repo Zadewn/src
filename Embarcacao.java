@@ -19,7 +19,7 @@ public abstract class Embarcacao {
         return largura;
     }
 
-    public float getPeso() {
+    public float getPesoAdicional() {
         return pesoAdicional;
     }
 

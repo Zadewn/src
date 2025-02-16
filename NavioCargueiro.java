@@ -8,6 +8,19 @@ public class NavioCargueiro extends Embarcacao {
     public ArrayList getConteineres() {
         return conteineres;
     }
+    
+    public void setLargura(float largura) {
+        if (largura >= 10) {
+            this.largura = largura;
+        }
+    }
+
+    public void setComprimento(float comprimento) {
+        if (comprimento >= 60) {
+            this.comprimento = comprimento;
+
+        }
+    }
 
     public void setConteineres(Container container) {
         if (container != null) {
