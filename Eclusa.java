@@ -162,15 +162,19 @@ public class Eclusa {
         }
     }
 
-    public void alterarComportaMar() {
+    public void alterarComportaMar() throws AbrirComportaInvalidaException{
         if(capacidadeAtual == capacidadeMAX){
             comportaMar = true;
+        }else{
+            throw new AbrirComportaInvalidaException();
         }
     }
 
-    public void alterarComportaRio() {
+    public void alterarComportaRio() throws AbrirComportaInvalidaException{
         if(capacidadeAtual == capacidadeMIN){
             comportaRio = true;
+        }else{
+            throw new AbrirComportaInvalidaException();
         }
     }
 
@@ -184,7 +188,7 @@ public class Eclusa {
     }
 
 
-    public void esvaziarEclusa(int CanosAbertos) {
+    public void esvaziarEclusa(int CanosAbertos) throws ComportaAbertaException{
         if(comportaMar == false && comportaRio == false && capacidadeAtual > capacidadeMIN){
             status = 'S';
             float porcentagemBruta;
@@ -212,10 +216,12 @@ public class Eclusa {
                     }
                 }
             }
+        }else{
+            throw new ComportaAbertaException();
         }
     }
 
-    public void encherEclusa(int CanosAbertos) {
+    public void encherEclusa(int CanosAbertos) throws ComportaAbertaException{
         if(comportaMar == false && comportaRio == false && capacidadeAtual < capacidadeMAX){
             status = 'E';
             float porcentagemBruta;
@@ -243,6 +249,8 @@ public class Eclusa {
                     }
                 }
             }
+        }else{
+            throw new ComportaAbertaException();
         }
     }
 
@@ -261,7 +269,6 @@ public class Eclusa {
                     break;
                 }
             }
-            alterarComportaMar();
         }
     }
 
@@ -280,7 +287,6 @@ public class Eclusa {
                     break;
                 }
             }
-            alterarComportaRio();
         }
     }
 
