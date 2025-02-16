@@ -68,7 +68,7 @@ public class Controller {
 
     @FXML
     private void toggleComportaRio(ActionEvent event) {
-        eclusa.abrirComportaRio();
+        eclusa.alterarComportaRio();
         if (eclusa.getComportaRio()) {
             toggleComporta(comportaRioButton, ComportaRio);
         }
@@ -76,7 +76,7 @@ public class Controller {
 
     @FXML
     private void toggleComportaMar(ActionEvent event) {
-        eclusa.abrirComportaMar();
+        eclusa.alterarComportaMar();
         if (eclusa.getComportaMar()) {
             toggleComporta(comportaMarButton, ComportaMar);
         } 

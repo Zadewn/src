@@ -1,4 +1,3 @@
-
 import java.util.*;
 
 public abstract class Embarcacao {
@@ -35,6 +34,7 @@ public abstract class Embarcacao {
         return portoOrigem;
     }
 
+    @SuppressWarnings("rawtypes")
     public ArrayList getTripulacao() {
         return tripulacao;
     }
