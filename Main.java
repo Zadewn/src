@@ -21,6 +21,7 @@ public class Main{
         e.setCapacidadeAtual(100);
         e.setQuantidadeCanos(3);
         e.setVazao(10);
+        
         try {
             e.alterarComportaMar();
             e.esvaziarEclusa(2);
