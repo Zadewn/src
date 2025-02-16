@@ -5,10 +5,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 //import javafx.util.Duration;
+import javafx.scene.layout.AnchorPane;
 
 public class Controller {
+
+    @FXML
+    private AnchorPane mainPane;
 
     @FXML
     private ImageView AguaEclusa;
@@ -71,6 +76,28 @@ public class Controller {
         progressBar.setProgress(0);
         atualizarBotao(comportaRioButton, ComportaRio);
         atualizarBotao(comportaMarButton, ComportaMar);
+    }
+
+
+    @FXML
+    private void requisitarLancha(ActionEvent event) {
+        adicionarEmbarcacao("lancha", "@../../Navios/Lancha.png", 100, 250);
+    }
+
+    @FXML
+    private void requisitarCruzeiro(ActionEvent event) {
+        adicionarEmbarcacao("cruzeiro", "@../../Navios/Cruzeiro.png", 50, 200);
+    }
+
+    private void adicionarEmbarcacao(String tipo, String caminhoImagem, double x, double y) {
+        ImageView navio = new ImageView(new Image(getClass().getResourceAsStream(caminhoImagem)));
+        navio.setFitWidth(80); 
+        navio.setFitHeight(40);
+        navio.setLayoutX(x); 
+        navio.setLayoutY(y); 
+
+        mainPane.getChildren().add(navio);
+        navio.toFront();
     }
 
     @FXML
