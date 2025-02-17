@@ -1,34 +1,36 @@
 public class Main{
 
-    public void requisitarLanchaRio(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int ID, float cargaMax, String Nomecapitao){
+    public static void requisitarLanchaRio(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int ID, float cargaMax, String Nomecapitao){
         Lancha l = new Lancha(largura, comprimento, nPassageiros, mediaPesoPassageiros, ID, cargaMax, Nomecapitao, 'R');
         eclusa.setFilaRio(l);
     }
 
-    public void requisitarLanchaMar(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int ID, float cargaMax, String Nomecapitao){
+    public static void requisitarLanchaMar(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int ID, float cargaMax, String Nomecapitao){
         Lancha l = new Lancha(largura, comprimento, nPassageiros, mediaPesoPassageiros, ID, cargaMax, Nomecapitao, 'M');
         eclusa.setFilaMar(l);
     }
 
-    public void requisitarNavioTurismoRio(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int ID, float cargaMax, String Nomecapitao){
+    public static void requisitarNavioTurismoRio(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int ID, float cargaMax, String Nomecapitao){
         NavioTurismo l = new NavioTurismo(largura, comprimento, nPassageiros, mediaPesoPassageiros, ID, cargaMax, Nomecapitao, 'R');
         eclusa.setFilaRio(l);
     }
 
-    public void requisitarNavioTurismoMar(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int ID, float cargaMax, String Nomecapitao){
+    public static void requisitarNavioTurismoMar(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int ID, float cargaMax, String Nomecapitao){
         NavioTurismo l = new NavioTurismo(largura, comprimento, nPassageiros, mediaPesoPassageiros, ID, cargaMax, Nomecapitao, 'M');
         eclusa.setFilaMar(l);
     }
 
-    public boolean alternarComportaRio(Eclusa eclusa) throws AbrirComportaInvalidaException {
+    public static boolean alternarComportaRio(Eclusa eclusa) throws AbrirComportaInvalidaException {
         eclusa.alterarComportaRio();
         return eclusa.getComportaRio();
     }
 
-    public boolean alternarComportaMar(Eclusa eclusa) throws AbrirComportaInvalidaException {
+    public static boolean alternarComportaMar(Eclusa eclusa) throws AbrirComportaInvalidaException {
         eclusa.alterarComportaMar();
         return eclusa.getComportaMar();
     }
+
+    
 
 
     public static void main(String[] args){

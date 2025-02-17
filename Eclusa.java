@@ -30,8 +30,8 @@ public class Eclusa {
     public int getQuantidadeCanos() { return quantidadeCanos; }
     public float getvalorApurado() { return valorApurado; }
     public char getStatus() { return status; }
-    public boolean getComportaRio() { return comportaRioAberta; }
-    public boolean getComportaMar() { return comportaMarAberta; }
+    public boolean getComportaMar() { return comportaMar; }
+    public boolean getComportaRio() { return comportaRio; }
     
     public void setLargura(float largura) {
         if (largura >= 5 ) {
@@ -135,23 +135,23 @@ public class Eclusa {
         }
     }
 
-    public void alterarComportaMar() throws ComportaAbertaException{
+    public void alterarComportaMar() throws AbrirComportaInvalidaException{
         if(comportaMar == true){
             comportaMar = false;
         }else if(capacidadeAtual == capacidadeMAX){
             comportaMar = true;
         }else{
-            throw new ComportaAbertaException();
+            throw new AbrirComportaInvalidaException("");
         }
     }
 
-    public void alterarComportaRio() throws ComportaAbertaException{
+    public void alterarComportaRio() throws AbrirComportaInvalidaException{
         if(comportaRio == true){
             comportaRio = false;
         }else  if(capacidadeAtual == capacidadeMIN){
             comportaRio = true;
         }else{
-            throw new ComportaAbertaException();
+            throw new AbrirComportaInvalidaException("");
         }
     }
 
