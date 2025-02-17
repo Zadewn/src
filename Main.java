@@ -30,8 +30,6 @@ public class Main{
         eclusa.setFilaRio(l);
     }
 
-    Eclusa eclusa = new Eclusa();
-
     public static boolean alternarComportaRio(Eclusa eclusa) throws AbrirComportaInvalidaException {
         eclusa.alterarComportaRio();
         return eclusa.getComportaRio();
@@ -42,8 +40,31 @@ public class Main{
         return eclusa.getComportaMar();
     }
 
-    public static int updatePorcentagem(int porcentagem){
-        return porcentagem;
+    public static String updatePorcentagem(int porcentagem){
+        return "" + porcentagem +"%";
+    }
+
+    public static void secarEclusa(Eclusa eclusa, int canosAbertos){
+        try {
+            eclusa.esvaziarEclusa(canosAbertos);
+        } catch (ComportaAbertaException e) {
+        }
+    }
+
+    public static void encherEclusa(Eclusa eclusa, int canosAbertos){
+        try {
+            eclusa.encherEclusa(canosAbertos);
+        } catch (ComportaAbertaException e) {
+
+        }
+    }
+
+    public static void liberarMar(Eclusa eclusa){
+        eclusa.encaixarNaviosMar();
+    }
+
+    public static void liberarRio(Eclusa eclusa){
+        eclusa.encaixarNaviosRio();
     }
 
     public static void main(String[] args){
@@ -70,8 +91,7 @@ public class Main{
         e.setVazao(10);
         
         try {
-            e.alterarComportaMar();
-            e.alterarComportaMar();
+            e.alterarComportaRio();
             e.esvaziarEclusa(1);
         } catch (ComportaAbertaException | AbrirComportaInvalidaException o) {
             System.out.println(o.getMessage());

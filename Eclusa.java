@@ -141,7 +141,7 @@ public class Eclusa {
         }else if(capacidadeAtual == capacidadeMAX){
             comportaMar = true;
         }else{
-            throw new AbrirComportaInvalidaException("");
+            throw new AbrirComportaInvalidaException("ERRO");
         }
     }
 
@@ -151,7 +151,7 @@ public class Eclusa {
         }else  if(capacidadeAtual == capacidadeMIN){
             comportaRio = true;
         }else{
-            throw new AbrirComportaInvalidaException("");
+            throw new AbrirComportaInvalidaException("ERRO");
         }
     }
 
@@ -173,15 +173,15 @@ public class Eclusa {
     }
 
 
-    public void esvaziarEclusa(int CanosAbertos) throws ComportaAbertaException{
+    public void esvaziarEclusa(int canosAbertoss) throws ComportaAbertaException{
         if(comportaMar == false && comportaRio == false && capacidadeAtual > capacidadeMIN){
             status = 'S';
             float porcentagemBruta;
             int porcentagemArredondada = 0;
-            if (CanosAbertos <= quantidadeCanos && CanosAbertos > 0) {
+            if (canosAbertoss <= quantidadeCanos && canosAbertoss > 0) {
                 while (capacidadeAtual > capacidadeMIN) {
-                    if (capacidadeAtual - (vazao * CanosAbertos) > capacidadeMIN) {
-                        capacidadeAtual -= (vazao * CanosAbertos);
+                    if (capacidadeAtual - (vazao * canosAbertoss) > capacidadeMIN) {
+                        capacidadeAtual -= (vazao * canosAbertoss);
                     } else {
                         capacidadeAtual = capacidadeMIN;
                     }
@@ -202,15 +202,15 @@ public class Eclusa {
         }
     }
 
-    public void encherEclusa(int CanosAbertos) throws ComportaAbertaException{
+    public void encherEclusa(int canosAbertos) throws ComportaAbertaException{
         if(comportaMar == false && comportaRio == false && capacidadeAtual < capacidadeMAX){
             status = 'E';
             float porcentagemBruta;
             int porcentagemArredondada = 0;
-            if (CanosAbertos <= quantidadeCanos && CanosAbertos > 0) {
+            if (canosAbertos <= quantidadeCanos && canosAbertos > 0) {
                 while (capacidadeAtual < capacidadeMAX) {
-                    if (capacidadeAtual + (vazao * CanosAbertos) < capacidadeMAX) {
-                        capacidadeAtual += (vazao * CanosAbertos);
+                    if (capacidadeAtual + (vazao * canosAbertos) < capacidadeMAX) {
+                        capacidadeAtual += (vazao * canosAbertos);
                     } else {
                         capacidadeAtual = capacidadeMAX;
                     }
