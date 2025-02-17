@@ -56,9 +56,10 @@ public class Main{
         
         try {
             e.alterarComportaMar();
+            e.alterarComportaMar();
             e.esvaziarEclusa(1);
         } catch (ComportaAbertaException | AbrirComportaInvalidaException o) {
-            System.out.println("o.getMessage()");
+            System.out.println(o.getMessage());
         }
         
         

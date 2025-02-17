@@ -16,8 +16,6 @@ public class Eclusa {
     private ArrayList<Embarcacao> filaMar = new ArrayList<>();
     private ArrayList<Embarcacao> filaRio = new ArrayList<>();
     private ArrayList<Embarcacao> naviosEncaixados = new ArrayList<>();
-    private boolean comportaRioAberta = false;
-    private boolean comportaMarAberta = false;
 
     @SuppressWarnings("rawtypes") public ArrayList getfilaMar() { return filaMar; }
     @SuppressWarnings("rawtypes") public ArrayList getfilaRio() { return filaRio; }
@@ -137,34 +135,24 @@ public class Eclusa {
         }
     }
 
-    /*public void alterarComportaMar() throws AbrirComportaInvalidaException{
-        if(capacidadeAtual == capacidadeMAX){
+    public void alterarComportaMar() throws ComportaAbertaException{
+        if(comportaMar == true){
+            comportaMar = false;
+        }else if(capacidadeAtual == capacidadeMAX){
             comportaMar = true;
         }else{
-            throw new AbrirComportaInvalidaException();
+            throw new ComportaAbertaException();
         }
     }
 
-    public void alterarComportaRio() throws AbrirComportaInvalidaException{
-        if(capacidadeAtual == capacidadeMIN){
+    public void alterarComportaRio() throws ComportaAbertaException{
+        if(comportaRio == true){
+            comportaRio = false;
+        }else  if(capacidadeAtual == capacidadeMIN){
             comportaRio = true;
         }else{
-            throw new AbrirComportaInvalidaException();
+            throw new ComportaAbertaException();
         }
-    }*/
-
-    public void alterarComportaRio() throws AbrirComportaInvalidaException {
-        if (comportaMarAberta) {
-            throw new AbrirComportaInvalidaException("Não pode abrir as duas comportas ao mesmo tempo!");
-        }
-        comportaRioAberta = !comportaRioAberta;
-    }
-
-    public void alterarComportaMar() throws AbrirComportaInvalidaException {
-        if (comportaRioAberta) {
-            throw new AbrirComportaInvalidaException("Não pode abrir as duas comportas ao mesmo tempo!");
-        }
-        comportaMarAberta = !comportaMarAberta;
     }
 
     public float getTempoFilaMAX() { //Retorna o tempo maximo para esvaziar as filas
