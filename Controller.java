@@ -1,13 +1,9 @@
-//import javafx.animation.KeyFrame;
-//import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
-//import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-//import javafx.util.Duration;
 import javafx.scene.layout.AnchorPane;
 
 public class Controller {
@@ -65,9 +61,6 @@ public class Controller {
 
     @FXML
     private TextField NumeroFilaRio;
-
-    //private Timeline timeline;
-    //private boolean animacaoRodando = false;
 
     private Eclusa eclusa = new Eclusa();
 
@@ -145,51 +138,4 @@ public class Controller {
     private void pararEclusa(ActionEvent event) {
     }
 
-    /*@FXML
-    private void encherEclusa() {
-        if (animacaoRodando) return;
-        animacaoRodando = true;
-        iniciarAnimacao(AguaEclusa.getLayoutY(), 157, progressBar.getProgress(), 1);
-    }
-
-    @FXML
-    private void secarEclusa() {
-        if (animacaoRodando) return;
-        animacaoRodando = true;
-        iniciarAnimacao(AguaEclusa.getLayoutY(), 206, progressBar.getProgress(), 0);
-    }
-
-    @FXML
-    private void pararEclusa() {
-        if (timeline != null) {
-            timeline.stop();
-            animacaoRodando = false;
-        }
-    }
-
-    private void iniciarAnimacao(double inicioY, double fimY, double progressoInicial, double progressoFinal) {
-        double distancia = Math.abs(fimY - inicioY);
-        timeline = new Timeline(
-            new KeyFrame(Duration.millis(50), _ -> {
-                double posicaoAtual = AguaEclusa.getLayoutY();
-                if ((fimY > inicioY && posicaoAtual >= fimY) || (fimY < inicioY && posicaoAtual <= fimY)) {
-                    timeline.stop();
-                    animacaoRodando = false;
-                    return;
-                }
-
-                double d = (fimY > inicioY) ? 1 : -1;
-                AguaEclusa.setLayoutY(posicaoAtual + d);
-                double t = Math.abs((posicaoAtual - inicioY) / distancia);
-                progressBar.setProgress(progressoInicial + t * (progressoFinal - progressoInicial));
-            })
-        );
-
-        timeline.setCycleCount((int) distancia);
-        timeline.setOnFinished( _ -> {
-            progressBar.setProgress(progressoFinal);
-            animacaoRodando = false;
-        });
-        timeline.play();
-    }*/
 }
