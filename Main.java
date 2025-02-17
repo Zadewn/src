@@ -19,14 +19,14 @@ public class Main{
         e.setCapacidadeMAX(100);
         e.setCapacidadeMIN(10);
         e.setCapacidadeAtual(100);
-        e.setQuantidadeCanos(3);
+        e.setQuantidadeCanos(1);
         e.setVazao(10);
         
         try {
             e.alterarComportaMar();
-            e.esvaziarEclusa(2);
+            e.esvaziarEclusa(1);
         } catch (ComportaAbertaException | AbrirComportaInvalidaException o) {
-            System.out.println(o.getMessage());
+            System.out.println("o.getMessage()");
         }
         
         

@@ -11,7 +11,7 @@ public class Eclusa {
     private boolean comportaMar; // Em direção ao mar
     private float vazao; // m³ segundo
     private int quantidadeCanos;
-    private float valor = 0; // salva o valor diario 
+    private float valorApurado = 0; // salva o valorApurado diario 
     private char status; // E = Enchendo, S = secando, N = parado
     private ArrayList<Embarcacao> filaMar = new ArrayList<>();
     private ArrayList<Embarcacao> filaRio = new ArrayList<>();
@@ -60,8 +60,8 @@ public class Eclusa {
         return quantidadeCanos;
     }
 
-    public float getValor() {
-        return valor;
+    public float getvalorApurado() {
+        return valorApurado;
     }
 
     public char getStatus() {
@@ -90,7 +90,15 @@ public class Eclusa {
 
     public void setFilaMar(Embarcacao embarcacao) {
         if (embarcacao != null) {
-            if (embarcacao.getLargura() < largura && embarcacao.getComprimento() < comprimento) {
+            boolean existeCodigo = false;
+            for (Object o : filaMar) {
+                Embarcacao e = (Embarcacao) o;
+                if(e.getCodigoID() == embarcacao.getCodigoID()){
+                    existeCodigo = true;
+                    break;
+                }
+            }
+            if (embarcacao.getLargura() < largura && embarcacao.getComprimento() < comprimento && existeCodigo == false) {
                 filaMar.add(embarcacao);
             }
         }
@@ -98,7 +106,15 @@ public class Eclusa {
 
     public void setFilaRio(Embarcacao embarcacao) {
         if (embarcacao != null) {
-            if (embarcacao.getLargura() < largura && embarcacao.getComprimento() < comprimento) {
+            boolean existeCodigo = false;
+            for (Object o : filaMar) {
+                Embarcacao e = (Embarcacao) o;
+                if(e.getCodigoID() == embarcacao.getCodigoID()){
+                    existeCodigo = true;
+                    break;
+                }
+            }
+            if (embarcacao.getLargura() < largura && embarcacao.getComprimento() < comprimento && existeCodigo == false) {
                 filaRio.add(embarcacao);
             }
         }
@@ -146,13 +162,13 @@ public class Eclusa {
         }
     }
 
-    public void setValor(Embarcacao embarcacao) {
+    public void receberPagamento(Embarcacao embarcacao) {
         if (embarcacao instanceof Lancha){
-            valor += 25;
+            valorApurado += 25;
         }else if (embarcacao instanceof NavioTurismo){
-            valor += 40;
+            valorApurado += 40;
         }else {
-            valor += 50;
+            valorApurado += 50;
         }
     }
 
@@ -178,13 +194,21 @@ public class Eclusa {
         }
     }
 
-    public float getTempoMAX() { //Retorna o tempo maximo para esvaziar as filas
+    public float getTempoFilaMAX() { //Retorna o tempo maximo para esvaziar as filas
         float tempo = (capacidadeMAX - capacidadeMIN)/vazao;
         if(filaMar.size() > filaRio.size()){
             return tempo * filaMar.size();
         }else{
             return tempo * filaRio.size();
         }
+    }
+
+    public float getTempo(int canos){
+        if(canos > 0 && canos <= quantidadeCanos){
+            float volume = capacidadeMAX - capacidadeMIN;
+            return volume / (vazao * canos);
+        }
+        else return 0;
     }
 
 
