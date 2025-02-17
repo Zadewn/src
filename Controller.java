@@ -80,12 +80,12 @@ public class Controller {
 
     @FXML
     private void requisitarLancha(ActionEvent event) {
-        adicionarEmbarcacao("lancha", "@../../Navios/Lancha.png", 100, 250);
+        adicionarEmbarcacao("lancha", "@../../Navios/X.png", 100, 250);
     }
 
     @FXML
     private void requisitarCruzeiro(ActionEvent event) {
-        adicionarEmbarcacao("cruzeiro", "@../../Navios/Cruzeiro.png", 50, 200);
+        adicionarEmbarcacao("cruzeiro", "@../../Navios/X.png", 50, 200);
     }
 
     private void adicionarEmbarcacao(String tipo, String caminhoImagem, double x, double y) {
