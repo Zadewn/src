@@ -4,13 +4,9 @@ public class Pessoa {
     private String nome;
     private float peso;
 
-    public String getNome() {
-        return nome;
-    }
 
-    public float getPeso() {
-        return peso;
-    }
+    public String getNome() { return nome; }
+    public float getPeso() { return peso; }
 
     public void setNome(String nome) {
         if(nome != null){
@@ -24,10 +20,10 @@ public class Pessoa {
         }
     }
 
-    public Pessoa() {
-    }
+    public Pessoa() {}
 
-    public Pessoa(float peso) {
+
+    public Pessoa(float peso){
         setPeso(peso);
     }
 
@@ -35,6 +31,4 @@ public class Pessoa {
         setNome(nome);
         setPeso(peso);
     }
-
-    
 }

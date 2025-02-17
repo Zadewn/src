@@ -44,7 +44,7 @@ public abstract class Embarcacao {
             }
         }
     }
-    
+
     public Embarcacao(){
         super();
     }
@@ -60,5 +60,4 @@ public abstract class Embarcacao {
             tripulacao.add(new Pessoa(mediaPesoPassageiros));
         }
     }
-
 }
