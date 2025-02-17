@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
+//import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 //import javafx.util.Duration;
 import javafx.scene.layout.AnchorPane;
@@ -78,7 +78,6 @@ public class Controller {
         atualizarBotao(comportaMarButton, ComportaMar);
     }
 
-
     @FXML
     private void requisitarLancha(ActionEvent event) {
         adicionarEmbarcacao("lancha", "@../../Navios/Lancha.png", 100, 250);
@@ -90,7 +89,7 @@ public class Controller {
     }
 
     private void adicionarEmbarcacao(String tipo, String caminhoImagem, double x, double y) {
-        ImageView navio = new ImageView(new Image(getClass().getResourceAsStream(caminhoImagem)));
+        ImageView navio = new ImageView(caminhoImagem);
         navio.setFitWidth(80); 
         navio.setFitHeight(40);
         navio.setLayoutX(x); 
