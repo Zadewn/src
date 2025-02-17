@@ -120,7 +120,7 @@ ID carga max*/
     public Embarcacao(float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int ID, float cargaMax, String nomecapitao, char sentido){
         this.setLargura(largura);
         this.setComprimento(comprimento);
-        this.setCodigoID(codigoID);
+        this.setCodigoID(ID);
         this.setCargaMaxima(cargaMax);
         this.setSentido(sentido);
         this.setCapitao(new Pessoa(nomecapitao, mediaPesoPassageiros));
