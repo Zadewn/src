@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
+//import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 //import javafx.util.Duration;
 import javafx.scene.layout.AnchorPane;
@@ -78,19 +78,18 @@ public class Controller {
         atualizarBotao(comportaMarButton, ComportaMar);
     }
 
-
     @FXML
     private void requisitarLancha(ActionEvent event) {
-        adicionarEmbarcacao("lancha", "@../../Navios/Lancha.png", 100, 250);
+        adicionarEmbarcacao("lancha", "@../../Navios/X.png", 100, 250);
     }
 
     @FXML
     private void requisitarCruzeiro(ActionEvent event) {
-        adicionarEmbarcacao("cruzeiro", "@../../Navios/Cruzeiro.png", 50, 200);
+        adicionarEmbarcacao("cruzeiro", "@../../Navios/X.png", 50, 200);
     }
 
     private void adicionarEmbarcacao(String tipo, String caminhoImagem, double x, double y) {
-        ImageView navio = new ImageView(new Image(getClass().getResourceAsStream(caminhoImagem)));
+        ImageView navio = new ImageView(caminhoImagem);
         navio.setFitWidth(80); 
         navio.setFitHeight(40);
         navio.setLayoutX(x); 
@@ -101,7 +100,7 @@ public class Controller {
     }
 
     @FXML
-    private void toggleComportaRio(ActionEvent event) {
+    private void toggleComportaRio(ActionEvent event) throws AbrirComportaInvalidaException {
         eclusa.alterarComportaRio();
         if (eclusa.getComportaRio()) {
             toggleComporta(comportaRioButton, ComportaRio);
@@ -109,7 +108,7 @@ public class Controller {
     }
 
     @FXML
-    private void toggleComportaMar(ActionEvent event) {
+    private void toggleComportaMar(ActionEvent event) throws AbrirComportaInvalidaException {
         eclusa.alterarComportaMar();
         if (eclusa.getComportaMar()) {
             toggleComporta(comportaMarButton, ComportaMar);
