@@ -53,7 +53,7 @@
             <Button fx:id="EncherEclusa" layoutX="236.0" layoutY="25.0" mnemonicParsing="false" onAction="#encherEclusa" prefHeight="25.0" prefWidth="58.0" text="Encher" />
             <Button fx:id="SecarEclusa" layoutX="132.0" layoutY="25.0" mnemonicParsing="false" onAction="#secarEclusa" text="Secar" textAlignment="CENTER" />
             <Button fx:id="comportaRioButton" layoutX="132.0" layoutY="55.0" mnemonicParsing="false" onAction="#toggleComportaRio" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #ff0000;" text="Comporta Rio" textAlignment="CENTER" textFill="WHITE" />
-            <Button fx:id="PararEclusa" layoutX="185.0" layoutY="25.0" mnemonicParsing="false" onAction="#pararEclusa" text="Parar" textAlignment="CENTER" />
+            <Button layoutX="185.0" layoutY="25.0" mnemonicParsing="false" text="Parar" textAlignment="CENTER" />
             <Button fx:id="RequesitarLanchaRio" layoutX="19.0" layoutY="30.0" mnemonicParsing="false" onAction="#requisitarLancha" prefHeight="43.0" prefWidth="77.0" text="Requisitar Lancha" textAlignment="CENTER" wrapText="true" />
             <Button fx:id="RequesitarCruzeiroRio" layoutX="19.0" layoutY="85.0" mnemonicParsing="false" onAction="#requisitarCruzeiro" prefHeight="43.0" prefWidth="77.0" text="Requisitar Cruzeiro" textAlignment="CENTER" wrapText="true" />
             <Button fx:id="RequesitarCargueiroRio" layoutX="19.0" layoutY="139.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="77.0" text="Requisitar Cargueiro" textAlignment="CENTER" wrapText="true" />

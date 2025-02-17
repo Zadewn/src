@@ -16,66 +16,25 @@ public class Eclusa {
     private ArrayList<Embarcacao> filaMar = new ArrayList<>();
     private ArrayList<Embarcacao> filaRio = new ArrayList<>();
     private ArrayList<Embarcacao> naviosEncaixados = new ArrayList<>();
+    private boolean comportaRioAberta = false;
+    private boolean comportaMarAberta = false;
 
-    public float getCapacidadeAtual() {
-        return capacidadeAtual;
-    }
+    @SuppressWarnings("rawtypes") public ArrayList getfilaMar() { return filaMar; }
+    @SuppressWarnings("rawtypes") public ArrayList getfilaRio() { return filaRio; }
+    @SuppressWarnings("rawtypes") public ArrayList getNaviosEncaixados() { return naviosEncaixados; }
 
-    @SuppressWarnings("rawtypes")
-    public ArrayList getfilaMar() {
-        return filaMar;
-    }
-
-    @SuppressWarnings("rawtypes")
-    public ArrayList getfilaRio() {
-        return filaRio;
-    }
-
-    @SuppressWarnings("rawtypes")
-    public ArrayList getNaviosEncaixados() {
-        return naviosEncaixados;
-    }
-
-    public float getLargura() {
-        return largura;
-    }
-
-    public float getComprimento() {
-        return comprimento;
-    }
-
-    public float getCapacidadeMAX() {
-        return capacidadeMAX;
-    }
-
-    public float getCapacidadeMIN() {
-        return capacidadeMIN;
-    }
-
-    public float getVazao() {
-        return vazao;
-    }
-
-    public int getQuantidadeCanos() {
-        return quantidadeCanos;
-    }
-
-    public float getvalorApurado() {
-        return valorApurado;
-    }
-
-    public char getStatus() {
-        return status;
-    }
-
-    public boolean getComportaMar() {
-        return comportaMar;
-    }
-
-    public boolean getComportaRio() {
-        return comportaRio;
-    }
-
+    public float getCapacidadeAtual() { return capacidadeAtual; }
+    public float getLargura() { return largura; }
+    public float getComprimento() { return comprimento; }
+    public float getCapacidadeMAX() { return capacidadeMAX; }
+    public float getCapacidadeMIN() { return capacidadeMIN; }
+    public float getVazao() { return vazao; }
+    public int getQuantidadeCanos() { return quantidadeCanos; }
+    public float getvalorApurado() { return valorApurado; }
+    public char getStatus() { return status; }
+    public boolean getComportaRio() { return comportaRioAberta; }
+    public boolean getComportaMar() { return comportaMarAberta; }
+    
     public void setLargura(float largura) {
         if (largura >= 5 ) {
             this.largura = largura;
@@ -178,7 +137,7 @@ public class Eclusa {
         }
     }
 
-    public void alterarComportaMar() throws AbrirComportaInvalidaException{
+    /*public void alterarComportaMar() throws AbrirComportaInvalidaException{
         if(capacidadeAtual == capacidadeMAX){
             comportaMar = true;
         }else{
@@ -192,6 +151,20 @@ public class Eclusa {
         }else{
             throw new AbrirComportaInvalidaException();
         }
+    }*/
+
+    public void alterarComportaRio() throws AbrirComportaInvalidaException {
+        if (comportaMarAberta) {
+            throw new AbrirComportaInvalidaException("Não pode abrir as duas comportas ao mesmo tempo!");
+        }
+        comportaRioAberta = !comportaRioAberta;
+    }
+
+    public void alterarComportaMar() throws AbrirComportaInvalidaException {
+        if (comportaRioAberta) {
+            throw new AbrirComportaInvalidaException("Não pode abrir as duas comportas ao mesmo tempo!");
+        }
+        comportaMarAberta = !comportaMarAberta;
     }
 
     public float getTempoFilaMAX() { //Retorna o tempo maximo para esvaziar as filas
