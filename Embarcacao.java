@@ -44,12 +44,7 @@ public abstract class Embarcacao {
             }
         }
     }
- /*capitão
-largura
-comprimento
-n passageiros
-media peso passageiros
-ID carga max*/
+
     public Embarcacao(){
         super();
     }
@@ -65,5 +60,4 @@ ID carga max*/
             tripulacao.add(new Pessoa(mediaPesoPassageiros));
         }
     }
-
 }
