@@ -20,6 +20,16 @@ public class Main{
         eclusa.setFilaMar(l);
     }
 
+    public static void requisitarNavioCargueiroMar(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int nConteineres, float mediaPesoConteineres, int ID, float cargaMax, String nomecapitao, char sentido){
+        NavioCargueiro l = new NavioCargueiro(largura, comprimento, nPassageiros, mediaPesoPassageiros, nConteineres, mediaPesoConteineres, ID, cargaMax, nomecapitao, 'M');
+        eclusa.setFilaMar(l);
+    }
+
+    public static void requisitarNavioCargueiroRio(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int nConteineres, float mediaPesoConteineres, int ID, float cargaMax, String nomecapitao, char sentido){
+        NavioCargueiro l = new NavioCargueiro(largura, comprimento, nPassageiros, mediaPesoPassageiros, nConteineres, mediaPesoConteineres, ID, cargaMax, nomecapitao, 'R');
+        eclusa.setFilaRio(l);
+    }
+
     public static boolean alternarComportaRio(Eclusa eclusa) throws AbrirComportaInvalidaException {
         eclusa.alterarComportaRio();
         return eclusa.getComportaRio();
@@ -30,8 +40,9 @@ public class Main{
         return eclusa.getComportaMar();
     }
 
-    
-
+    public static int updatePorcentagem(int porcentagem){
+        return porcentagem;
+    }
 
     public static void main(String[] args){
         /*Container c = new Container();

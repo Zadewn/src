@@ -71,4 +71,23 @@ public class NavioCargueiro extends Embarcacao {
         }
     }
 
+    public NavioCargueiro(){
+        super();
+    }
+
+    public NavioCargueiro(float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int nConteineres, float mediaPesoConteineres, int ID, float cargaMax, String nomecapitao, char sentido){
+        this.setLargura(largura);
+        this.setComprimento(comprimento);
+        this.setCodigoID(codigoID);
+        this.setCargaMaxima(cargaMax);
+        this.setSentido(sentido);
+        this.setCapitao(new Pessoa(nomecapitao, mediaPesoPassageiros));
+        for (int i = 0; i < nPassageiros; i++) {
+            tripulacao.add(new Pessoa(mediaPesoPassageiros));
+        }
+        for (int i = 0; i < nConteineres; i++) {
+            conteineres.add(new Container(mediaPesoPassageiros));
+        }
+    }
+
 }

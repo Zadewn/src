@@ -27,9 +27,8 @@ public class Container {
     public Container() {
     }
 
-    public Container(float peso, String empresa) {
+    public Container(float peso) {
         setPeso(peso);
-        setEmpresa(empresa);
     }
 
 }
