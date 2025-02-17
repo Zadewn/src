@@ -12,89 +12,26 @@ public abstract class Embarcacao {
     protected ArrayList<Pessoa> tripulacao = new ArrayList<>();
     protected char sentido; // R = indo do Rio pro mar, M = indo do Mar pro rio
 
-    public float getLargura() {
-        return largura;
-    }
+    @SuppressWarnings("rawtypes") public ArrayList getTripulacao() { return tripulacao; }
 
-    public float getPesoAdicional() {
-        return pesoAdicional;
-    }
+    public float getLargura() { return largura; }
+    public float getPesoAdicional() { return pesoAdicional; }
+    public float getComprimento() { return comprimento; }
+    public float getCargaMaxima() { return cargaMaxima; }
+    public String getPais() { return pais; }
+    public int getCodigoID() { return codigoID; }
+    public Pessoa getCapitao() { return capitao; }
+    public char getSentido() { return sentido; }
 
-    public float getComprimento() {
-        return comprimento;
-    }
+    public void setLargura(float largura) { if (largura > 0) this.largura = largura; }
+    public void setComprimento(float comprimento) { if (comprimento > 0) this.comprimento = comprimento; }
+    public void setTripulacao(Pessoa pessoa) { if (pessoa != null) tripulacao.add(pessoa); }
+    public void setCargaMaxima(float cargaMaxima) { if (cargaMaxima >= 0) this.cargaMaxima = cargaMaxima; }
+    public void setPais(String pais) { if (pais != null) this.pais = pais; }
+    public void setCodigoID(int codigoID) { if (codigoID != 0) this.codigoID = codigoID; }
+    public void setCapitao(Pessoa pessoa) { this.capitao = pessoa; }
+    public void setSentido(char sentido) { if (sentido == 'R' || sentido == 'M') this.sentido = sentido; }
 
-    public float getCargaMaxima() {
-        return cargaMaxima;
-    }
-
-    @SuppressWarnings("rawtypes")
-    public ArrayList getTripulacao() {
-        return tripulacao;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public int getCodigoID() {
-        return codigoID;
-    }
-
-    public Pessoa getCapitao() {
-        return capitao;
-    }
-
-    public char getSentido() {
-        return sentido;
-    }
-
-    public void setLargura(float largura) {
-        if (largura > 0) {
-            this.largura = largura;
-        }
-    }
-
-    public void setComprimento(float comprimento) {
-        if (comprimento > 0) {
-            this.comprimento = comprimento;
-
-        }
-    }
-
-    public void setTripulacao(Pessoa pessoa) {
-        if (pessoa != null) {
-            tripulacao.add(pessoa);
-        }
-    }
-
-    public void setCargaMaxima(float cargaMaxima) {
-        if (cargaMaxima >= 0) {
-            this.cargaMaxima = cargaMaxima;
-        }
-    }
-
-    public void setPais(String pais) {
-        if (pais != null) {
-            this.pais = pais;
-        }
-    }
-
-    public void setCodigoID(int codigoID) {
-        if (codigoID != 0) {
-            this.codigoID = codigoID;
-        }
-    }
-
-    public void setCapitao(Pessoa pessoa) {
-        this.capitao = pessoa;
-    }
-
-    public void setSentido(char sentido) {
-        if (sentido == 'R' || sentido == 'M') {
-            this.sentido = sentido;
-        }
-    }
 
     public void calcularPeso() {
         pesoAdicional += capitao.getPeso();

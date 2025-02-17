@@ -1,7 +1,6 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -13,14 +12,12 @@ public class Controller {
     @FXML private ImageView ComportaRio;
     @FXML private Button comportaMarButton;
     @FXML private Button comportaRioButton;
-    @FXML private ProgressBar progressBar;
 
     private Eclusa eclusa; 
 
     @FXML
     public void initialize() {
         eclusa = new Eclusa();
-        progressBar.setProgress(0);
     }
 
     @FXML
@@ -46,13 +43,11 @@ public class Controller {
     @FXML
     private void encherEclusa(ActionEvent event) {
         EclusaView.atualizarNivelAgua(AguaEclusa, 157);
-        progressBar.setProgress(1.0);
     }
 
     @FXML
     private void secarEclusa(ActionEvent event) {
         EclusaView.atualizarNivelAgua(AguaEclusa, 206); 
-        progressBar.setProgress(0.0); 
     }
 
     @FXML
