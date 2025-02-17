@@ -11,13 +11,7 @@ public class Lancha extends Embarcacao{
 
         }
     }
-    /*capitão
-largura
-comprimento
-n passageiros
-media peso passageiros
-ID carga max*/
-
+    
     public Lancha(){
         super();
     }

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -66,24 +64,16 @@
             <Button fx:id="RequesitarCruzeiroMar" layoutX="559.0" layoutY="85.0" mnemonicParsing="false" onAction="#requisitarCruzeiro" prefHeight="43.0" prefWidth="77.0" text="Requisitar Cruzeiro" textAlignment="CENTER" wrapText="true" />
             <Button fx:id="RequesitarCargueiroMar" layoutX="559.0" layoutY="139.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="77.0" text="Requisitar Cargueiro" textAlignment="CENTER" wrapText="true" />
             <Button fx:id="comportaMarButton" layoutX="132.0" layoutY="85.0" mnemonicParsing="false" onAction="#toggleComportaMar" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #ff0000;" text="Comporta Mar" textAlignment="CENTER" textFill="WHITE" />
-            <ProgressBar fx:id="progressBar" layoutX="158.0" layoutY="144.0" prefWidth="200.0" progress="0.0" />
-            <Label layoutX="221.0" layoutY="122.0" text="Nível da água" />
-            <Label layoutX="191.0" layoutY="163.0" text="Tempo Estimado:" />
-            <Label layoutX="295.0" layoutY="164.0" text="00:00:00" />
             <Label layoutX="302.0" layoutY="29.0" text="Canos abertos:" />
-            <Button layoutX="236.0" layoutY="85.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" text="Liberar" />
-            <Button layoutX="301.0" layoutY="55.0" mnemonicParsing="false" text="1" />
-            <Button layoutX="331.0" layoutY="55.0" mnemonicParsing="false" text="2" />
-            <Button layoutX="361.0" layoutY="55.0" mnemonicParsing="false" text="3" />
-            <Button layoutX="236.0" layoutY="55.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" text="Abortar" />
-            <ImageView id="Dados" fitHeight="204.0" fitWidth="137.0" layoutX="402.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Navios/BG/DADOS.png" />
-               </image>
-            </ImageView>
+            <Button layoutX="236.0" layoutY="85.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" text="Liberar M">
+               <font>
+                  <Font size="10.0" />
+               </font></Button>
+            <Button layoutX="236.0" layoutY="55.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" text="Liberar R">
+               <font>
+                  <Font size="10.0" />
+               </font></Button>
             <Button layoutX="301.0" layoutY="85.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0" text="Verificar" />
-            <CheckBox layoutX="437.0" layoutY="153.0" mnemonicParsing="false" text="Liberado" />
-            <Label layoutX="437.0" layoutY="30.0" text="Tipo:" />
             <TextField editable="false" layoutX="4.0" layoutY="197.0" prefHeight="18.0" prefWidth="64.0" text="Barcos na fila:">
                <font>
                   <Font size="9.0" />
@@ -104,6 +94,37 @@
                   <Font size="9.0" />
                </font>
             </TextField>
+            <TextField fx:id="CanosAbertos" layoutX="301.0" layoutY="55.0" prefHeight="25.0" prefWidth="83.0">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </TextField>
+            <TextField editable="false" layoutX="132.0" layoutY="117.0" prefHeight="19.0" prefWidth="90.0" style="-fx-background-color: #cccccc;" text="Porcentagem da água:">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </TextField>
+            <TextField editable="false" layoutX="228.0" layoutY="117.0" prefHeight="19.0" prefWidth="30.0" text="100%">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </TextField>
+            <TextField editable="false" layoutX="262.0" layoutY="117.0" prefHeight="19.0" prefWidth="38.0" style="-fx-background-color: #cccccc;" text="Tempo:">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </TextField>
+            <TextField editable="false" layoutX="305.0" layoutY="117.0" prefHeight="19.0" prefWidth="40.0" text="00:00:00">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="CanosAbertos1" editable="false" layoutX="132.0" layoutY="160.0" prefHeight="25.0" prefWidth="252.0">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </TextField>
+            <Label layoutX="133.0" layoutY="142.0" text="Avisos:" />
          </children>
     </AnchorPane>
   </children>
