@@ -30,6 +30,8 @@ public class Main{
         eclusa.setFilaRio(l);
     }
 
+    Eclusa eclusa = new Eclusa();
+
     public static boolean alternarComportaRio(Eclusa eclusa) throws AbrirComportaInvalidaException {
         eclusa.alterarComportaRio();
         return eclusa.getComportaRio();
