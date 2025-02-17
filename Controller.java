@@ -6,6 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class Controller {
+
     @FXML private AnchorPane mainPane;
     @FXML private ImageView AguaEclusa;
     @FXML private ImageView ComportaMar;
@@ -14,19 +15,18 @@ public class Controller {
     @FXML private Button comportaRioButton;
     @FXML private ProgressBar progressBar;
 
-    private EclusaService eclusaService;
+    private Eclusa eclusa; 
 
     @FXML
     public void initialize() {
-        Eclusa eclusa = new Eclusa();
-        Main = new EclusaService(eclusa);
+        eclusa = new Eclusa();
         progressBar.setProgress(0);
     }
 
     @FXML
     private void toggleComportaRio(ActionEvent event) {
         try {
-            boolean aberta = Main.alternarComportaRio();
+            boolean aberta = Main.alternarComportaRio(eclusa); 
             EclusaView.atualizarComporta(comportaRioButton, ComportaRio, aberta);
         } catch (AbrirComportaInvalidaException e) {
             System.out.println(e.getMessage());
@@ -36,7 +36,7 @@ public class Controller {
     @FXML
     private void toggleComportaMar(ActionEvent event) {
         try {
-            boolean aberta = Main.alternarComportaMar();
+            boolean aberta = Main.alternarComportaMar(eclusa); 
             EclusaView.atualizarComporta(comportaMarButton, ComportaMar, aberta);
         } catch (AbrirComportaInvalidaException e) {
             System.out.println(e.getMessage());
@@ -51,20 +51,20 @@ public class Controller {
 
     @FXML
     private void secarEclusa(ActionEvent event) {
-        EclusaView.atualizarNivelAgua(AguaEclusa, 206);
-        progressBar.setProgress(0.0);
+        EclusaView.atualizarNivelAgua(AguaEclusa, 206); 
+        progressBar.setProgress(0.0); 
     }
 
     @FXML
     private void requisitarLancha(ActionEvent event) {
-        ImageView navio = EmbarcacaoFactory.criarEmbarcacao("@../../Navios/X.png", 100, 250);
+        ImageView navio = EmbarcacaoFactory.criarEmbarcacao("file:../../Navios/X.png", 100, 250); 
         mainPane.getChildren().add(navio);
         navio.toFront();
     }
 
     @FXML
     private void requisitarCruzeiro(ActionEvent event) {
-        ImageView navio = EmbarcacaoFactory.criarEmbarcacao("@../../Navios/X.png", 50, 200);
+        ImageView navio = EmbarcacaoFactory.criarEmbarcacao("file:../../Navios/X.png", 50, 200); 
         mainPane.getChildren().add(navio);
         navio.toFront();
     }
