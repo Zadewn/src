@@ -21,15 +21,13 @@ public class Controller {
         Eclusa eclusa = new Eclusa();
         eclusaService = new EclusaService(eclusa);
         progressBar.setProgress(0);
-        EclusaView.atualizarBotao(comportaRioButton, false);
-        EclusaView.atualizarBotao(comportaMarButton, false);
     }
 
     @FXML
     private void toggleComportaRio(ActionEvent event) {
         try {
             boolean aberta = eclusaService.alternarComportaRio();
-            EclusaView.atualizarBotao(comportaRioButton, aberta);
+            EclusaView.atualizarComporta(comportaRioButton, ComportaRio, aberta);
         } catch (AbrirComportaInvalidaException e) {
             System.out.println(e.getMessage());
         }
@@ -39,7 +37,7 @@ public class Controller {
     private void toggleComportaMar(ActionEvent event) {
         try {
             boolean aberta = eclusaService.alternarComportaMar();
-            EclusaView.atualizarBotao(comportaMarButton, aberta);
+            EclusaView.atualizarComporta(comportaMarButton, ComportaMar, aberta);
         } catch (AbrirComportaInvalidaException e) {
             System.out.println(e.getMessage());
         }
