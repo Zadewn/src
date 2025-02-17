@@ -21,13 +21,14 @@ public class Main{
         e.setCapacidadeAtual(100);
         e.setQuantidadeCanos(3);
         e.setVazao(10);
-        //try {
-        //    e.esvaziarEclusa(2);
-        //} catch (ComportaAbertaException o) {
-        //    System.out.println("oie");
-        //}
         
-        e.encherEclusa(1);
+        try {
+            e.alterarComportaMar();
+            e.esvaziarEclusa(2);
+        } catch (ComportaAbertaException | AbrirComportaInvalidaException o) {
+            System.out.println(o.getMessage());
+        }
+        
         
 
 
