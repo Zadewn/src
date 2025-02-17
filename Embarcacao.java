@@ -107,5 +107,26 @@ public abstract class Embarcacao {
             }
         }
     }
+ /*capitão
+largura
+comprimento
+n passageiros
+media peso passageiros
+ID carga max*/
+    public Embarcacao(){
+        super();
+    }
+
+    public Embarcacao(float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int ID, float cargaMax, String nomecapitao, char sentido){
+        this.setLargura(largura);
+        this.setComprimento(comprimento);
+        this.setCodigoID(codigoID);
+        this.setCargaMaxima(cargaMax);
+        this.setSentido(sentido);
+        this.setCapitao(new Pessoa(nomecapitao, mediaPesoPassageiros));
+        for (int i = 0; i < nPassageiros; i++) {
+            tripulacao.add(new Pessoa(mediaPesoPassageiros));
+        }
+    }
 
 }

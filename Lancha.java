@@ -11,4 +11,18 @@ public class Lancha extends Embarcacao{
 
         }
     }
+    /*capitão
+largura
+comprimento
+n passageiros
+media peso passageiros
+ID carga max*/
+
+    public Lancha(){
+        super();
+    }
+
+    public Lancha(float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int ID, float cargaMax, String nomecapitao, char sentido){
+        super(largura, comprimento, nPassageiros, mediaPesoPassageiros, ID, cargaMax, nomecapitao, sentido);
+    }
 }

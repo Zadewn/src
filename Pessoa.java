@@ -70,6 +70,15 @@ public class Pessoa {
         setPeso(peso);
     }
 
+    public Pessoa(float peso) {
+        setPeso(peso);
+    }
+
+    public Pessoa(String nome, float peso) {
+        setNome(nome);
+        setPeso(peso);
+    }
+
     public boolean validarCpf(String cpf) {
         if (cpf == null || cpf.length() != 11) {
             return false;
@@ -102,4 +111,6 @@ public class Pessoa {
 
         return J == Character.getNumericValue(cpf.charAt(9)) && K == Character.getNumericValue(cpf.charAt(10));
     }
+
+    
 }
