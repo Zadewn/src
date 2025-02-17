@@ -52,15 +52,12 @@ public class Controller {
 
     @FXML
     private void requisitarLancha(ActionEvent event) {
-        ImageView navio = EmbarcacaoFactory.criarEmbarcacao("file:../../Navios/X.png", 100, 250); 
-        mainPane.getChildren().add(navio);
-        navio.toFront();
+        
     }
 
     @FXML
     private void requisitarCruzeiro(ActionEvent event) {
-        ImageView navio = EmbarcacaoFactory.criarEmbarcacao("file:../../Navios/X.png", 50, 200); 
-        mainPane.getChildren().add(navio);
-        navio.toFront();
+        
+        
     }
 }
