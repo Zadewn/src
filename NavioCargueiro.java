@@ -2,8 +2,30 @@
 import java.util.*;
 
 public class NavioCargueiro extends Embarcacao {
-
+    
+    private String portoOrigem;
+    private String portoDestino;
     private ArrayList<Container> conteineres = new ArrayList<Container>();
+
+    public String getPortoOrigem() {
+        return portoOrigem;
+    }
+
+    public String getPortoDestino() {
+        return portoDestino;
+    }
+
+    public void setPortoOrigem(String portoOrigem) {
+        if (portoOrigem != null) {
+            this.portoOrigem = portoOrigem;
+        }
+    }
+
+    public void setPortoDestino(String portoDestino) {
+        if (portoDestino != null) {
+            this.portoDestino = portoDestino;
+        }
+    }
 
     @SuppressWarnings("rawtypes")
     public ArrayList getConteineres() {

@@ -6,10 +6,8 @@ public abstract class Embarcacao {
     protected float comprimento;
     protected float cargaMaxima; 
     protected float pesoAdicional;
-    protected String portoOrigem;
-    protected String portoDestino;
     protected String pais;
-    protected String codigoID;
+    protected int codigoID;
     protected Pessoa capitao;
     protected ArrayList<Pessoa> tripulacao = new ArrayList<>();
     protected char sentido; // R = indo do Rio pro mar, M = indo do Mar pro rio
@@ -30,24 +28,16 @@ public abstract class Embarcacao {
         return cargaMaxima;
     }
 
-    public String getPortoOrigem() {
-        return portoOrigem;
-    }
-
     @SuppressWarnings("rawtypes")
     public ArrayList getTripulacao() {
         return tripulacao;
-    }
-
-    public String getPortoDestino() {
-        return portoDestino;
     }
 
     public String getPais() {
         return pais;
     }
 
-    public String getCodigoID() {
+    public int getCodigoID() {
         return codigoID;
     }
 
@@ -84,26 +74,14 @@ public abstract class Embarcacao {
         }
     }
 
-    public void setPortoOrigem(String portoOrigem) {
-        if (portoOrigem != null) {
-            this.portoOrigem = portoOrigem;
-        }
-    }
-
-    public void setPortoDestino(String portoDestino) {
-        if (portoDestino != null) {
-            this.portoDestino = portoDestino;
-        }
-    }
-
     public void setPais(String pais) {
         if (pais != null) {
             this.pais = pais;
         }
     }
 
-    public void setCodigoID(String codigoID) {
-        if (codigoID != null) {
+    public void setCodigoID(int codigoID) {
+        if (codigoID != 0) {
             this.codigoID = codigoID;
         }
     }
