@@ -2,8 +2,10 @@ package controller;
 
 import model.NavioCargueiro;
 import model.ComportaException;
+import model.Cruzeiro;
 import model.EclusaSup;
 import model.EclusaSupException;
+import model.Lancha;
 
 public class EclusaSupController {
 
@@ -16,6 +18,16 @@ public class EclusaSupController {
     public void adicionarNavio(int codigoID, double comprimento, double largura, double capacidade, String origem, String destino, double tarifa, String sentido) {
         NavioCargueiro navio = new NavioCargueiro(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
         lock.adicionarNavioFila(navio);
+    }
+
+    public void adicionarCruzeiro(int codigoID, double comprimento, double largura, double capacidade, String origem, String destino, double tarifa, String sentido) {
+        Cruzeiro cruzeiro = new Cruzeiro(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
+        lock.adicionarNavioFila(cruzeiro);
+    }
+
+    public void adicionarLancha(int codigoID, double comprimento, double largura, double capacidade, String origem, String destino, double tarifa, String sentido) {
+        Lancha lancha = new Lancha(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
+        lock.adicionarNavioFila(lancha);
     }
 
     public void encherEclusa() {

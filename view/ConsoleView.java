@@ -16,72 +16,69 @@ public class ConsoleView {
         int opcao = -1;
         while (opcao != 0) {
             System.out.println("\n=== GESTAO DE ECLUSA ===");
-            System.out.println("[1] Adicionar Navio a Fila");
-            System.out.println("[2] Exibir Fila de Navios");
-            System.out.println("[3] Encher Eclusa");
-            System.out.println("[4] Esvaziar Eclusa");
-            System.out.println("[5] Passar Navio pela Eclusa");
-            System.out.println("[6] Ver Receita Total");
-            System.out.println("[7] Ver Status da Eclusa");
-            System.out.println("[8] Abrir Comporta do Rio");
-            System.out.println("[9] Abrir Comporta do Mar");
-            System.out.println("[10] Fechar Comporta do Rio");
-            System.out.println("[11] Fechar Comporta do Mar");
-            System.out.println("[12] ");
-            System.out.println("[13] ");
-            System.out.println("[14] ");
-
+            System.out.println("[1] Adicionar Lancha");
+            System.out.println("[2] Adicionar Cruzeiro");
+            System.out.println("[3] Adicionar Navio Cargueiro");
+            System.out.println("[4] Exibir Fila de Navios");
+            System.out.println("[5] Encher Eclusa");
+            System.out.println("[6] Esvaziar Eclusa");
+            System.out.println("[7] Passar Navio pela Eclusa");
+            System.out.println("[8] Ver Receita Total");
+            System.out.println("[9] Ver Status da Eclusa");
+            System.out.println("[10] Abrir Comporta do Rio");
+            System.out.println("[11] Abrir Comporta do Mar");
+            System.out.println("[12] Fechar Comporta do Rio");
+            System.out.println("[13] Fechar Comporta do Mar");
             System.out.println("[0] Sair");
             System.out.print("Escolha uma opcao: ");
-
+    
             try {
                 opcao = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Opcao invalida! Tente novamente.");
                 continue;
             }
-
+    
             switch (opcao) {
                 case 1:
-                    adicionarNavio();
+                    adicionarLancha();
                     break;
                 case 2:
-                    controller.exibirFila();
+                    adicionarCruzeiro();
                     break;
                 case 3:
-                    controller.encherEclusa();
+                    adicionarNavioCargueiro();
                     break;
                 case 4:
-                    controller.esvaziarEclusa();
+                    controller.exibirFila();
                     break;
                 case 5:
-                    controller.passarNavio();
+                    controller.encherEclusa();
                     break;
                 case 6:
-                    System.out.printf("Receita total: %.2f\n", controller.getReceitaTotal());
+                    controller.esvaziarEclusa();
                     break;
                 case 7:
-                    System.out.println("Status: " + controller.getStatusEclusa() + " | Nível de água: " + controller.getNivelAgua() + "%");
+                    controller.passarNavio();
                     break;
                 case 8:
-                    controller.abrirComportaRio();
+                    System.out.printf("Receita total: %.2f\n", controller.getReceitaTotal());
                     break;
                 case 9:
-                    controller.abrirComportaMar();
+                    System.out.println("Status: " + controller.getStatusEclusa() + " | Nivel de agua: " + controller.getNivelAgua() + "%");
                     break;
                 case 10:
-                    controller.fecharComportaRio();
+                    controller.abrirComportaRio();
                     break;
                 case 11:
-                    controller.fecharComportaMar();
+                    controller.abrirComportaMar();
                     break;
                 case 12:
-
+                    controller.fecharComportaRio();
+                    break;
                 case 13:
-
-                case 14:
-
-
+                    controller.fecharComportaMar();
+                    break;
                 case 0:
                     System.out.println("Saindo do sistema...");
                     break;
@@ -90,33 +87,97 @@ public class ConsoleView {
             }
         }
     }
-
-    private void adicionarNavio() {
-        System.out.print("Codigo do Navio: ");
+ 
+    private void adicionarLancha() {
+        System.out.println("\n--- Adicionando Lancha ---");
+        System.out.print("Código da Lancha: ");
         int codigoID = Integer.parseInt(scanner.nextLine());
-
+    
         System.out.print("Comprimento (m): ");
         double comprimento = Double.parseDouble(scanner.nextLine());
-
+    
         System.out.print("Largura (m): ");
         double largura = Double.parseDouble(scanner.nextLine());
-
-        System.out.print("Capacidade (ton ou conteineres): ");
+    
+        System.out.print("Capacidade (pessoas): ");
         double capacidade = Double.parseDouble(scanner.nextLine());
-
+    
         System.out.print("Porto de Origem: ");
         String origem = scanner.nextLine();
-
+    
         System.out.print("Porto de Destino: ");
         String destino = scanner.nextLine();
-
+    
         System.out.print("Tarifa (valor a pagar): ");
         double tarifa = Double.parseDouble(scanner.nextLine());
-
+    
+        System.out.print("Sentido: ");
+        String sentido = scanner.nextLine();
+    
+        // Supondo que no controller haja um método específico para lancha:
+        controller.adicionarLancha(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
+        System.out.println("Lancha adicionada a fila!");
+    }
+    
+    private void adicionarCruzeiro() {
+        System.out.println("\n--- Adicionando Cruzeiro ---");
+        System.out.print("Código do Cruzeiro: ");
+        int codigoID = Integer.parseInt(scanner.nextLine());
+    
+        System.out.print("Comprimento (m): ");
+        double comprimento = Double.parseDouble(scanner.nextLine());
+    
+        System.out.print("Largura (m): ");
+        double largura = Double.parseDouble(scanner.nextLine());
+    
+        System.out.print("Capacidade (pessoas): ");
+        double capacidade = Double.parseDouble(scanner.nextLine());
+    
+        System.out.print("Porto de Origem: ");
+        String origem = scanner.nextLine();
+    
+        System.out.print("Porto de Destino: ");
+        String destino = scanner.nextLine();
+    
+        System.out.print("Tarifa (valor a pagar): ");
+        double tarifa = Double.parseDouble(scanner.nextLine());
+    
+        System.out.print("Sentido: ");
+        String sentido = scanner.nextLine();
+    
+        // Supondo que no controller haja um método específico para cruzeiro:
+        controller.adicionarCruzeiro(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
+        System.out.println("Cruzeiro adicionado a fila!");
+    }
+    
+    private void adicionarNavioCargueiro() {
+        System.out.println("\n--- Adicionando Navio Cargueiro ---");
+        System.out.print("Código do Navio: ");
+        int codigoID = Integer.parseInt(scanner.nextLine());
+    
+        System.out.print("Comprimento (m): ");
+        double comprimento = Double.parseDouble(scanner.nextLine());
+    
+        System.out.print("Largura (m): ");
+        double largura = Double.parseDouble(scanner.nextLine());
+    
+        System.out.print("Capacidade (ton ou conteineres): ");
+        double capacidade = Double.parseDouble(scanner.nextLine());
+    
+        System.out.print("Porto de Origem: ");
+        String origem = scanner.nextLine();
+    
+        System.out.print("Porto de Destino: ");
+        String destino = scanner.nextLine();
+    
+        System.out.print("Tarifa (valor a pagar): ");
+        double tarifa = Double.parseDouble(scanner.nextLine());
+    
         System.out.print("Sentido do Navio: ");
         String sentido = scanner.nextLine();
-
+    
+        // Método já existente no controller para adicionar navio cargueiro:
         controller.adicionarNavio(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
-        System.out.println("Navio adicionado a fila!");
+        System.out.println("Navio Cargueiro adicionado a fila!");
     }
 }

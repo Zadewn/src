@@ -121,7 +121,7 @@ public class Eclusa {
     public void receberPagamento(Embarcacao embarcacao) {
         if (embarcacao instanceof Lancha){
             valorApurado += 25;
-        }else if (embarcacao instanceof NavioTurismo){
+        }else if (embarcacao instanceof Cruzeiro){
             valorApurado += 40;
         }else {
             valorApurado += 50;
