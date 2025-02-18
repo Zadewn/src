@@ -1,6 +1,7 @@
 package model;
 
 public class Lancha extends Embarcacao{
+    public Lancha() {}
     public Lancha(int codigoID, double comprimento, double largura, double capacidade, String portoOrigem, String portoDestino, double tarifa, String sentido, Pessoa capitao) {
         this.codigoID = codigoID;
         this.comprimento = comprimento;

@@ -22,11 +22,6 @@ public class Pessoa {
 
     public Pessoa() {}
 
-
-    public Pessoa(float peso){
-        setPeso(peso);
-    }
-
     public Pessoa(String nome, float peso) {
         setNome(nome);
         setPeso(peso);

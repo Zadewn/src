@@ -153,15 +153,15 @@ public class Eclusa {
     }
 
 
-    public void esvaziarEclusa(int canosAbertoss){
+    public void esvaziarEclusa(int canosAbertos){
         if(comportaMar == false && comportaRio == false && capacidadeAtual > capacidadeMIN){
             status = 'S';
             float porcentagemBruta;
             int porcentagemArredondada = 0;
-            if (canosAbertoss <= quantidadeCanos && canosAbertoss > 0) {
+            if (canosAbertos <= quantidadeCanos && canosAbertos > 0) {
                 while (capacidadeAtual > capacidadeMIN) {
-                    if (capacidadeAtual - (vazao * canosAbertoss) > capacidadeMIN) {
-                        capacidadeAtual -= (vazao * canosAbertoss);
+                    if (capacidadeAtual - (vazao * canosAbertos) > capacidadeMIN) {
+                        capacidadeAtual -= (vazao * canosAbertos);
                     } else {
                         capacidadeAtual = capacidadeMIN;
                     }

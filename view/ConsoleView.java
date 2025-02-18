@@ -31,6 +31,7 @@ public class ConsoleView {
             System.out.println("[11] Abrir Comporta do Mar");
             System.out.println("[12] Fechar Comporta do Rio");
             System.out.println("[13] Fechar Comporta do Mar");
+            System.out.println("[14] Modificar Eclusa");
             System.out.println("[0] Sair");
             System.out.print("Escolha uma opcao: ");
     
@@ -116,8 +117,11 @@ public class ConsoleView {
         System.out.print("Sentido: ");
         String sentido = scanner.nextLine();
 
-        System.out.print("Nome do Capitao: ");
-        Pessoa capitao.setNome(scanner.nextLine());
+        System.out.print("Nome do Capitão: ");
+        String nomeCapitao = scanner.nextLine();
+
+        Pessoa capitao = new Pessoa();
+        capitao.setNome(nomeCapitao);
         
         controller.adicionarNavio(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido, capitao);
         System.out.println("Lancha adicionada a fila!");
@@ -149,8 +153,11 @@ public class ConsoleView {
         System.out.print("Sentido: ");
         String sentido = scanner.nextLine();
 
-        System.out.print("Nome do Capitao: ");
-        String capitao = scanner.nextLine();
+        System.out.print("Nome do Capitão: ");
+        String nomeCapitao = scanner.nextLine();
+
+        Pessoa capitao = new Pessoa();
+        capitao.setNome(nomeCapitao);
         
         controller.adicionarNavio(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido, capitao);
         System.out.println("Cruzeiro adicionado a fila!");
@@ -182,8 +189,11 @@ public class ConsoleView {
         System.out.print("Sentido do Navio: ");
         String sentido = scanner.nextLine();
 
-        System.out.print("Nome do Capitao: ");
-        String capitao = scanner.nextLine();
+        System.out.print("Nome do Capitão: ");
+        String nomeCapitao = scanner.nextLine();
+
+        Pessoa capitao = new Pessoa();
+        capitao.setNome(nomeCapitao);
         
         controller.adicionarNavio(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido, capitao);
         System.out.println("Navio Cargueiro adicionado a fila!");

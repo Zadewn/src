@@ -4,14 +4,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class EclusaSup {
-    public enum LockStatus {
+    public enum EclusaSupStatus {
         VAZIA,
         ENCHENDO,
         CHEIA,
         ESVAZIANDO
     }
 
-    private LockStatus status;
+    private EclusaSupStatus status;
     private double nivelAgua;   
     private final double tempoEncher;  
     private final double tempoEsvaziar; 
@@ -25,7 +25,7 @@ public class EclusaSup {
     private boolean comportaMarAberta;
 
     public EclusaSup(double tempoEncher, double tempoEsvaziar) {
-        this.status = LockStatus.VAZIA;
+        this.status = EclusaSupStatus.VAZIA;
         this.nivelAgua = 0.0;
         this.tempoEncher = tempoEncher;
         this.tempoEsvaziar = tempoEsvaziar;
@@ -37,7 +37,7 @@ public class EclusaSup {
         this.comportaMarAberta = false;
     }
 
-    public LockStatus getStatus() {
+    public EclusaSupStatus getStatus() {
         return status;
     }
 
@@ -74,35 +74,35 @@ public class EclusaSup {
     }
 
     public void encher() throws EclusaSupException {
-        if (status == LockStatus.CHEIA) {
+        if (status == EclusaSupStatus.CHEIA) {
             throw new EclusaSupException("A eclusa ja esta cheia!");
         }
-        if (status == LockStatus.ENCHENDO) {
+        if (status == EclusaSupStatus.ENCHENDO) {
             throw new EclusaSupException("A eclusa ja esta enchendo!");
         }
         // Exemplo simples: assume que o enchimento é instantâneo
-        status = LockStatus.ENCHENDO;
+        status = EclusaSupStatus.ENCHENDO;
         nivelAgua = 100.0;
-        status = LockStatus.CHEIA;
+        status = EclusaSupStatus.CHEIA;
         System.out.println("Eclusa foi enchida (nivel de agua = 100%).");
     }
 
     // Simulação de esvaziar a eclusa
     public void esvaziar() throws EclusaSupException {
-        if (status == LockStatus.VAZIA) {
+        if (status == EclusaSupStatus.VAZIA) {
             throw new EclusaSupException("A eclusa ja esta vazia!");
         }
-        if (status == LockStatus.ESVAZIANDO) {
+        if (status == EclusaSupStatus.ESVAZIANDO) {
             throw new EclusaSupException("A eclusa ja esta esvaziando!");
         }
-        status = LockStatus.ESVAZIANDO;
+        status = EclusaSupStatus.ESVAZIANDO;
         nivelAgua = 0.0;
-        status = LockStatus.VAZIA;
+        status = EclusaSupStatus.VAZIA;
         System.out.println("Eclusa foi esvaziada (nivel de agua = 0%).");
     }
 
     public void passarNavio() throws EclusaSupException {
-        if (status != LockStatus.CHEIA) {
+        if (status != EclusaSupStatus.CHEIA) {
             throw new EclusaSupException("Nao e possivel passar navio. A eclusa nao esta cheia!");
         }
         
@@ -122,7 +122,7 @@ public class EclusaSup {
         if (comportaRioAberta) {
             throw new ComportaException("A comporta do Rio ja esta aberta!");
         }
-        if (status == LockStatus.CHEIA) {
+        if (status == EclusaSupStatus.CHEIA) {
             throw new ComportaException("A eclusa esta cheia! Esvazie antes de abrir a comporta do Rio.");
         }
         
@@ -134,7 +134,7 @@ public class EclusaSup {
         if (comportaMarAberta) {
             throw new ComportaException("A comporta do Mar ja esta aberta!");
         }
-        if (status == LockStatus.VAZIA) {
+        if (status == EclusaSupStatus.VAZIA) {
             throw new ComportaException("A eclusa esta vazia! Encha antes de abrir a comporta do Mar.");
         }
         

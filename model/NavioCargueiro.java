@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class NavioCargueiro extends Embarcacao{
     private ArrayList<Container> conteineres = new ArrayList<Container>();
 
+    public NavioCargueiro() {}
     public NavioCargueiro(int codigoID, double comprimento, double largura, double capacidade, String portoOrigem, String portoDestino, double tarifa, String sentido, Pessoa capitao) {
         this.codigoID = codigoID;
         this.comprimento = comprimento;
