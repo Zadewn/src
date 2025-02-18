@@ -1,6 +1,6 @@
 package controller;
 
-import model.CargoShip;
+import model.NavioCargueiro;
 import model.Lock;
 import model.LockException;
 
@@ -13,7 +13,7 @@ public class LockController {
     }
 
     public void adicionarNavio(String nome, double comprimento, double largura, double capacidade, String origem, String destino, double tarifa, String sentido) {
-        CargoShip navio = new CargoShip(nome, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
+        NavioCargueiro navio = new NavioCargueiro(nome, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
         lock.adicionarNavioFila(navio);
     }
 
@@ -50,7 +50,7 @@ public class LockController {
             System.out.println("Nenhum navio na fila.");
         } else {
             System.out.println("Navios na fila:");
-            for (CargoShip navio : lock.getFilaNavios()) {
+            for (NavioCargueiro navio : lock.getFilaNavios()) {
                 System.out.println("  - " + navio.toString());
             }
         }

@@ -2,7 +2,7 @@ package CODIGAO;
 
 import java.util.*;
 
-public class NavioCargueiro extends Embarcacao {
+public class NavioCargueiro1 extends Embarcacao {
     
     private String portoOrigem;
     private String portoDestino;
@@ -72,11 +72,11 @@ public class NavioCargueiro extends Embarcacao {
         }
     }
 
-    public NavioCargueiro(){
+    public NavioCargueiro1(){
         super();
     }
 
-    public NavioCargueiro(float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int nConteineres, float mediaPesoConteineres, int ID, float cargaMax, String nomecapitao, char sentido){
+    public NavioCargueiro1(float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int nConteineres, float mediaPesoConteineres, int ID, float cargaMax, String nomecapitao, char sentido){
         this.setLargura(largura);
         this.setComprimento(comprimento);
         this.setCodigoID(codigoID);

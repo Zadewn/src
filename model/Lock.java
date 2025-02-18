@@ -17,7 +17,7 @@ public class Lock {
     private final double tempoEsvaziar; // tempo (em minutos) para esvaziar 100% -> 0%
     
     // Fila de navios aguardando para atravessar a eclusa
-    private Queue<CargoShip> filaNavios;
+    private Queue<NavioCargueiro> filaNavios;
     
     // Poderia ter capacidade máxima de navios por vez, etc.
     private double receitaTotal;
@@ -51,11 +51,11 @@ public class Lock {
         return receitaTotal;
     }
 
-    public Queue<CargoShip> getFilaNavios() {
+    public Queue<NavioCargueiro> getFilaNavios() {
         return filaNavios;
     }
 
-    public void adicionarNavioFila(CargoShip navio) {
+    public void adicionarNavioFila(NavioCargueiro navio) {
         filaNavios.add(navio);
     }
 
@@ -98,7 +98,7 @@ public class Lock {
             throw new LockException("Nao ha navios na fila para passar.");
         }
 
-        CargoShip navio = filaNavios.poll();
+        NavioCargueiro navio = filaNavios.poll();
         this.receitaTotal += navio.getTarifa();
 
         System.out.println("Navio " + navio.getNome() + " atravessou a eclusa.");

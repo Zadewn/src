@@ -1,6 +1,6 @@
 package model;
 
-public class CargoShip {
+public class NavioCargueiro {
     private String nome;
     private double comprimento; 
     private double largura;
@@ -10,7 +10,7 @@ public class CargoShip {
     private double tarifa;
     private String sentido;
 
-    public CargoShip(String nome, double comprimento, double largura, double capacidade, String portoOrigem, String portoDestino, double tarifa, String sentido) {
+    public NavioCargueiro(String nome, double comprimento, double largura, double capacidade, String portoOrigem, String portoDestino, double tarifa, String sentido) {
         this.nome = nome;
         this.comprimento = comprimento;
         this.largura = largura;
