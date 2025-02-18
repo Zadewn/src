@@ -24,5 +24,13 @@ public class Lancha extends Embarcacao{
 
         }
     }
+
+    @Override
+    public String toString() {
+        return String.format(
+            "Barco: %d | Comp: %.2f | Larg: %.2f | Cap: %.2f | Origem: %s | Destino: %s | Tarifa: %.2f | Sentido: %s",
+            codigoID, comprimento, largura, capacidade, portoOrigem, portoDestino, tarifa, sentido
+        );
+    }
     
 }
