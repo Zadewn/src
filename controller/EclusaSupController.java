@@ -5,6 +5,7 @@ import model.Pessoa;
 import model.ComportaException;
 import model.Cruzeiro;
 import model.EclusaSup;
+import model.EclusaSup.EclusaSupStatus;
 import model.EclusaSupException;
 import model.Embarcacao;
 import model.Lancha;
@@ -19,17 +20,43 @@ public class EclusaSupController {
 
     public void adicionarNavio(int codigoID, double comprimento, double largura, double capacidade, String origem, String destino, double tarifa, String sentido, Pessoa capitao) {
         NavioCargueiro navio = new NavioCargueiro(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido, capitao);
-        sup.adicionarNavioFila(navio);
+        if (sup.podeAdicionarNavio(navio)) {
+            sup.adicionarNavioFila(navio);
+            sup.adicionarReceita(tarifa);
+        } else {
+            System.out.println("Navio nAo pode ser adicionado devido a limitaCOes de capacidade.");
+        }
     }
+    
 
     public void adicionarCruzeiro(int codigoID, double comprimento, double largura, double capacidade, String origem, String destino, double tarifa, String sentido, Pessoa capitao) {
         Cruzeiro cruzeiro = new Cruzeiro(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido, capitao);
-        sup.adicionarNavioFila(cruzeiro);
+        if (sup.podeAdicionarNavio(cruzeiro)) {
+            sup.adicionarNavioFila(cruzeiro);
+            sup.adicionarReceita(tarifa);
+        } else {
+            System.out.println("Navio nAo pode ser adicionado devido a limitaCOes de capacidade.");
+        }
     }
 
     public void adicionarLancha(int codigoID, double comprimento, double largura, double capacidade, String origem, String destino, double tarifa, String sentido, Pessoa capitao) {
         Lancha lancha = new Lancha(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido, capitao);
-        sup.adicionarNavioFila(lancha);
+        if (sup.podeAdicionarNavio(lancha)) {
+            sup.adicionarNavioFila(lancha);
+            sup.adicionarReceita(tarifa);
+        } else {
+            System.out.println("Navio nAo pode ser adicionado devido a limitaCOes de capacidade.");
+        }
+    }
+
+    public void modificarEclusa(double novoTempoEncher, double novoTempoEsvaziar, float novaLargura, float novoComprimento, float novaCapacidadeMin, float novaCapacidadeMax, int novaQuantidadeCanos) {
+        sup.setTempoEncher(novoTempoEncher);  
+        sup.setTempoEsvaziar(novoTempoEsvaziar);
+        sup.setLargura(novaLargura);
+        sup.setComprimento(novoComprimento);
+        sup.setCapacidadeMIN(novaCapacidadeMin);
+        sup.setCapacidadeMAX(novaCapacidadeMax);
+        sup.setQuantidadeCanos(novaQuantidadeCanos);
     }
 
     public void encherEclusa() {
@@ -50,7 +77,21 @@ public class EclusaSupController {
 
     public void passarNavio() {
         try {
-            sup.passarNavio();
+            if (sup.getStatus() == EclusaSupStatus.CHEIA || sup.getStatus() == EclusaSupStatus.VAZIA) {
+                if (!sup.getFilaRio().isEmpty()) {
+                    Embarcacao navio = sup.getFilaRio().poll(); // Retira o navio da fila do Rio
+                    sup.adicionarNavioFila(navio);
+                    sup.passarNavio(); // Realiza a passagem do navio
+                } else if (!sup.getFilaMar().isEmpty()) {
+                    Embarcacao navio = sup.getFilaMar().poll(); // Retira o navio da fila do Mar
+                    sup.adicionarNavioFila(navio);
+                    sup.passarNavio(); // Realiza a passagem do navio
+                } else {
+                    System.out.println("Não há navios na fila para passar.");
+                }
+            } else {
+                System.out.println("A eclusa não está pronta para a passagem de navios.");
+            }
         } catch (EclusaSupException e) {
             System.out.println("Erro ao passar navio: " + e.getMessage());
         }

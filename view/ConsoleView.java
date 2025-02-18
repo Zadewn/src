@@ -82,6 +82,9 @@ public class ConsoleView {
                 case 13:
                     controller.fecharComportaMar();
                     break;
+                case 14:
+                    modificarEclusa();
+                    break;
                 case 0:
                     System.out.println("Saindo do sistema...");
                     break;
@@ -197,5 +200,34 @@ public class ConsoleView {
         
         controller.adicionarNavio(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido, capitao);
         System.out.println("Navio Cargueiro adicionado a fila!");
+    }
+
+    public void modificarEclusa() {
+        System.out.println("\n--- Modificar Parametros da Eclusa ---");
+    
+        System.out.print("Novo tempo para encher (segundos): ");
+        double novoTempoEncher = Double.parseDouble(scanner.nextLine());
+        
+        System.out.print("Novo tempo para esvaziar (segundos): ");
+        double novoTempoEsvaziar = Double.parseDouble(scanner.nextLine());
+    
+        System.out.print("Nova largura (metros): ");
+        float novaLargura = Float.parseFloat(scanner.nextLine());
+        
+        System.out.print("Novo comprimento (metros): ");
+        float novoComprimento = Float.parseFloat(scanner.nextLine());
+        
+        System.out.print("Nova capacidade mínima (m³): ");
+        float novaCapacidadeMin = Float.parseFloat(scanner.nextLine());
+    
+        System.out.print("Nova capacidade máxima (m³): ");
+        float novaCapacidadeMax = Float.parseFloat(scanner.nextLine());
+    
+        System.out.print("Nova quantidade de canos: ");
+        int novaQuantidadeCanos = Integer.parseInt(scanner.nextLine());
+    
+        controller.modificarEclusa(novoTempoEncher, novoTempoEsvaziar, novaLargura, novoComprimento, novaCapacidadeMin, novaCapacidadeMax, novaQuantidadeCanos);
+        
+        System.out.println("Eclusa modificada com sucesso!");
     }
 }
