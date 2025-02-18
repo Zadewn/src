@@ -16,7 +16,7 @@ public abstract class Embarcacao {
     protected ArrayList<Pessoa> tripulacao = new ArrayList<>();
 
     public ArrayList getTripulacao() { return tripulacao; }
-
+    public double getTarifa() { return tarifa; }
     public double getLargura() { return largura; }
     public double getPesoAdicional() { return pesoAdicional; }
     public double getComprimento() { return comprimento; }

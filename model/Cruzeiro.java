@@ -1,9 +1,6 @@
 package model;
 
 public class Cruzeiro extends Embarcacao{
-    private String portoOrigem;
-    private String portoDestino;
-
 
     public Cruzeiro(int codigoID, double comprimento, double largura, double capacidade, String portoOrigem, String portoDestino, double tarifa, String sentido) {
         this.codigoID = codigoID;

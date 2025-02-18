@@ -16,7 +16,8 @@ public class EclusaSup {
     private final double tempoEncher;  
     private final double tempoEsvaziar; 
     
-    private Queue<NavioCargueiro> filaNavios;
+    private Queue<Embarcacao> filaRio;
+    private Queue<Embarcacao> filaMar;
     
     private double receitaTotal;
 
@@ -28,7 +29,8 @@ public class EclusaSup {
         this.nivelAgua = 0.0;
         this.tempoEncher = tempoEncher;
         this.tempoEsvaziar = tempoEsvaziar;
-        this.filaNavios = new LinkedList<>();
+        this.filaRio = new LinkedList<>();
+        this.filaMar = new LinkedList<>();
         this.receitaTotal = 0.0;
 
         this.comportaRioAberta = false;
@@ -55,12 +57,20 @@ public class EclusaSup {
         return receitaTotal;
     }
 
-    public Queue<NavioCargueiro> getFilaNavios() {
-        return filaNavios;
+    public Queue<Embarcacao> getFilaRio() {
+        return filaRio;
+    }
+    
+    public Queue<Embarcacao> getFilaMar() {
+        return filaMar;
     }
 
-    public void adicionarNavioFila(NavioCargueiro navio) {
-        filaNavios.add(navio);
+    public void adicionarNavioFila(Embarcacao navio) {
+        if (navio.getSentido().equals("R")) {
+            filaRio.add(navio);
+        } else if (navio.getSentido().equals("M")) {
+            filaMar.add(navio);
+        }
     }
 
     public void encher() throws EclusaSupException {
@@ -93,15 +103,18 @@ public class EclusaSup {
 
     public void passarNavio() throws EclusaSupException {
         if (status != LockStatus.CHEIA) {
-            throw new EclusaSupException("Nao e possível passar navio. A eclusa nao esta cheia!");
+            throw new EclusaSupException("Nao e possivel passar navio. A eclusa nao esta cheia!");
         }
-        if (filaNavios.isEmpty()) {
+        
+        Embarcacao navio = null;
+        if (!filaRio.isEmpty()) {
+            navio = filaRio.poll();
+        } else if (!filaMar.isEmpty()){
+            navio = filaMar.poll();
+        } else {
             throw new EclusaSupException("Nao ha navios na fila para passar.");
         }
-
-        NavioCargueiro navio = filaNavios.poll();
         this.receitaTotal += navio.getTarifa();
-
         System.out.println("Navio " + navio.getCodigoID() + " atravessou a eclusa.");
     }
 

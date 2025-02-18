@@ -114,7 +114,6 @@ public class ConsoleView {
         System.out.print("Sentido: ");
         String sentido = scanner.nextLine();
     
-        // Supondo que no controller haja um método específico para lancha:
         controller.adicionarLancha(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
         System.out.println("Lancha adicionada a fila!");
     }
@@ -145,7 +144,6 @@ public class ConsoleView {
         System.out.print("Sentido: ");
         String sentido = scanner.nextLine();
     
-        // Supondo que no controller haja um método específico para cruzeiro:
         controller.adicionarCruzeiro(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
         System.out.println("Cruzeiro adicionado a fila!");
     }
@@ -176,7 +174,6 @@ public class ConsoleView {
         System.out.print("Sentido do Navio: ");
         String sentido = scanner.nextLine();
     
-        // Método já existente no controller para adicionar navio cargueiro:
         controller.adicionarNavio(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
         System.out.println("Navio Cargueiro adicionado a fila!");
     }

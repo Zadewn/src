@@ -7,16 +7,12 @@ public class Main {
         double tempoParaEncher = 30;  
         double tempoParaEsvaziar = 30; 
 
-        // Cria o modelo (Lock)
-        EclusaSup lock = new EclusaSup(tempoParaEncher, tempoParaEsvaziar);
+        EclusaSup sup = new EclusaSup(tempoParaEncher, tempoParaEsvaziar);
 
-        // Cria o controller
-        EclusaSupController controller = new EclusaSupController(lock);
+        EclusaSupController controller = new EclusaSupController(sup);
 
-        // Cria a view (console)
         ConsoleView view = new ConsoleView(controller);
 
-        // Inicia a interação
         view.exibirMenu();
     }
 }
