@@ -1,3 +1,4 @@
+package CODIGAO;
 public class Lancha extends Embarcacao{
     public void setLargura(float largura) {
         if (largura >= 3 && largura <= 20) {

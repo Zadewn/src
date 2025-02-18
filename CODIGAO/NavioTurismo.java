@@ -1,3 +1,4 @@
+package CODIGAO;
 public class NavioTurismo extends Embarcacao{
     private String portoOrigem;
     private String portoDestino;
