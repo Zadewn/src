@@ -1,4 +1,4 @@
-package CODIGAO;
+package model;
 
 public class Pessoa {
 

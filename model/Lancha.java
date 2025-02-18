@@ -1,4 +1,5 @@
-package CODIGAO;
+package model;
+
 public class Lancha extends Embarcacao{
     public void setLargura(float largura) {
         if (largura >= 3 && largura <= 20) {
@@ -13,11 +14,4 @@ public class Lancha extends Embarcacao{
         }
     }
     
-    public Lancha(){
-        super();
-    }
-
-    public Lancha(float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int ID, float cargaMax, String nomecapitao, char sentido){
-        super(largura, comprimento, nPassageiros, mediaPesoPassageiros, ID, cargaMax, nomecapitao, sentido);
-    }
 }

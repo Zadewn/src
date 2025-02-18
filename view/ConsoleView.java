@@ -23,9 +23,8 @@ public class ConsoleView {
             System.out.println("[5] Passar Navio pela Eclusa");
             System.out.println("[6] Ver Receita Total");
             System.out.println("[7] Ver Status da Eclusa");
-
-            System.out.println("[8] ");
-            System.out.println("[9] ");
+            System.out.println("[8] Abrir Comporta do Rio");
+            System.out.println("[9] Abrir Comporta do Mar");
             System.out.println("[10] ");
             System.out.println("[11] ");
             System.out.println("[12] ");
@@ -89,8 +88,8 @@ public class ConsoleView {
     }
 
     private void adicionarNavio() {
-        System.out.print("Nome do Navio: ");
-        String nome = scanner.nextLine();
+        System.out.print("Codigo do Navio: ");
+        int codigoID = Integer.parseInt(scanner.nextLine());
 
         System.out.print("Comprimento (m): ");
         double comprimento = Double.parseDouble(scanner.nextLine());
@@ -113,7 +112,7 @@ public class ConsoleView {
         System.out.print("Sentido do Navio: ");
         String sentido = scanner.nextLine();
 
-        controller.adicionarNavio(nome, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
+        controller.adicionarNavio(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
         System.out.println("Navio adicionado a fila!");
     }
 }

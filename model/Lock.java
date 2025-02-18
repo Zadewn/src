@@ -12,14 +12,12 @@ public class Lock {
     }
 
     private LockStatus status;
-    private double nivelAgua;          // 0 a 100 (percentual), se quiser simplificar
-    private final double tempoEncher;  // tempo (em minutos, por exemplo) para encher 0% -> 100%
-    private final double tempoEsvaziar; // tempo (em minutos) para esvaziar 100% -> 0%
+    private double nivelAgua;   
+    private final double tempoEncher;  
+    private final double tempoEsvaziar; 
     
-    // Fila de navios aguardando para atravessar a eclusa
     private Queue<NavioCargueiro> filaNavios;
     
-    // Poderia ter capacidade máxima de navios por vez, etc.
     private double receitaTotal;
 
     public Lock(double tempoEncher, double tempoEsvaziar) {
@@ -59,7 +57,6 @@ public class Lock {
         filaNavios.add(navio);
     }
 
-    // Simulação de encher a eclusa
     public void encher() throws LockException {
         if (status == LockStatus.CHEIA) {
             throw new LockException("A eclusa ja esta cheia!");
@@ -101,6 +98,17 @@ public class Lock {
         NavioCargueiro navio = filaNavios.poll();
         this.receitaTotal += navio.getTarifa();
 
-        System.out.println("Navio " + navio.getNome() + " atravessou a eclusa.");
+        System.out.println("Navio " + navio.getCodigoID() + " atravessou a eclusa.");
+    }
+
+    public void abrirComportaRio() throws LockException {
+        if (capacidade
+        }
+    }
+
+    void ComportaAbertaException extends Exception {
+        public ComportaAbertaException(){
+            super("ERRO!! Uma ou mais comportas abertas");
+        }
     }
 }

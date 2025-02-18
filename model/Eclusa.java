@@ -1,7 +1,5 @@
-package CODIGAO;
+package model;
 import java.util.*;
-
-import Main;
 
 public class Eclusa {
 
@@ -20,8 +18,6 @@ public class Eclusa {
     private ArrayList<Embarcacao> filaRio = new ArrayList<>();
     private ArrayList<Embarcacao> naviosEncaixados = new ArrayList<>();
 
-    public ArrayList getFilaMar() { return filaMar; }
-    public ArrayList getFilaRio() { return filaRio; }
     public ArrayList getNaviosEncaixados() { return naviosEncaixados; }
 
     public float getCapacidadeAtual() { return capacidadeAtual; }

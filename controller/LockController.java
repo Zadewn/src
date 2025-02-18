@@ -12,8 +12,8 @@ public class LockController {
         this.lock = lock;
     }
 
-    public void adicionarNavio(String nome, double comprimento, double largura, double capacidade, String origem, String destino, double tarifa, String sentido) {
-        NavioCargueiro navio = new NavioCargueiro(nome, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
+    public void adicionarNavio(int codigoID, double comprimento, double largura, double capacidade, String origem, String destino, double tarifa, String sentido) {
+        NavioCargueiro navio = new NavioCargueiro(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
         lock.adicionarNavioFila(navio);
     }
 

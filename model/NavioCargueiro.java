@@ -1,17 +1,12 @@
 package model;
 
-public class NavioCargueiro {
-    private String nome;
-    private double comprimento; 
-    private double largura;
-    private double capacidade; 
-    private String portoOrigem;
-    private String portoDestino;
-    private double tarifa;
-    private String sentido;
+import java.util.ArrayList;
 
-    public NavioCargueiro(String nome, double comprimento, double largura, double capacidade, String portoOrigem, String portoDestino, double tarifa, String sentido) {
-        this.nome = nome;
+public class NavioCargueiro extends Embarcacao{
+    private ArrayList<Container> conteineres = new ArrayList<Container>();
+
+    public NavioCargueiro(int codigoID, double comprimento, double largura, double capacidade, String portoOrigem, String portoDestino, double tarifa, String sentido) {
+        this.codigoID = codigoID;
         this.comprimento = comprimento;
         this.largura = largura;
         this.capacidade = capacidade;
@@ -20,44 +15,41 @@ public class NavioCargueiro {
         this.tarifa = tarifa;
         this.sentido = sentido;
     }
+    public ArrayList getConteineres() { return conteineres; }
+    public int getCodigoID() { return codigoID; }
+    public double getComprimento() { return comprimento; }
+    public double getLargura() { return largura; }
+    public double getCapacidade() { return capacidade; }
+    public String getPortoOrigem() { return portoOrigem; }
+    public String getPortoDestino() { return portoDestino; }
+    public double getTarifa() { return tarifa; }
+    public String getSentido() { return sentido; }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public double getComprimento() {
-        return comprimento;
-    }
-
-    public double getLargura() {
-        return largura;
-    }
-
-    public double getCapacidade() {
-        return capacidade;
-    }
-
-    public String getPortoOrigem() {
-        return portoOrigem;
-    }
-
-    public String getPortoDestino() {
-        return portoDestino;
-    }
-
-    public double getTarifa() {
-        return tarifa;
-    }
-
-    public String getSentido() {
-        return sentido;
+    public void calcularPeso() {
+        pesoAdicional += capitao.getPeso();
+        if (tripulacao.isEmpty() == false) {
+            for (Object pessoa : tripulacao) {
+                Pessoa p = (Pessoa) pessoa;
+                if(pesoAdicional + p.getPeso() <= cargaMaxima){
+                    pesoAdicional += p.getPeso(); 
+                }
+            }
+        }
+        if (conteineres.isEmpty() == false) {
+            for (Object container : conteineres) {
+                Container c = (Container) container;
+                if(pesoAdicional + c.getPeso() <= cargaMaxima){
+                    pesoAdicional += c.getPeso();
+                }
+            }
+        }
     }
 
     @Override
     public String toString() {
         return String.format(
-            "Navio: %s | Comp: %.2f | Larg: %.2f | Cap: %.2f | Origem: %s | Destino: %s | Tarifa: %.2f | Sentido: %s",
-            nome, comprimento, largura, capacidade, portoOrigem, portoDestino, tarifa, sentido
+            "Navio: %d | Comp: %.2f | Larg: %.2f | Cap: %.2f | Origem: %s | Destino: %s | Tarifa: %.2f | Sentido: %s",
+            codigoID, comprimento, largura, capacidade, portoOrigem, portoDestino, tarifa, sentido
         );
     }
 }
