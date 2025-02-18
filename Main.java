@@ -4,8 +4,8 @@ import view.ConsoleView;
 
 public class Main {
     public static void main(String[] args) {
-        double tempoParaEncher = 30;   // Exemplo: 30 min
-        double tempoParaEsvaziar = 30; // Exemplo: 30 min
+        double tempoParaEncher = 30;  
+        double tempoParaEsvaziar = 30; 
 
         // Cria o modelo (Lock)
         Lock lock = new Lock(tempoParaEncher, tempoParaEsvaziar);

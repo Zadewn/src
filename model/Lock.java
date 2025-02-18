@@ -20,6 +20,9 @@ public class Lock {
     
     private double receitaTotal;
 
+    private boolean comportaRioAberta;
+    private boolean comportaMarAberta;
+
     public Lock(double tempoEncher, double tempoEsvaziar) {
         this.status = LockStatus.VAZIA;
         this.nivelAgua = 0.0;
@@ -27,6 +30,9 @@ public class Lock {
         this.tempoEsvaziar = tempoEsvaziar;
         this.filaNavios = new LinkedList<>();
         this.receitaTotal = 0.0;
+
+        this.comportaRioAberta = false;
+        this.comportaMarAberta = false;
     }
 
     public LockStatus getStatus() {
@@ -101,14 +107,46 @@ public class Lock {
         System.out.println("Navio " + navio.getCodigoID() + " atravessou a eclusa.");
     }
 
-    public void abrirComportaRio() throws LockException {
-        if (capacidade
+    public void abrirComportaRio() throws ComportaException {
+        if (comportaRioAberta) {
+            throw new ComportaException("A comporta do Rio ja esta aberta!");
         }
+        // Se a comporta do Mar estiver aberta, não permite abrir a do Rio
+        if (comportaMarAberta) {
+            throw new ComportaException("A comporta do Mar esta aberta! Feche-a antes de abrir a comporta do Rio.");
+        }
+        // Condicionalmente, você pode incluir outras regras, por exemplo:
+        // só permitir abrir a comporta se a eclusa estiver em um determinado estado.
+        
+        comportaRioAberta = true;
+        System.out.println("Comporta do Rio aberta.");
     }
 
-    void ComportaAbertaException extends Exception {
-        public ComportaAbertaException(){
-            super("ERRO!! Uma ou mais comportas abertas");
+    public void abrirComportaMar() throws ComportaException {
+        if (comportaMarAberta) {
+            throw new ComportaException("A comporta do Mar ja esta aberta!");
         }
+        if (comportaRioAberta) {
+            throw new ComportaException("A comporta do Rio esta aberta! Feche-a antes de abrir a comporta do Mar.");
+        }
+        
+        comportaMarAberta = true;
+        System.out.println("Comporta do Mar aberta.");
+    }
+
+    public void fecharComportaRio() throws ComportaException {
+        if (!comportaRioAberta) {
+            throw new ComportaException("A comporta do Rio ja esta fechada!");
+        }
+        comportaRioAberta = false;
+        System.out.println("Comporta do Rio fechada.");
+    }
+
+    public void fecharComportaMar() throws ComportaException {
+        if (!comportaMarAberta) {
+            throw new ComportaException("A comporta do Mar ja esta fechada!");
+        }
+        comportaMarAberta = false;
+        System.out.println("Comporta do Mar fechada.");
     }
 }

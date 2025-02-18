@@ -33,7 +33,6 @@ public abstract class Embarcacao {
     public void setCapitao(Pessoa pessoa) { this.capitao = pessoa; }
     public void setSentido(String sentido) { if (sentido == "R" || sentido == "M") this.sentido = sentido; }
 
-
     public void calcularPeso() {
         pesoAdicional += capitao.getPeso();
         if (tripulacao.isEmpty() == false) {

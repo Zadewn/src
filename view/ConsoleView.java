@@ -25,8 +25,8 @@ public class ConsoleView {
             System.out.println("[7] Ver Status da Eclusa");
             System.out.println("[8] Abrir Comporta do Rio");
             System.out.println("[9] Abrir Comporta do Mar");
-            System.out.println("[10] ");
-            System.out.println("[11] ");
+            System.out.println("[10] Fechar Comporta do Rio");
+            System.out.println("[11] Fechar Comporta do Mar");
             System.out.println("[12] ");
             System.out.println("[13] ");
             System.out.println("[14] ");
@@ -64,13 +64,17 @@ public class ConsoleView {
                     System.out.println("Status: " + controller.getStatusEclusa() + " | Nível de água: " + controller.getNivelAgua() + "%");
                     break;
                 case 8:
-
+                    controller.abrirComportaRio();
+                    break;
                 case 9:
-
+                    controller.abrirComportaMar();
+                    break;
                 case 10:
-
+                    controller.fecharComportaRio();
+                    break;
                 case 11:
-
+                    controller.fecharComportaMar();
+                    break;
                 case 12:
 
                 case 13:

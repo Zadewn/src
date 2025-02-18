@@ -1,6 +1,7 @@
 package controller;
 
 import model.NavioCargueiro;
+import model.ComportaException;
 import model.Lock;
 import model.LockException;
 
@@ -62,5 +63,37 @@ public class LockController {
 
     public double getNivelAgua() {
         return lock.getNivelAgua();
+    }
+    
+    public void abrirComportaRio() {
+        try {
+            lock.abrirComportaRio();
+        } catch (ComportaException e) {
+            System.out.println("Erro ao abrir comporta do Rio: " + e.getMessage());
+        }
+    }
+    
+    public void abrirComportaMar() {
+        try {
+            lock.abrirComportaMar();
+        } catch (ComportaException e) {
+            System.out.println("Erro ao abrir comporta do Mar: " + e.getMessage());
+        }
+    }
+    
+    public void fecharComportaRio() {
+        try {
+            lock.fecharComportaRio();
+        } catch (ComportaException e) {
+            System.out.println("Erro ao fechar comporta do Rio: " + e.getMessage());
+        }
+    }
+    
+    public void fecharComportaMar() {
+        try {
+            lock.fecharComportaMar();
+        } catch (ComportaException e) {
+            System.out.println("Erro ao fechar comporta do Mar: " + e.getMessage());
+        }
     }
 }

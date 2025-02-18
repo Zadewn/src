@@ -134,26 +134,6 @@ public class Eclusa {
         }
     }
 
-    public void alterarComportaMar() throws AbrirComportaInvalidaException{
-        if(comportaMar == true){
-            comportaMar = false;
-        }else if(capacidadeAtual == capacidadeMAX){
-            comportaMar = true;
-        }else{
-            throw new AbrirComportaInvalidaException("ERRO");
-        }
-    }
-
-    public void alterarComportaRio() throws AbrirComportaInvalidaException{
-        if(comportaRio == true){
-            comportaRio = false;
-        }else  if(capacidadeAtual == capacidadeMIN){
-            comportaRio = true;
-        }else{
-            throw new AbrirComportaInvalidaException("ERRO");
-        }
-    }
-
     public float getTempoFilaMAX() { //Retorna o tempo maximo para esvaziar as filas
         float tempo = (capacidadeMAX - capacidadeMIN)/vazao;
         if(filaMar.size() > filaRio.size()){
@@ -192,12 +172,10 @@ public class Eclusa {
                     }
                     if((int) porcentagemBruta != porcentagemArredondada){
                         porcentagemArredondada = (int) porcentagemBruta;
-                        Main.updatePorcentagem(porcentagemArredondada);
+                        updatePorcentagem(porcentagemArredondada);
                     }
                 }
             }
-        }else{
-            throw new ComportaAbertaException();
         }
     }
 
@@ -225,8 +203,6 @@ public class Eclusa {
                     }
                 }
             }
-        }else{
-            throw new ComportaAbertaException();
         }
     }
 
@@ -265,11 +241,4 @@ public class Eclusa {
             }
         }
     }
-
-    public Eclusa() {
-        super();
-        comportaMar = false;
-        comportaRio = false;
-    }
-
 }
