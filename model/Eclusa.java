@@ -152,7 +152,7 @@ public class Eclusa {
     }
 
 
-    public void esvaziarEclusa(int canosAbertoss) throws ComportaAbertaException{
+    public void esvaziarEclusa(int canosAbertoss){
         if(comportaMar == false && comportaRio == false && capacidadeAtual > capacidadeMIN){
             status = 'S';
             float porcentagemBruta;
@@ -172,14 +172,14 @@ public class Eclusa {
                     }
                     if((int) porcentagemBruta != porcentagemArredondada){
                         porcentagemArredondada = (int) porcentagemBruta;
-                        updatePorcentagem(porcentagemArredondada);
+                        //updatePorcentagem(porcentagemArredondada);
                     }
                 }
             }
         }
     }
 
-    public void encherEclusa(int canosAbertos) throws ComportaAbertaException{
+    public void encherEclusa(int canosAbertos){
         if(comportaMar == false && comportaRio == false && capacidadeAtual < capacidadeMAX){
             status = 'E';
             float porcentagemBruta;
@@ -199,7 +199,7 @@ public class Eclusa {
                     }
                     if((int) porcentagemBruta != porcentagemArredondada){
                         porcentagemArredondada = (int) porcentagemBruta;
-                        Main.updatePorcentagem(porcentagemArredondada);
+                        //updatePorcentagem(porcentagemArredondada);
                     }
                 }
             }

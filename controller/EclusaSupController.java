@@ -2,14 +2,14 @@ package controller;
 
 import model.NavioCargueiro;
 import model.ComportaException;
-import model.Lock;
-import model.LockException;
+import model.EclusaSup;
+import model.EclusaSupException;
 
-public class LockController {
+public class EclusaSupController {
 
-    private Lock lock;
+    private EclusaSup lock;
 
-    public LockController(Lock lock) {
+    public EclusaSupController(EclusaSup lock) {
         this.lock = lock;
     }
 
@@ -21,7 +21,7 @@ public class LockController {
     public void encherEclusa() {
         try {
             lock.encher();
-        } catch (LockException e) {
+        } catch (EclusaSupException e) {
             System.out.println("Erro ao encher a eclusa: " + e.getMessage());
         }
     }
@@ -29,7 +29,7 @@ public class LockController {
     public void esvaziarEclusa() {
         try {
             lock.esvaziar();
-        } catch (LockException e) {
+        } catch (EclusaSupException e) {
             System.out.println("Erro ao esvaziar a eclusa: " + e.getMessage());
         }
     }
@@ -37,7 +37,7 @@ public class LockController {
     public void passarNavio() {
         try {
             lock.passarNavio();
-        } catch (LockException e) {
+        } catch (EclusaSupException e) {
             System.out.println("Erro ao passar navio: " + e.getMessage());
         }
     }
@@ -64,7 +64,7 @@ public class LockController {
     public double getNivelAgua() {
         return lock.getNivelAgua();
     }
-    
+
     public void abrirComportaRio() {
         try {
             lock.abrirComportaRio();

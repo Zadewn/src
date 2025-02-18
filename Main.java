@@ -1,5 +1,5 @@
-import controller.LockController;
-import model.Lock;
+import controller.EclusaSupController;
+import model.EclusaSup;
 import view.ConsoleView;
 
 public class Main {
@@ -8,10 +8,10 @@ public class Main {
         double tempoParaEsvaziar = 30; 
 
         // Cria o modelo (Lock)
-        Lock lock = new Lock(tempoParaEncher, tempoParaEsvaziar);
+        EclusaSup lock = new EclusaSup(tempoParaEncher, tempoParaEsvaziar);
 
         // Cria o controller
-        LockController controller = new LockController(lock);
+        EclusaSupController controller = new EclusaSupController(lock);
 
         // Cria a view (console)
         ConsoleView view = new ConsoleView(controller);

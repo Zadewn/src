@@ -1,13 +1,13 @@
 package view;
 
-import controller.LockController;
+import controller.EclusaSupController;
 import java.util.Scanner;
 
 public class ConsoleView {
-    private LockController controller;
+    private EclusaSupController controller;
     private Scanner scanner;
 
-    public ConsoleView(LockController controller) {
+    public ConsoleView(EclusaSupController controller) {
         this.controller = controller;
         this.scanner = new Scanner(System.in);
     }

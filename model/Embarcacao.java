@@ -53,9 +53,9 @@ public abstract class Embarcacao {
         this.setCodigoID(ID);
         this.setCargaMaxima(cargaMax);
         this.setSentido(sentido);
-        this.setCapitao(new Pessoa(nomecapitao, mediaPesoPassageiros));
-        for (int i = 0; i < nPassageiros; i++) {
-            tripulacao.add(new Pessoa(mediaPesoPassageiros));
-        }
+        //this.setCapitao(new Pessoa(nomecapitao, mediaPesoPassageiros));
+        //for (int i = 0; i < nPassageiros; i++) {
+        //    tripulacao.add(new Pessoa(mediaPesoPassageiros));
+        //}
     }
 }
