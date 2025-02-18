@@ -10,22 +10,22 @@ public class Main{
         eclusa.setFilaMar(l);
     }
 
-    public static void requisitarNavioTurismoRio(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int ID, float cargaMax, String Nomecapitao, char sentido){
+    public static void requisitarCruzeiroRio(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int ID, float cargaMax, String Nomecapitao, char sentido){
         NavioTurismo l = new NavioTurismo(largura, comprimento, nPassageiros, mediaPesoPassageiros, ID, cargaMax, Nomecapitao, 'R');
         eclusa.setFilaRio(l);
     }
 
-    public static void requisitarNavioTurismoMar(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int ID, float cargaMax, String Nomecapitao, char sentido){
+    public static void requisitarCruzeiroMar(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int ID, float cargaMax, String Nomecapitao, char sentido){
         NavioTurismo l = new NavioTurismo(largura, comprimento, nPassageiros, mediaPesoPassageiros, ID, cargaMax, Nomecapitao, 'M');
         eclusa.setFilaMar(l);
     }
 
-    public static void requisitarNavioCargueiroMar(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int nConteineres, float mediaPesoConteineres, int ID, float cargaMax, String nomecapitao, char sentido){
+    public static void requisitarCargueiroMar(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int nConteineres, float mediaPesoConteineres, int ID, float cargaMax, String nomecapitao, char sentido){
         NavioCargueiro l = new NavioCargueiro(largura, comprimento, nPassageiros, mediaPesoPassageiros, nConteineres, mediaPesoConteineres, ID, cargaMax, nomecapitao, 'M');
         eclusa.setFilaMar(l);
     }
 
-    public static void requisitarNavioCargueiroRio(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int nConteineres, float mediaPesoConteineres, int ID, float cargaMax, String nomecapitao, char sentido){
+    public static void requisitarCargueiroRio(Eclusa eclusa, float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int nConteineres, float mediaPesoConteineres, int ID, float cargaMax, String nomecapitao, char sentido){
         NavioCargueiro l = new NavioCargueiro(largura, comprimento, nPassageiros, mediaPesoPassageiros, nConteineres, mediaPesoConteineres, ID, cargaMax, nomecapitao, 'R');
         eclusa.setFilaRio(l);
     }

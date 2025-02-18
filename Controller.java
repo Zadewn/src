@@ -49,35 +49,43 @@ public class Controller {
 
 
     private Eclusa eclusa; 
+    private ChangeListener<String> listener;
 
     @FXML
     public void initialize() {
         eclusa = new Eclusa();
 
-        @SuppressWarnings("unused")
-        ChangeListener<String> listener = (observable, oldValue, newValue) -> {
-            requisitarLT.setDisable(!camposPreenchidos(false));
-            requisitarC.setDisable(!camposPreenchidos(true));
+        listener = (observable, oldValue, newValue) -> {
+            atualizarEstadoBotoes();
         };
+    
+        adicionarListeners();
+        atualizarEstadoBotoes();
+    }
+    
+    private void atualizarEstadoBotoes() {
+        requisitarLT.setDisable(!camposPreenchidos(false));
+        requisitarC.setDisable(!camposPreenchidos(true));
+    }
 
-        LTCid.textProperty().addListener(listener);
-        LTCcomprimento.textProperty().addListener(listener);
-        LTClargura.textProperty().addListener(listener);
-        LTCpassageiros.textProperty().addListener(listener);
-        LTCpesopassageiros.textProperty().addListener(listener);
-        LTCcargamax.textProperty().addListener(listener);
-        LTCcapitão.textProperty().addListener(listener);
-        Cconteineres.textProperty().addListener(listener);
-        Cpesoconteineres.textProperty().addListener(listener);
+    private void adicionarListeners() {
+        TextField[] campos = {
+            LTCid, LTCcomprimento, LTClargura, LTCpassageiros, LTCpesopassageiros,
+            LTCcargamax, LTCcapitão, Cconteineres, Cpesoconteineres
+        };
+    
+        for (TextField campo : campos) {
+            campo.textProperty().addListener(listener);
+        }
     }
 
     @FXML
     private void toggleComportaRio(ActionEvent event) {
         try {
-            boolean aberta = Main.alternarComportaRio(eclusa); 
+            boolean aberta = Main.alternarComportaRio(eclusa);
             EclusaView.atualizarComporta(comportaRioButton, ComportaRio, aberta);
         } catch (AbrirComportaInvalidaException e) {
-            System.out.println(e.getMessage());
+            TelaAvisos.setText(e.getMessage());
         }
     }
 
@@ -87,29 +95,33 @@ public class Controller {
             boolean aberta = Main.alternarComportaMar(eclusa); 
             EclusaView.atualizarComporta(comportaMarButton, ComportaMar, aberta);
         } catch (AbrirComportaInvalidaException e) {
-            System.out.println(e.getMessage());
+            TelaAvisos.setText(e.getMessage());
         }
     }
 
     @FXML
     private void encherEclusa(ActionEvent event) {
-        EclusaView.atualizarNivelAgua(AguaEclusa, 157);
+        EclusaView.atualizarNivelAgua(AguaEclusa, 271);
     }
 
     @FXML
     private void secarEclusa(ActionEvent event) {
-        EclusaView.atualizarNivelAgua(AguaEclusa, 206); 
+        EclusaView.atualizarNivelAgua(AguaEclusa, 320); 
     }
 
     private boolean camposPreenchidos(boolean isCargueiro) {
-        if (LTCid.getText().isEmpty() || LTCcomprimento.getText().isEmpty() || LTClargura.getText().isEmpty() ||
-            LTCpassageiros.getText().isEmpty() || LTCpesopassageiros.getText().isEmpty() ||
-            LTCcargamax.getText().isEmpty() || LTCcapitão.getText().isEmpty()) {
-            return false;
+        TextField[] camposComuns = {LTCid, LTCcomprimento, LTClargura, LTCpassageiros, 
+            LTCpesopassageiros, LTCcargamax, LTCcapitão};
+    
+        for (TextField campo : camposComuns) {
+            if (campo.getText().trim().isEmpty()) return false;
         }
-
-        if (isCargueiro && (Cconteineres.getText().isEmpty() || Cpesoconteineres.getText().isEmpty())) {
-            return false;
+    
+        if (isCargueiro) {
+            TextField[] camposCargueiro = {Cconteineres, Cpesoconteineres};
+            for (TextField campo : camposCargueiro) {
+                if (campo.getText().trim().isEmpty()) return false;
+            }
         }
     
         return true;
@@ -144,132 +156,122 @@ public class Controller {
     @FXML
     private void requisitarLanchaRio(ActionEvent event) {
         configurarCamposParaRequisicao(false);
-        requisitarLT.setDisable(!camposPreenchidos(false));
+        try{
+            String nomeCapitao = LTCcapitão.getText();
+            float largura = Float.parseFloat(LTCcomprimento.getText());  
+            float comprimento = Float.parseFloat(LTCcomprimento.getText());
+            int nPassageiros = Integer.parseInt(LTCpassageiros.getText());
+            float mediaPesoPassageiros = Float.parseFloat(LTCpesopassageiros.getText());
+            int ID = Integer.parseInt(LTCid.getText());
+            float cargaMax = Float.parseFloat(LTCcargamax.getText());
+            char sentido = 'R';  
 
-        String nomeCapitao = LTCcapitão.getText();
-        float largura = Float.parseFloat(LTCcomprimento.getText());  
-        float comprimento = Float.parseFloat(LTCcomprimento.getText());
-        int nPassageiros = Integer.parseInt(LTCpassageiros.getText());
-        float mediaPesoPassageiros = Float.parseFloat(LTCpesopassageiros.getText());
-        int ID = Integer.parseInt(LTCid.getText());
-        float cargaMax = Float.parseFloat(LTCcargamax.getText());
-        char sentido = 'R';  
-
-        Main.requisitarLanchaRio(eclusa, largura, comprimento, nPassageiros, mediaPesoPassageiros, ID, cargaMax, nomeCapitao, sentido);
-
-        requisitarLT.setDisable(!camposPreenchidos(false));
+            Main.requisitarLanchaRio(eclusa, largura, comprimento, nPassageiros, mediaPesoPassageiros, ID, cargaMax, nomeCapitao, sentido);
+        } catch (NumberFormatException e) {
+            TelaAvisos.setText("Erro: Preencha todos os campos corretamente.");
+        }
     }
 
     @FXML
     private void requisitarLanchaMar(ActionEvent event) {
         configurarCamposParaRequisicao(false);
-        requisitarLT.setDisable(!camposPreenchidos(false));
+        try{
+            String nomeCapitao = LTCcapitão.getText();
+            float largura = Float.parseFloat(LTCcomprimento.getText());  
+            float comprimento = Float.parseFloat(LTCcomprimento.getText());
+            int nPassageiros = Integer.parseInt(LTCpassageiros.getText());
+            float mediaPesoPassageiros = Float.parseFloat(LTCpesopassageiros.getText());
+            int ID = Integer.parseInt(LTCid.getText());
+            float cargaMax = Float.parseFloat(LTCcargamax.getText());
+            char sentido = 'M';  
 
-        String nomeCapitao = LTCcapitão.getText();
-        float largura = Float.parseFloat(LTCcomprimento.getText()); 
-        float comprimento = Float.parseFloat(LTCcomprimento.getText());
-        int nPassageiros = Integer.parseInt(LTCpassageiros.getText());
-        float mediaPesoPassageiros = Float.parseFloat(LTCpesopassageiros.getText());
-        int ID = Integer.parseInt(LTCid.getText());
-        float cargaMax = Float.parseFloat(LTCcargamax.getText());
-        char sentido = 'R';  
-
-        Main.requisitarLanchaMar(eclusa, largura, comprimento, nPassageiros, mediaPesoPassageiros, ID, cargaMax, nomeCapitao, sentido);
-
-        requisitarLT.setDisable(!camposPreenchidos(false));
+            Main.requisitarLanchaMar(eclusa, largura, comprimento, nPassageiros, mediaPesoPassageiros, ID, cargaMax, nomeCapitao, sentido);
+        } catch (NumberFormatException e) {
+            TelaAvisos.setText("Erro: Preencha todos os campos corretamente.");
+        }
     }
 
     @FXML
     private void requisitarCruzeiroRio(ActionEvent event) {
         configurarCamposParaRequisicao(false);
-        requisitarLT.setDisable(!camposPreenchidos(false));
+        try{
+            String nomeCapitao = LTCcapitão.getText();
+            float largura = Float.parseFloat(LTCcomprimento.getText());  
+            float comprimento = Float.parseFloat(LTCcomprimento.getText());
+            int nPassageiros = Integer.parseInt(LTCpassageiros.getText());
+            float mediaPesoPassageiros = Float.parseFloat(LTCpesopassageiros.getText());
+            int ID = Integer.parseInt(LTCid.getText());
+            float cargaMax = Float.parseFloat(LTCcargamax.getText());
+            char sentido = 'R';  
 
-        String nomeCapitao = LTCcapitão.getText();
-        float largura = Float.parseFloat(LTCcomprimento.getText());
-        float comprimento = Float.parseFloat(LTCcomprimento.getText());
-        int nPassageiros = Integer.parseInt(LTCpassageiros.getText());
-        float mediaPesoPassageiros = Float.parseFloat(LTCpesopassageiros.getText());
-        int ID = Integer.parseInt(LTCid.getText());
-        float cargaMax = Float.parseFloat(LTCcargamax.getText());
-        char sentido = 'R';  
-
-        Main.requisitarNavioTurismoRio(eclusa, largura, comprimento, nPassageiros, mediaPesoPassageiros, ID, cargaMax, nomeCapitao, sentido);
-
-        requisitarLT.setDisable(!camposPreenchidos(false));
+            Main.requisitarCruzeiroRio(eclusa, largura, comprimento, nPassageiros, mediaPesoPassageiros, ID, cargaMax, nomeCapitao, sentido);
+        } catch (NumberFormatException e) {
+            TelaAvisos.setText("Erro: Preencha todos os campos corretamente.");
+        }
     }
 
     @FXML
     private void requisitarCruzeiroMar(ActionEvent event) {
         configurarCamposParaRequisicao(false);
-        requisitarLT.setDisable(!camposPreenchidos(false));
+        try{
+            String nomeCapitao = LTCcapitão.getText();
+            float largura = Float.parseFloat(LTCcomprimento.getText());  
+            float comprimento = Float.parseFloat(LTCcomprimento.getText());
+            int nPassageiros = Integer.parseInt(LTCpassageiros.getText());
+            float mediaPesoPassageiros = Float.parseFloat(LTCpesopassageiros.getText());
+            int ID = Integer.parseInt(LTCid.getText());
+            float cargaMax = Float.parseFloat(LTCcargamax.getText());
+            char sentido = 'M';  
 
-        String nomeCapitao = LTCcapitão.getText();
-        float largura = Float.parseFloat(LTCcomprimento.getText());
-        float comprimento = Float.parseFloat(LTCcomprimento.getText());
-        int nPassageiros = Integer.parseInt(LTCpassageiros.getText());
-        float mediaPesoPassageiros = Float.parseFloat(LTCpesopassageiros.getText());
-        int ID = Integer.parseInt(LTCid.getText());
-        float cargaMax = Float.parseFloat(LTCcargamax.getText());
-        char sentido = 'M';  
-
-        Main.requisitarNavioTurismoMar(eclusa, largura, comprimento, nPassageiros, mediaPesoPassageiros, ID, cargaMax, nomeCapitao, sentido);
-
-        requisitarLT.setDisable(!camposPreenchidos(false));
+            Main.requisitarCruzeiroMar(eclusa, largura, comprimento, nPassageiros, mediaPesoPassageiros, ID, cargaMax, nomeCapitao, sentido);
+        } catch (NumberFormatException e) {
+            TelaAvisos.setText("Erro: Preencha todos os campos corretamente.");
+        }
     }
 
     @FXML
     private void requisitarNavioCargueiroRio(ActionEvent event) {
         configurarCamposParaRequisicao(true);
-        requisitarC.setDisable(!camposPreenchidos(true));
-        String nomeCapitao = LTCcapitão.getText();
-        float largura = Float.parseFloat(LTCcomprimento.getText());
-        float comprimento = Float.parseFloat(LTCcomprimento.getText());
-        int nPassageiros = Integer.parseInt(LTCpassageiros.getText());
-        float mediaPesoPassageiros = Float.parseFloat(LTCpesopassageiros.getText());
-        int nConteineres = Integer.parseInt(Cconteineres.getText());
-        float mediaPesoConteineres = Float.parseFloat(Cpesoconteineres.getText());
-        int ID = Integer.parseInt(LTCid.getText());
-        float cargaMax = Float.parseFloat(LTCcargamax.getText());
-        char sentido = 'R';  
-    
-        Main.requisitarNavioCargueiroRio(eclusa, largura, comprimento, nPassageiros, mediaPesoPassageiros, nConteineres, mediaPesoConteineres, ID, cargaMax, nomeCapitao, sentido);
+        try{
+            String nomeCapitao = LTCcapitão.getText();
+            float largura = Float.parseFloat(LTCcomprimento.getText());  
+            float comprimento = Float.parseFloat(LTCcomprimento.getText());
+            int nPassageiros = Integer.parseInt(LTCpassageiros.getText());
+            float mediaPesoPassageiros = Float.parseFloat(LTCpesopassageiros.getText());
+            int ID = Integer.parseInt(LTCid.getText());
+            float cargaMax = Float.parseFloat(LTCcargamax.getText());
+            char sentido = 'R';  
+            int nConteineres = Integer.parseInt(Cconteineres.getText());
+            float mediaPesoConteineres = Float.parseFloat(Cpesoconteineres.getText());
 
-        requisitarC.setDisable(!camposPreenchidos(true));
+            Main.requisitarCargueiroRio(eclusa, largura, comprimento, nPassageiros, mediaPesoPassageiros, nConteineres, mediaPesoConteineres, ID, cargaMax, nomeCapitao, sentido);
+        } catch (NumberFormatException e) {
+            TelaAvisos.setText("Erro: Preencha todos os campos corretamente.");
+        }
     }
     
     @FXML
     private void requisitarNavioCargueiroMar(ActionEvent event) {
         configurarCamposParaRequisicao(true);
-        requisitarC.setDisable(!camposPreenchidos(true));
-        String nomeCapitao = LTCcapitão.getText();
-        float largura = Float.parseFloat(LTCcomprimento.getText());
-        float comprimento = Float.parseFloat(LTCcomprimento.getText());
-        int nPassageiros = Integer.parseInt(LTCpassageiros.getText());
-        float mediaPesoPassageiros = Float.parseFloat(LTCpesopassageiros.getText());
-        int nConteineres = Integer.parseInt(Cconteineres.getText());
-        float mediaPesoConteineres = Float.parseFloat(Cpesoconteineres.getText());
-        int ID = Integer.parseInt(LTCid.getText());
-        float cargaMax = Float.parseFloat(LTCcargamax.getText());
-        char sentido = 'M';  
+        try{
+            String nomeCapitao = LTCcapitão.getText();
+            float largura = Float.parseFloat(LTCcomprimento.getText());  
+            float comprimento = Float.parseFloat(LTCcomprimento.getText());
+            int nPassageiros = Integer.parseInt(LTCpassageiros.getText());
+            float mediaPesoPassageiros = Float.parseFloat(LTCpesopassageiros.getText());
+            int ID = Integer.parseInt(LTCid.getText());
+            float cargaMax = Float.parseFloat(LTCcargamax.getText());
+            char sentido = 'R';  
+            int nConteineres = Integer.parseInt(Cconteineres.getText());
+            float mediaPesoConteineres = Float.parseFloat(Cpesoconteineres.getText());
 
-        Main.requisitarNavioCargueiroMar(eclusa, largura, comprimento, nPassageiros, mediaPesoPassageiros, nConteineres, mediaPesoConteineres, ID, cargaMax, nomeCapitao, sentido);
-
-        requisitarC.setDisable(!camposPreenchidos(true));
+            Main.requisitarCargueiroMar(eclusa, largura, comprimento, nPassageiros, mediaPesoPassageiros, nConteineres, mediaPesoConteineres, ID, cargaMax, nomeCapitao, sentido);
+        } catch (NumberFormatException e) {
+            TelaAvisos.setText("Erro: Preencha todos os campos corretamente.");
+        }
     }
 
-    @FXML
-    private void requisitarLT(ActionEvent event) throws InterruptedException{
-        tornarCamposInvisiveis();
-
-    }
-
-    @FXML
-    private void requisitarC(ActionEvent event) throws InterruptedException{
-        tornarCamposInvisiveis();
-
-    }
-
-    private void tornarCamposInvisiveis() {
+    private void tornarCamposInvisiveis(String mensagem) {
         LTCid.setVisible(false);
         LTCcomprimento.setVisible(false);
         LTClargura.setVisible(false);
@@ -277,10 +279,11 @@ public class Controller {
         LTCpesopassageiros.setVisible(false);
         LTCcargamax.setVisible(false);
         LTCcapitão.setVisible(false);
-    
         Cconteineres.setVisible(false);
         Cpesoconteineres.setVisible(false);
-    
+        requisitarLT.setVisible(false);
+        requisitarC.setVisible(false);
+
         LTCid1.setVisible(false);
         LTCcomprimento1.setVisible(false);
         LTClargura1.setVisible(false);
@@ -288,11 +291,46 @@ public class Controller {
         LTCpesopassageiros1.setVisible(false);
         LTCcargamax1.setVisible(false);
         LTCcapitão1.setVisible(false);
-        requisitarLT.setVisible(false);
-        requisitarC.setVisible(false);
+        Cconteineres1.setVisible(false);
+        Cpesoconteineres1.setVisible(false);
 
-        TelaAvisos.setText("Navio requisitado!");
+        requisitarC.setVisible(false);
+        requisitarLT.setVisible(false);
+
+        TelaAvisos.setText(mensagem);
     }
 
+    public void atualizarFilaRio() {
+        NumeroFilaRio.setText(String.valueOf(eclusa.getFilaRio()));
+    }
 
+    public void atualizarFilaMar() {
+        NumeroFilaMar.setText(String.valueOf(eclusa.getFilaMar()));
+    }
+
+    @FXML
+    public void requisitarC(ActionEvent event) {
+        tornarCamposInvisiveis("Cargueiro requisitado!");
+        limparCampos();
+    }
+
+    @FXML
+    public void requisitarLT(ActionEvent event) {
+        tornarCamposInvisiveis("Barco requisitado!");
+        limparCampos();
+        
+    }
+
+    private void limparCampos() {
+        LTCid.clear();
+        LTCcomprimento.clear();
+        LTClargura.clear();
+        LTCpassageiros.clear();
+        LTCpesopassageiros.clear();
+        LTCcargamax.clear();
+        LTCcapitão.clear();
+        
+        Cconteineres.clear();
+        Cpesoconteineres.clear();
+    }
 }
