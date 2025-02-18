@@ -23,6 +23,15 @@ public class ConsoleView {
             System.out.println("[5] Passar Navio pela Eclusa");
             System.out.println("[6] Ver Receita Total");
             System.out.println("[7] Ver Status da Eclusa");
+
+            System.out.println("[8] ");
+            System.out.println("[9] ");
+            System.out.println("[10] ");
+            System.out.println("[11] ");
+            System.out.println("[12] ");
+            System.out.println("[13] ");
+            System.out.println("[14] ");
+
             System.out.println("[0] Sair");
             System.out.print("Escolha uma opcao: ");
 
@@ -55,6 +64,21 @@ public class ConsoleView {
                 case 7:
                     System.out.println("Status: " + controller.getStatusEclusa() + " | Nível de água: " + controller.getNivelAgua() + "%");
                     break;
+                case 8:
+
+                case 9:
+
+                case 10:
+
+                case 11:
+
+                case 12:
+
+                case 13:
+
+                case 14:
+
+
                 case 0:
                     System.out.println("Saindo do sistema...");
                     break;
@@ -86,7 +110,10 @@ public class ConsoleView {
         System.out.print("Tarifa (valor a pagar): ");
         double tarifa = Double.parseDouble(scanner.nextLine());
 
-        controller.adicionarNavio(nome, comprimento, largura, capacidade, origem, destino, tarifa);
+        System.out.print("Sentido do Navio: ");
+        String sentido = scanner.nextLine();
+
+        controller.adicionarNavio(nome, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
         System.out.println("Navio adicionado a fila!");
     }
 }

@@ -2,15 +2,15 @@ package model;
 
 public class CargoShip {
     private String nome;
-    private double comprimento; // Em metros
-    private double largura;     // Em metros
-    private double capacidade;  // Toneladas ou contêineres, conforme sua necessidade
+    private double comprimento; 
+    private double largura;
+    private double capacidade; 
     private String portoOrigem;
     private String portoDestino;
-    private double tarifa;      // Tarifa a ser cobrada para atravessar a eclusa
+    private double tarifa;
+    private String sentido;
 
-    public CargoShip(String nome, double comprimento, double largura, double capacidade,
-                     String portoOrigem, String portoDestino, double tarifa) {
+    public CargoShip(String nome, double comprimento, double largura, double capacidade, String portoOrigem, String portoDestino, double tarifa, String sentido) {
         this.nome = nome;
         this.comprimento = comprimento;
         this.largura = largura;
@@ -18,9 +18,9 @@ public class CargoShip {
         this.portoOrigem = portoOrigem;
         this.portoDestino = portoDestino;
         this.tarifa = tarifa;
+        this.sentido = sentido;
     }
 
-    // Getters e setters
     public String getNome() {
         return nome;
     }
@@ -49,11 +49,15 @@ public class CargoShip {
         return tarifa;
     }
 
+    public String getSentido() {
+        return sentido;
+    }
+
     @Override
     public String toString() {
         return String.format(
-            "Navio: %s | Comp: %.2f | Larg: %.2f | Cap: %.2f | Origem: %s | Destino: %s | Tarifa: %.2f",
-            nome, comprimento, largura, capacidade, portoOrigem, portoDestino, tarifa
+            "Navio: %s | Comp: %.2f | Larg: %.2f | Cap: %.2f | Origem: %s | Destino: %s | Tarifa: %.2f | Sentido: %s",
+            nome, comprimento, largura, capacidade, portoOrigem, portoDestino, tarifa, sentido
         );
     }
 }
