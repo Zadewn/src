@@ -18,6 +18,7 @@ public class Eclusa {
     private ArrayList<Embarcacao> filaRio = new ArrayList<>();
     private ArrayList<Embarcacao> naviosEncaixados = new ArrayList<>();
 
+    @SuppressWarnings("rawtypes")
     public ArrayList getNaviosEncaixados() { return naviosEncaixados; }
 
     public float getCapacidadeAtual() { return capacidadeAtual; }

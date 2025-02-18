@@ -15,6 +15,8 @@ public class NavioCargueiro extends Embarcacao{
         this.tarifa = tarifa;
         this.sentido = sentido;
     }
+
+    @SuppressWarnings("rawtypes")
     public ArrayList getConteineres() { return conteineres; }
     public int getCodigoID() { return codigoID; }
     public double getComprimento() { return comprimento; }
