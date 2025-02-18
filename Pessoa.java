@@ -4,7 +4,6 @@ public class Pessoa {
     private String nome;
     private float peso;
 
-
     public String getNome() { return nome; }
     public float getPeso() { return peso; }
 

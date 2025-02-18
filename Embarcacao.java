@@ -45,9 +45,7 @@ public abstract class Embarcacao {
         }
     }
 
-    public Embarcacao(){
-        super();
-    }
+    public Embarcacao(){}
 
     public Embarcacao(float largura, float comprimento, int nPassageiros, float mediaPesoPassageiros, int ID, float cargaMax, String nomecapitao, char sentido){
         this.setLargura(largura);

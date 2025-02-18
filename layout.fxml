@@ -57,12 +57,12 @@
             <Button fx:id="SecarEclusa" layoutX="132.0" layoutY="25.0" mnemonicParsing="false" onAction="#secarEclusa" text="Secar" textAlignment="CENTER" />
             <Button fx:id="comportaRioButton" layoutX="132.0" layoutY="55.0" mnemonicParsing="false" onAction="#toggleComportaRio" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #ff0000;" text="Comporta Rio" textAlignment="CENTER" textFill="WHITE" />
             <Button layoutX="185.0" layoutY="25.0" mnemonicParsing="false" text="Parar" textAlignment="CENTER" />
-            <Button fx:id="RequesitarLanchaRio" layoutX="19.0" layoutY="30.0" mnemonicParsing="false" onAction="#requisitarLancha" prefHeight="43.0" prefWidth="77.0" text="Requisitar Lancha" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="RequesitarCruzeiroRio" layoutX="19.0" layoutY="85.0" mnemonicParsing="false" onAction="#requisitarCruzeiro" prefHeight="43.0" prefWidth="77.0" text="Requisitar Cruzeiro" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="RequesitarCargueiroRio" layoutX="19.0" layoutY="139.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="77.0" text="Requisitar Cargueiro" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="RequesitarLanchaMar" layoutX="559.0" layoutY="30.0" mnemonicParsing="false" onAction="#requisitarLancha" prefHeight="43.0" prefWidth="77.0" text="Requisitar Lancha" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="RequesitarCruzeiroMar" layoutX="559.0" layoutY="85.0" mnemonicParsing="false" onAction="#requisitarCruzeiro" prefHeight="43.0" prefWidth="77.0" text="Requisitar Cruzeiro" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="RequesitarCargueiroMar" layoutX="559.0" layoutY="139.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="77.0" text="Requisitar Cargueiro" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="RequesitarLanchaRio" layoutX="19.0" layoutY="30.0" mnemonicParsing="false" onAction="#requisitarLanchaRio" prefHeight="43.0" prefWidth="77.0" text="Requisitar Lancha" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="RequesitarCruzeiroRio" layoutX="19.0" layoutY="85.0" mnemonicParsing="false" onAction="#requisitarCruzeiroRio" prefHeight="43.0" prefWidth="77.0" text="Requisitar Cruzeiro" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="RequesitarCargueiroRio" layoutX="19.0" layoutY="139.0" mnemonicParsing="false" onAction="#requisitarNavioCargueiroRio" prefHeight="43.0" prefWidth="77.0" text="Requisitar Cargueiro" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="RequesitarLanchaMar" layoutX="559.0" layoutY="30.0" mnemonicParsing="false" onAction="#requisitarLanchaMar" prefHeight="43.0" prefWidth="77.0" text="Requisitar Lancha" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="RequesitarCruzeiroMar" layoutX="559.0" layoutY="85.0" mnemonicParsing="false" onAction="#requisitarCruzeiroMar" prefHeight="43.0" prefWidth="77.0" text="Requisitar Cruzeiro" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="RequesitarCargueiroMar" layoutX="559.0" layoutY="139.0" mnemonicParsing="false" onAction="#requisitarNavioCargueiroMar" prefHeight="43.0" prefWidth="77.0" text="Requisitar Cargueiro" textAlignment="CENTER" wrapText="true" />
             <Button fx:id="comportaMarButton" layoutX="132.0" layoutY="85.0" mnemonicParsing="false" onAction="#toggleComportaMar" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #ff0000;" text="Comporta Mar" textAlignment="CENTER" textFill="WHITE" />
             <Label layoutX="302.0" layoutY="29.0" text="Canos abertos:" />
             <Button layoutX="236.0" layoutY="85.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="58.0" text="Liberar M">
@@ -121,32 +121,32 @@
                   <Font size="8.0" />
                </font>
             </TextField>
-            <TextField fx:id="CanosAbertos1" editable="false" layoutX="132.0" layoutY="160.0" prefHeight="25.0" prefWidth="252.0">
+            <TextField fx:id="TelaAvisos" editable="false" layoutX="132.0" layoutY="160.0" prefHeight="25.0" prefWidth="252.0">
                <font>
                   <Font size="9.0" />
                </font>
             </TextField>
-            <Label layoutX="133.0" layoutY="142.0" text="Avisos:" />
-            <TextField id="LTCcapitão" editable="false" layoutX="10.0" layoutY="232.0" prefHeight="25.0" prefWidth="57.0" text="Capitão:" />
-            <TextField id="LTClargura" editable="false" layoutX="10.0" layoutY="262.0" prefHeight="25.0" prefWidth="57.0" text="Largura:" />
-            <TextField id="LTCcomprimento" editable="false" layoutX="10.0" layoutY="292.0" prefHeight="25.0" prefWidth="91.0" text="Comprimento:" />
-            <TextField id="LTCpassageiros" editable="false" layoutX="10.0" layoutY="322.0" prefHeight="25.0" prefWidth="114.0" text="N° de Passageiros:" />
-            <TextField id="LTCpesopassageiros" editable="false" layoutX="10.0" layoutY="352.0" prefHeight="25.0" prefWidth="145.0" text="Média peso passageiros:" />
-            <TextField id="LTCid" editable="false" layoutX="10.0" layoutY="382.0" prefHeight="25.0" prefWidth="28.0" text="ID:" />
-            <TextField id="LTCcargamax" editable="false" layoutX="10.0" layoutY="412.0" prefHeight="25.0" prefWidth="74.0" text="Carga Max:" />
-            <TextField id="Cconteineres" editable="false" layoutX="10.0" layoutY="442.0" prefHeight="25.0" prefWidth="114.0" text="Nº de Conteineres:" />
-            <TextField id="Cpesoconteineres" editable="false" layoutX="10.0" layoutY="472.0" prefHeight="25.0" prefWidth="146.0" text="Média peso Conteineres:" />
-            <TextField fx:id="LTCcapitão" layoutX="72.0" layoutY="232.0" prefHeight="25.0" prefWidth="90.0" />
-            <TextField fx:id="LTClargura" layoutX="72.0" layoutY="262.0" prefHeight="25.0" prefWidth="57.0" />
-            <TextField fx:id="LTCcomprimento" layoutX="106.0" layoutY="292.0" prefHeight="25.0" prefWidth="57.0" />
-            <TextField fx:id="LTCpassageiros" layoutX="129.0" layoutY="322.0" prefHeight="25.0" prefWidth="57.0" />
-            <TextField fx:id="LTCpesopassageiros" layoutX="160.0" layoutY="352.0" prefHeight="25.0" prefWidth="57.0" />
-            <TextField fx:id="LTCid" layoutX="43.0" layoutY="382.0" prefHeight="25.0" prefWidth="57.0" />
-            <TextField fx:id="LTCcargamax" layoutX="89.0" layoutY="412.0" prefHeight="25.0" prefWidth="57.0" />
-            <TextField fx:id="Cconteineres" layoutX="129.0" layoutY="442.0" prefHeight="25.0" prefWidth="57.0" />
-            <TextField fx:id="Cconteineres1" layoutX="161.0" layoutY="472.0" prefHeight="25.0" prefWidth="57.0" />
-            <Button fx:id="requisitarLT" layoutX="217.0" layoutY="412.0" mnemonicParsing="false" text="Requisitar" />
-            <Button fx:id="requisitarC" layoutX="252.0" layoutY="474.0" mnemonicParsing="false" text="Requisitar" />
+            <Label layoutX="133.0" layoutY="142.0" text="Último aviso emitido:" />
+            <TextField fx:id="LTCcapitão1" editable="false" layoutX="10.0" layoutY="232.0" prefHeight="25.0" prefWidth="57.0" text="Capitão:" visible="false" />
+            <TextField fx:id="LTClargura1" editable="false" layoutX="10.0" layoutY="262.0" prefHeight="25.0" prefWidth="57.0" text="Largura:" visible="false" />
+            <TextField fx:id="LTCcomprimento1" editable="false" layoutX="10.0" layoutY="292.0" prefHeight="25.0" prefWidth="91.0" text="Comprimento:" visible="false" />
+            <TextField fx:id="LTCpassageiros1" editable="false" layoutX="10.0" layoutY="322.0" prefHeight="25.0" prefWidth="114.0" text="N° de Passageiros:" visible="false" />
+            <TextField fx:id="LTCpesopassageiros1" editable="false" layoutX="10.0" layoutY="352.0" prefHeight="25.0" prefWidth="145.0" text="Média peso passageiros:" visible="false" />
+            <TextField fx:id="LTCid1" editable="false" layoutX="10.0" layoutY="382.0" prefHeight="25.0" prefWidth="28.0" text="ID:" visible="false" />
+            <TextField fx:id="LTCcargamax1" editable="false" layoutX="10.0" layoutY="412.0" prefHeight="25.0" prefWidth="74.0" text="Carga Max:" visible="false" />
+            <TextField fx:id="Cconteineres1" editable="false" layoutX="10.0" layoutY="442.0" prefHeight="25.0" prefWidth="114.0" text="Nº de Conteineres:" visible="false" />
+            <TextField fx:id="Cpesoconteineres1" editable="false" layoutX="10.0" layoutY="472.0" prefHeight="25.0" prefWidth="146.0" text="Média peso Conteineres:" visible="false" />
+            <TextField fx:id="LTCcapitão" layoutX="72.0" layoutY="232.0" prefHeight="25.0" prefWidth="90.0" visible="false" />
+            <TextField fx:id="LTClargura" layoutX="72.0" layoutY="262.0" prefHeight="25.0" prefWidth="57.0" visible="false" />
+            <TextField fx:id="LTCcomprimento" layoutX="106.0" layoutY="292.0" prefHeight="25.0" prefWidth="57.0" visible="false" />
+            <TextField fx:id="LTCpassageiros" layoutX="129.0" layoutY="322.0" prefHeight="25.0" prefWidth="57.0" visible="false" />
+            <TextField fx:id="LTCpesopassageiros" layoutX="160.0" layoutY="352.0" prefHeight="25.0" prefWidth="57.0" visible="false" />
+            <TextField fx:id="LTCid" layoutX="43.0" layoutY="382.0" prefHeight="25.0" prefWidth="57.0" visible="false" />
+            <TextField fx:id="LTCcargamax" layoutX="89.0" layoutY="412.0" prefHeight="25.0" prefWidth="57.0" visible="false" />
+            <TextField fx:id="Cconteineres" layoutX="129.0" layoutY="442.0" prefHeight="25.0" prefWidth="57.0" visible="false" />
+            <TextField fx:id="Cpesoconteineres" layoutX="161.0" layoutY="472.0" prefHeight="25.0" prefWidth="57.0" visible="false" />
+            <Button fx:id="requisitarLT" layoutX="217.0" layoutY="412.0" mnemonicParsing="false" onAction="#requisitarLT" text="Requisitar" visible="false" />
+            <Button fx:id="requisitarC" layoutX="252.0" layoutY="474.0" mnemonicParsing="false" onAction="#requisitarC" text="Requisitar" visible="false" />
          </children>
     </AnchorPane>
   </children>
