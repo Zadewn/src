@@ -9,7 +9,7 @@ public abstract class Embarcacao {
     protected String portoOrigem;
     protected String portoDestino;
     protected double tarifa;
-    protected String sentido; // R = indo do Rio pro mar, M = indo do Mar pro rio
+    protected String sentido;
     protected Pessoa capitao;
     protected double cargaMaxima; 
     protected double pesoAdicional;
@@ -44,19 +44,5 @@ public abstract class Embarcacao {
                 }
             }
         }
-    }
-
-    public Embarcacao(){}
-
-    public Embarcacao(double largura, double comprimento, int nPassageiros, double mediaPesoPassageiros, int ID, double cargaMax, String nomecapitao, String sentido){
-        this.setLargura(largura);
-        this.setComprimento(comprimento);
-        this.setCodigoID(ID);
-        this.setCargaMaxima(cargaMax);
-        this.setSentido(sentido);
-        //this.setCapitao(new Pessoa(nomecapitao, mediaPesoPassageiros));
-        //for (int i = 0; i < nPassageiros; i++) {
-        //    tripulacao.add(new Pessoa(mediaPesoPassageiros));
-        //}
     }
 }

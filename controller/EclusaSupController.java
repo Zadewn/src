@@ -1,6 +1,7 @@
 package controller;
 
 import model.NavioCargueiro;
+import model.Pessoa;
 import model.ComportaException;
 import model.Cruzeiro;
 import model.EclusaSup;
@@ -16,18 +17,18 @@ public class EclusaSupController {
         this.sup = sup;
     }
 
-    public void adicionarNavio(int codigoID, double comprimento, double largura, double capacidade, String origem, String destino, double tarifa, String sentido) {
-        NavioCargueiro navio = new NavioCargueiro(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
+    public void adicionarNavio(int codigoID, double comprimento, double largura, double capacidade, String origem, String destino, double tarifa, String sentido, Pessoa capitao) {
+        NavioCargueiro navio = new NavioCargueiro(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido, capitao);
         sup.adicionarNavioFila(navio);
     }
 
-    public void adicionarCruzeiro(int codigoID, double comprimento, double largura, double capacidade, String origem, String destino, double tarifa, String sentido) {
-        Cruzeiro cruzeiro = new Cruzeiro(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
+    public void adicionarCruzeiro(int codigoID, double comprimento, double largura, double capacidade, String origem, String destino, double tarifa, String sentido, Pessoa capitao) {
+        Cruzeiro cruzeiro = new Cruzeiro(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido, capitao);
         sup.adicionarNavioFila(cruzeiro);
     }
 
-    public void adicionarLancha(int codigoID, double comprimento, double largura, double capacidade, String origem, String destino, double tarifa, String sentido) {
-        Lancha lancha = new Lancha(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
+    public void adicionarLancha(int codigoID, double comprimento, double largura, double capacidade, String origem, String destino, double tarifa, String sentido, Pessoa capitao) {
+        Lancha lancha = new Lancha(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido, capitao);
         sup.adicionarNavioFila(lancha);
     }
 

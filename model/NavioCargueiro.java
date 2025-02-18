@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class NavioCargueiro extends Embarcacao{
     private ArrayList<Container> conteineres = new ArrayList<Container>();
 
-    public NavioCargueiro(int codigoID, double comprimento, double largura, double capacidade, String portoOrigem, String portoDestino, double tarifa, String sentido) {
+    public NavioCargueiro(int codigoID, double comprimento, double largura, double capacidade, String portoOrigem, String portoDestino, double tarifa, String sentido, Pessoa capitao) {
         this.codigoID = codigoID;
         this.comprimento = comprimento;
         this.largura = largura;
@@ -14,9 +14,10 @@ public class NavioCargueiro extends Embarcacao{
         this.portoDestino = portoDestino;
         this.tarifa = tarifa;
         this.sentido = sentido;
+        this.capitao = capitao;
     }
 
-    @SuppressWarnings("rawtypes")
+    @SuppressWarnings("rawtypes")                                                   
     public ArrayList getConteineres() { return conteineres; }
     public int getCodigoID() { return codigoID; }
     public double getComprimento() { return comprimento; }

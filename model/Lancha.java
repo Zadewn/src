@@ -1,7 +1,7 @@
 package model;
 
 public class Lancha extends Embarcacao{
-    public Lancha(int codigoID, double comprimento, double largura, double capacidade, String portoOrigem, String portoDestino, double tarifa, String sentido) {
+    public Lancha(int codigoID, double comprimento, double largura, double capacidade, String portoOrigem, String portoDestino, double tarifa, String sentido, Pessoa capitao) {
         this.codigoID = codigoID;
         this.comprimento = comprimento;
         this.largura = largura;
@@ -10,6 +10,7 @@ public class Lancha extends Embarcacao{
         this.portoDestino = portoDestino;
         this.tarifa = tarifa;
         this.sentido = sentido;
+        this.capitao = capitao;
     }
 
     public void setLargura(float largura) {

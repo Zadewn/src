@@ -1,6 +1,8 @@
 package view;
 
 import controller.EclusaSupController;
+import model.Pessoa;
+
 import java.util.Scanner;
 
 public class ConsoleView {
@@ -113,8 +115,11 @@ public class ConsoleView {
     
         System.out.print("Sentido: ");
         String sentido = scanner.nextLine();
-    
-        controller.adicionarLancha(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
+
+        System.out.print("Nome do Capitao: ");
+        Pessoa capitao.setNome(scanner.nextLine());
+        
+        controller.adicionarNavio(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido, capitao);
         System.out.println("Lancha adicionada a fila!");
     }
     
@@ -143,8 +148,11 @@ public class ConsoleView {
     
         System.out.print("Sentido: ");
         String sentido = scanner.nextLine();
-    
-        controller.adicionarCruzeiro(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
+
+        System.out.print("Nome do Capitao: ");
+        String capitao = scanner.nextLine();
+        
+        controller.adicionarNavio(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido, capitao);
         System.out.println("Cruzeiro adicionado a fila!");
     }
     
@@ -173,8 +181,11 @@ public class ConsoleView {
     
         System.out.print("Sentido do Navio: ");
         String sentido = scanner.nextLine();
-    
-        controller.adicionarNavio(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido);
+
+        System.out.print("Nome do Capitao: ");
+        String capitao = scanner.nextLine();
+        
+        controller.adicionarNavio(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido, capitao);
         System.out.println("Navio Cargueiro adicionado a fila!");
     }
 }
