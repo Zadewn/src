@@ -13,11 +13,17 @@ public class EclusaSup extends Eclusa{
         ESVAZIANDO
     }
 
+    public enum ComportaStatus {
+        ABERTO,
+        FECHADO
+    }
+
     private EclusaSupStatus status;
     private double nivelAgua;   
     private double tempoEncher;  
     private double tempoEsvaziar;
     private int porcentagemAtual; 
+    @SuppressWarnings("unused")
     private double vazao;
     
     private Queue<Embarcacao> filaRio;
@@ -43,6 +49,14 @@ public class EclusaSup extends Eclusa{
 
         this.comportaRioAberta = false;
         this.comportaMarAberta = false;
+    }
+
+    public ComportaStatus getComportaRioStatus() {
+        return comportaRioAberta ? ComportaStatus.ABERTO : ComportaStatus.FECHADO;
+    }
+
+    public ComportaStatus getComportaMarStatus() {
+        return comportaMarAberta ? ComportaStatus.ABERTO : ComportaStatus.FECHADO;
     }
 
     public EclusaSupStatus getStatus() {

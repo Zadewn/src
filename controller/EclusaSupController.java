@@ -5,6 +5,7 @@ import model.Pessoa;
 import model.ComportaException;
 import model.Cruzeiro;
 import model.EclusaSup;
+import model.EclusaSup.ComportaStatus;
 import model.EclusaSup.EclusaSupStatus;
 import model.EclusaSupException;
 import model.Embarcacao;
@@ -77,25 +78,28 @@ public class EclusaSupController {
     public void passarNavio() {
         try {
             if (sup.getStatus() == EclusaSupStatus.CHEIA || sup.getStatus() == EclusaSupStatus.VAZIA) {
+    
                 if (!sup.getFilaRio().isEmpty()) {
-                    Embarcacao navio = sup.getFilaRio().poll();
-                    sup.adicionarNavioFila(navio);
-                    sup.passarNavio(); 
-                } else if (!sup.getFilaMar().isEmpty()) {
-                    Embarcacao navio = sup.getFilaMar().poll(); 
-                    sup.adicionarNavioFila(navio);
-                    sup.passarNavio();
+                    Embarcacao navio = sup.getFilaRio().poll(); 
+                    sup.adicionarNavioFila(navio); 
+                    System.out.println("Navio da fila do Rio está passando: " + navio);
+                }
+    
+                else if (!sup.getFilaMar().isEmpty()) {
+                    Embarcacao navio = sup.getFilaMar().poll();
+                    sup.adicionarNavioFila(navio); 
+                    System.out.println("Navio da fila do Mar está passando: " + navio);
                 } else {
-                    System.out.println("nao ha navios na fila para passar.");
+                    System.out.println("Não há navios na fila para passar.");
                 }
             } else {
-                System.out.println("A eclusa nao esta pronta para a passagem de navios.");
+                System.out.println("A eclusa não está pronta para a passagem de navios.");
             }
-        } catch (EclusaSupException e) {
+        } catch (Exception e) {
             System.out.println("Erro ao passar navio: " + e.getMessage());
         }
     }
-
+    
     public double getReceitaTotal() {
         return sup.getReceitaTotal();
     }
@@ -155,13 +159,29 @@ public class EclusaSupController {
     }
 
     public void encaixarNaviosMar() {
-        sup.encaixarNaviosMar();
-        System.out.println("Navios no mar foram encaixados na eclusa.");
+        if (comportaMarAberta()) {
+            sup.encaixarNaviosMar();
+            System.out.println("Navios no mar foram encaixados na eclusa.");
+        } else {
+            System.out.println("Nao e possível encaixar navios no mar, pois a comporta do Mar esta fechada.");
+        }
     }
 
     public void encaixarNaviosRio() {
-        sup.encaixarNaviosRio();
-        System.out.println("Navios no rio foram encaixados na eclusa.");
+        if (comportaRioAberta()) {
+            sup.encaixarNaviosRio();
+            System.out.println("Navios no rio foram encaixados na eclusa.");
+        } else {
+            System.out.println("Nao e possivel encaixar navios no rio, pois a comporta do Rio esta fechada.");
+        }
+    }
+
+    private boolean comportaRioAberta() {
+        return sup.getComportaRioStatus() == ComportaStatus.ABERTO;
+    }
+
+    private boolean comportaMarAberta() {
+        return sup.getComportaMarStatus() == ComportaStatus.ABERTO;
     }
 
     public double getTempoEncher() {

@@ -260,13 +260,13 @@ public class ConsoleView {
     private void exibirTempoFilaRio() {
         double tempoFilaRio = controller.getTempoFilaRio();
         
-        System.out.printf("Tempo de espera na fila do Rio: %.2f minutos\n", tempoFilaRio);
+        System.out.printf("Tempo de espera na fila do Rio: %.2f segundos\n", tempoFilaRio);
     }
     
     private void exibirTempoFilaMar() {
         double tempoFilaMar = controller.getTempoFilaMar();
         
-        System.out.printf("Tempo de espera na fila do Mar: %.2f minutos\n", tempoFilaMar);
+        System.out.printf("Tempo de espera na fila do Mar: %.2f segundos\n", tempoFilaMar);
     }
     
 }
