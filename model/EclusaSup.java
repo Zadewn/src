@@ -182,7 +182,6 @@ public class EclusaSup extends Eclusa{
         System.out.println("Eclusa comecando a encher...");
     
         while (nivelAgua < getCapacidadeMAX()) {
-            nivelAgua += 10;
             int porcentagem = (int) (nivelAgua / getCapacidadeMAX() * 100); 
     
             if (porcentagem != porcentagemAtual) {
@@ -194,6 +193,7 @@ public class EclusaSup extends Eclusa{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            nivelAgua += vazao;
         }
     
         nivelAgua = getCapacidadeMAX(); 
@@ -217,7 +217,6 @@ public class EclusaSup extends Eclusa{
         System.out.println("Eclusa começando a esvaziar...");
     
         while (nivelAgua > getCapacidadeMIN()) {
-            nivelAgua -= 10;
             int porcentagem = (int) (nivelAgua / getCapacidadeMAX() * 100); 
     
             if (porcentagem != porcentagemAtual) {
@@ -229,6 +228,7 @@ public class EclusaSup extends Eclusa{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            nivelAgua -= vazao;
         }
     
         nivelAgua = getCapacidadeMIN(); 
