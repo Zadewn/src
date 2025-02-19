@@ -94,10 +94,10 @@ public class EclusaSup extends Eclusa{
     }
 
     public void setVazao(double vazao) {
-        this.vazao = vazao;
+        this.vazao = vazao * getQuantidadeCanos();
         if (vazao > 0) {
-            this.tempoEncher = getCapacidadeMAX() / vazao;
-            this.tempoEsvaziar = getCapacidadeMAX() / vazao; 
+            this.tempoEncher = getCapacidadeMAX() / (vazao * getQuantidadeCanos());
+            this.tempoEsvaziar = getCapacidadeMAX() /(vazao * getQuantidadeCanos()); 
         }
     }
 
@@ -311,8 +311,8 @@ public class EclusaSup extends Eclusa{
     }
 
     public void mostrarTempoEncherEsvaziar() {
-        float tempoEncher = getTempo(getQuantidadeCanos());
-        float tempoEsvaziar = getTempo(getQuantidadeCanos());
+        float tempoEncher = getVazao();
+        float tempoEsvaziar = getVazao();
         System.out.println("Tempo para encher a eclusa: " + tempoEncher + " minutos.");
         System.out.println("Tempo para esvaziar a eclusa: " + tempoEsvaziar + " minutos.");
     }
