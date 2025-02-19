@@ -48,9 +48,7 @@ public class EclusaSupController {
         }
     }
 
-    public void modificarEclusa(double novoTempoEncher, double novoTempoEsvaziar, float novaLargura, float novoComprimento, float novaCapacidadeMin, float novaCapacidadeMax, int novaQuantidadeCanos) {
-        sup.setTempoEncher(novoTempoEncher);  
-        sup.setTempoEsvaziar(novoTempoEsvaziar);
+    public void modificarEclusa(float novaLargura, float novoComprimento, float novaCapacidadeMin, float novaCapacidadeMax, int novaQuantidadeCanos) {
         sup.setLargura(novaLargura);
         sup.setComprimento(novoComprimento);
         sup.setCapacidadeMIN(novaCapacidadeMin);

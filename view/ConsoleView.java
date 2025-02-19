@@ -225,12 +225,6 @@ public class ConsoleView {
     public void modificarEclusa() {
         System.out.println("\n--- Modificar Parametros da Eclusa ---");
     
-        System.out.print("Novo tempo para encher (segundos): ");
-        double novoTempoEncher = Double.parseDouble(scanner.nextLine());
-        
-        System.out.print("Novo tempo para esvaziar (segundos): ");
-        double novoTempoEsvaziar = Double.parseDouble(scanner.nextLine());
-    
         System.out.print("Nova largura (metros): ");
         float novaLargura = Float.parseFloat(scanner.nextLine());
         
@@ -246,7 +240,7 @@ public class ConsoleView {
         System.out.print("Nova quantidade de canos: ");
         int novaQuantidadeCanos = Integer.parseInt(scanner.nextLine());
     
-        controller.modificarEclusa(novoTempoEncher, novoTempoEsvaziar, novaLargura, novoComprimento, novaCapacidadeMin, novaCapacidadeMax, novaQuantidadeCanos);
+        controller.modificarEclusa(novaLargura, novoComprimento, novaCapacidadeMin, novaCapacidadeMax, novaQuantidadeCanos);
         
         System.out.println("Eclusa modificada com sucesso!");
     }
