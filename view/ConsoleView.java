@@ -140,7 +140,7 @@ public class ConsoleView {
         System.out.print("Sentido: ");
         String sentido = scanner.nextLine();
 
-        System.out.print("Nome do Capitão: ");
+        System.out.print("Nome do Capitao: ");
         String nomeCapitao = scanner.nextLine();
 
         Pessoa capitao = new Pessoa();
@@ -176,7 +176,7 @@ public class ConsoleView {
         System.out.print("Sentido: ");
         String sentido = scanner.nextLine();
 
-        System.out.print("Nome do Capitão: ");
+        System.out.print("Nome do Capitao: ");
         String nomeCapitao = scanner.nextLine();
 
         Pessoa capitao = new Pessoa();
@@ -212,7 +212,7 @@ public class ConsoleView {
         System.out.print("Sentido do Navio: ");
         String sentido = scanner.nextLine();
 
-        System.out.print("Nome do Capitão: ");
+        System.out.print("Nome do Capitao: ");
         String nomeCapitao = scanner.nextLine();
 
         Pessoa capitao = new Pessoa();
@@ -231,10 +231,10 @@ public class ConsoleView {
         System.out.print("Novo comprimento (metros): ");
         float novoComprimento = Float.parseFloat(scanner.nextLine());
         
-        System.out.print("Nova capacidade mínima (m³): ");
+        System.out.print("Nova capacidade minima (m³): ");
         float novaCapacidadeMin = Float.parseFloat(scanner.nextLine());
     
-        System.out.print("Nova capacidade máxima (m³): ");
+        System.out.print("Nova capacidade maxima (m³): ");
         float novaCapacidadeMax = Float.parseFloat(scanner.nextLine());
     
         System.out.print("Nova quantidade de canos: ");

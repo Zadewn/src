@@ -24,7 +24,7 @@ public class EclusaSupController {
             sup.adicionarNavioFila(navio);
             sup.adicionarReceita(tarifa);
         } else {
-            System.out.println("Navio nAo pode ser adicionado devido a limitaCOes de capacidade.");
+            System.out.println("Navio nao pode ser adicionado devido a limitacoes de capacidade.");
         }
     }
     
@@ -34,7 +34,7 @@ public class EclusaSupController {
             sup.adicionarNavioFila(cruzeiro);
             sup.adicionarReceita(tarifa);
         } else {
-            System.out.println("Navio nAo pode ser adicionado devido a limitaCOes de capacidade.");
+            System.out.println("Navio nao pode ser adicionado devido a limitacoes de capacidade.");
         }
     }
 
@@ -44,7 +44,7 @@ public class EclusaSupController {
             sup.adicionarNavioFila(lancha);
             sup.adicionarReceita(tarifa);
         } else {
-            System.out.println("Navio nAo pode ser adicionado devido a limitaCOes de capacidade.");
+            System.out.println("Navio nao pode ser adicionado devido a limitacoes de capacidade.");
         }
     }
 
@@ -76,18 +76,18 @@ public class EclusaSupController {
         try {
             if (sup.getStatus() == EclusaSupStatus.CHEIA || sup.getStatus() == EclusaSupStatus.VAZIA) {
                 if (!sup.getFilaRio().isEmpty()) {
-                    Embarcacao navio = sup.getFilaRio().poll(); // Retira o navio da fila do Rio
+                    Embarcacao navio = sup.getFilaRio().poll();
                     sup.adicionarNavioFila(navio);
-                    sup.passarNavio(); // Realiza a passagem do navio
+                    sup.passarNavio(); 
                 } else if (!sup.getFilaMar().isEmpty()) {
-                    Embarcacao navio = sup.getFilaMar().poll(); // Retira o navio da fila do Mar
+                    Embarcacao navio = sup.getFilaMar().poll(); 
                     sup.adicionarNavioFila(navio);
-                    sup.passarNavio(); // Realiza a passagem do navio
+                    sup.passarNavio();
                 } else {
-                    System.out.println("Não há navios na fila para passar.");
+                    System.out.println("nao ha navios na fila para passar.");
                 }
             } else {
-                System.out.println("A eclusa não está pronta para a passagem de navios.");
+                System.out.println("A eclusa nao esta pronta para a passagem de navios.");
             }
         } catch (EclusaSupException e) {
             System.out.println("Erro ao passar navio: " + e.getMessage());
