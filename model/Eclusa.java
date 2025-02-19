@@ -8,22 +8,11 @@ public class Eclusa {
     private int quantidadeCanos;
     private double vazao;
 
-    public Eclusa() {
-        this.largura = 70f; 
-        this.comprimento = 500f; 
-        this.capacidadeMAX = 630000f; 
-        this.capacidadeMIN = 35000f; 
-        this.vazao = 1050.0; 
-        this.quantidadeCanos = 1;
-    }
-
     public float getLargura() { return largura; }
     public float getComprimento() { return comprimento; }
     public float getCapacidadeMAX() { return capacidadeMAX; }
     public float getCapacidadeMIN() { return capacidadeMIN; }
     public int getQuantidadeCanos() { return quantidadeCanos; }
-
-    
 
     public double getVazao() {
         return vazao;
