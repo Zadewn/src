@@ -18,6 +18,7 @@ public class EclusaSup extends Eclusa{
     private double tempoEncher;  
     private double tempoEsvaziar;
     private int porcentagemAtual; 
+    private double vazao;
     
     private Queue<Embarcacao> filaRio;
     private Queue<Embarcacao> filaMar;
@@ -76,6 +77,14 @@ public class EclusaSup extends Eclusa{
         return filaMar;
     }
 
+    public void setVazao(double vazao) {
+        this.vazao = vazao;
+        if (vazao > 0) {
+            this.tempoEncher = getCapacidadeMAX() / vazao;
+            this.tempoEsvaziar = getCapacidadeMAX() / vazao; 
+        }
+    }
+
     public void setTempoEncher(double tempoEncher) {
         if (tempoEncher > 0) {
             this.tempoEncher = tempoEncher;
@@ -130,7 +139,7 @@ public class EclusaSup extends Eclusa{
 
     public void encher() throws EclusaSupException {
         if (comportaRioAberta) {
-            throw new EclusaSupException("Não é possível encher a eclusa com a comporta do Rio aberta!");
+            throw new EclusaSupException("Nao e possível encher a eclusa com a comporta do Rio aberta!");
         }
         
         if (status == EclusaSupStatus.CHEIA) {
@@ -160,7 +169,7 @@ public class EclusaSup extends Eclusa{
 
         nivelAgua = 100.0;
         status = EclusaSupStatus.CHEIA;
-        System.out.println("Eclusa foi enchida completamente (nivel de igua = 100%).");
+        System.out.println("Eclusa foi enchida completamente (nivel de agua = 100%).");
     }
 
     public void esvaziar() throws EclusaSupException {
