@@ -159,73 +159,73 @@ public class EclusaSup extends Eclusa{
 
     public void encher() throws EclusaSupException {
         if (comportaRioAberta) {
-            throw new EclusaSupException("Nao e possível encher a eclusa com a comporta do Rio aberta!");
+            throw new EclusaSupException("Não e possível encher a eclusa com a comporta do Rio aberta!");
         }
-        
+    
         if (status == EclusaSupStatus.CHEIA) {
             throw new EclusaSupException("A eclusa ja esta cheia!");
         }
         if (status == EclusaSupStatus.ENCHENDO) {
             throw new EclusaSupException("A eclusa ja esta enchendo!");
         }
-
+    
         status = EclusaSupStatus.ENCHENDO;
-        System.out.println("Eclusa começando a encher...");
-
-        while (nivelAgua < 100.0) {
-            nivelAgua += 10; 
-            int porcentagem = (int) (nivelAgua); 
-            
+        System.out.println("Eclusa comecando a encher...");
+    
+        while (nivelAgua < getCapacidadeMAX()) {
+            nivelAgua += 10;
+            int porcentagem = (int) (nivelAgua / getCapacidadeMAX() * 100); 
+    
             if (porcentagem != porcentagemAtual) {
-                updatePorcentagem(porcentagem); 
+                updatePorcentagem(porcentagem);
             }
-
+    
             try {
-                Thread.sleep(1000); 
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-
-        nivelAgua = 100.0;
+    
+        nivelAgua = getCapacidadeMAX(); 
         status = EclusaSupStatus.CHEIA;
-        System.out.println("Eclusa foi enchida completamente (nivel de agua = 100%).");
+        System.out.println("Eclusa foi enchida completamente (nível de água = " + getCapacidadeMAX() + ").");
     }
-
+    
     public void esvaziar() throws EclusaSupException {
         if (comportaMarAberta) {
             throw new EclusaSupException("Nao e possivel esvaziar a eclusa com a comporta do Mar aberta!");
         }
-
+    
         if (status == EclusaSupStatus.VAZIA) {
             throw new EclusaSupException("A eclusa ja esta vazia!");
         }
         if (status == EclusaSupStatus.ESVAZIANDO) {
             throw new EclusaSupException("A eclusa ja esta esvaziando!");
         }
-
+    
         status = EclusaSupStatus.ESVAZIANDO;
         System.out.println("Eclusa começando a esvaziar...");
-
-        while (nivelAgua > 0.0) {
-            nivelAgua -= 10; 
-            int porcentagem = (int) (nivelAgua); 
-
+    
+        while (nivelAgua > getCapacidadeMIN()) {
+            nivelAgua -= 10;
+            int porcentagem = (int) (nivelAgua / getCapacidadeMAX() * 100); 
+    
             if (porcentagem != porcentagemAtual) {
                 updatePorcentagem(porcentagem);
             }
-
+    
             try {
-                Thread.sleep(1000); 
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-
-        nivelAgua = 0.0;
+    
+        nivelAgua = getCapacidadeMIN(); 
         status = EclusaSupStatus.VAZIA;
-        System.out.println("Eclusa foi esvaziada completamente (nivel de agua = 0%).");
-    }
+        System.out.println("Eclusa foi esvaziada completamente (nivel de agua = " + getCapacidadeMIN() + ").");
+    }    
 
     public void encaixarNaviosMar() {
         if (!filaMar.isEmpty() && comportaMarAberta) { 
