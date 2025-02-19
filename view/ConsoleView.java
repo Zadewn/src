@@ -32,8 +32,8 @@ public class ConsoleView {
             System.out.println("[12] Fechar Comporta do Rio");
             System.out.println("[13] Fechar Comporta do Mar");
             System.out.println("[14] Modificar Eclusa");
-            System.out.println("[15] Encaixar Navios no Mar");
-            System.out.println("[16] Encaixar Navios no Rio");
+            System.out.println("[15] Encaixar Navios do Mar");
+            System.out.println("[16] Encaixar Navios do Rio");
             System.out.println("[17] Ver Tempos de Eclusa");
             System.out.println("[18] Ver Tempo de Espera na Fila do Rio");
             System.out.println("[19] Ver Tempo de Espera na Fila do Mar");
