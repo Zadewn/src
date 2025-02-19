@@ -52,7 +52,7 @@ public class NavioCargueiro extends Embarcacao{
     @Override
     public String toString() {
         return String.format(
-            "Navio: %d | Comp: %.2f | Larg: %.2f | Cap: %.2f | Origem: %s | Destino: %s | Tarifa: %.2f | Sentido: %s | Capitão %s",
+            "Navio Cargueiro: %d | Comp: %.2f | Larg: %.2f | Cap: %.2f | Origem: %s | Destino: %s | Tarifa: %.2f | Sentido: %s | Capitão %s",
             codigoID, comprimento, largura, capacidade, portoOrigem, portoDestino, tarifa, sentido, capitao.getNome()
         );
     }
