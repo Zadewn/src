@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -20,7 +21,8 @@ public class EclusaSup extends Eclusa{
     
     private Queue<Embarcacao> filaRio;
     private Queue<Embarcacao> filaMar;
-    private List<Embarcacao> naviosEncaixados;
+    private List<Embarcacao> naviosEncaixados = new ArrayList<>();
+
     
     private double receitaTotal;
 
@@ -28,6 +30,7 @@ public class EclusaSup extends Eclusa{
     private boolean comportaMarAberta;
 
     public EclusaSup() {
+        this.naviosEncaixados = new ArrayList<>();
         this.status = EclusaSupStatus.VAZIA;
         this.nivelAgua = 0.0;
         this.tempoEncher = getTempoEncher();
