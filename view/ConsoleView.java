@@ -32,6 +32,11 @@ public class ConsoleView {
             System.out.println("[12] Fechar Comporta do Rio");
             System.out.println("[13] Fechar Comporta do Mar");
             System.out.println("[14] Modificar Eclusa");
+            System.out.println("[15] Encaixar Navios no Mar");
+            System.out.println("[16] Encaixar Navios no Rio");
+            System.out.println("[17] Ver Tempos de Eclusa");
+            System.out.println("[18] Ver Tempo de Espera na Fila do Rio");
+            System.out.println("[19] Ver Tempo de Espera na Fila do Mar");
             System.out.println("[0] Sair");
             System.out.print("Escolha uma opcao: ");
     
@@ -81,6 +86,24 @@ public class ConsoleView {
                     break;
                 case 13:
                     controller.fecharComportaMar();
+                    break;
+                case 14:
+                    modificarEclusa();
+                    break;
+                case 15:
+                    controller.encaixarNaviosMar();
+                    break;
+                case 16:
+                    controller.encaixarNaviosRio();  
+                    break;
+                case 17:
+                    exibirTempos();
+                    break;
+                case 18:
+                    exibirTempoFilaRio();
+                    break;
+                case 19:
+                    exibirTempoFilaMar();
                     break;
                 case 0:
                     System.out.println("Saindo do sistema...");
@@ -198,4 +221,54 @@ public class ConsoleView {
         controller.adicionarNavio(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido, capitao);
         System.out.println("Navio Cargueiro adicionado a fila!");
     }
+
+    public void modificarEclusa() {
+        System.out.println("\n--- Modificar Parametros da Eclusa ---");
+    
+        System.out.print("Novo tempo para encher (segundos): ");
+        double novoTempoEncher = Double.parseDouble(scanner.nextLine());
+        
+        System.out.print("Novo tempo para esvaziar (segundos): ");
+        double novoTempoEsvaziar = Double.parseDouble(scanner.nextLine());
+    
+        System.out.print("Nova largura (metros): ");
+        float novaLargura = Float.parseFloat(scanner.nextLine());
+        
+        System.out.print("Novo comprimento (metros): ");
+        float novoComprimento = Float.parseFloat(scanner.nextLine());
+        
+        System.out.print("Nova capacidade mínima (m³): ");
+        float novaCapacidadeMin = Float.parseFloat(scanner.nextLine());
+    
+        System.out.print("Nova capacidade máxima (m³): ");
+        float novaCapacidadeMax = Float.parseFloat(scanner.nextLine());
+    
+        System.out.print("Nova quantidade de canos: ");
+        int novaQuantidadeCanos = Integer.parseInt(scanner.nextLine());
+    
+        controller.modificarEclusa(novoTempoEncher, novoTempoEsvaziar, novaLargura, novoComprimento, novaCapacidadeMin, novaCapacidadeMax, novaQuantidadeCanos);
+        
+        System.out.println("Eclusa modificada com sucesso!");
+    }
+
+    private void exibirTempos() {
+        double tempoEncher = controller.getTempoEncher();
+        double tempoEsvaziar = controller.getTempoEsvaziar();
+        
+        System.out.printf("Tempo para encher a eclusa: %.2f segundos\n", tempoEncher);
+        System.out.printf("Tempo para esvaziar a eclusa: %.2f segundos\n", tempoEsvaziar);
+    }
+    
+    private void exibirTempoFilaRio() {
+        double tempoFilaRio = controller.getTempoFilaRio();
+        
+        System.out.printf("Tempo de espera na fila do Rio: %.2f minutos\n", tempoFilaRio);
+    }
+    
+    private void exibirTempoFilaMar() {
+        double tempoFilaMar = controller.getTempoFilaMar();
+        
+        System.out.printf("Tempo de espera na fila do Mar: %.2f minutos\n", tempoFilaMar);
+    }
+    
 }

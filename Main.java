@@ -4,10 +4,8 @@ import view.ConsoleView;
 
 public class Main {
     public static void main(String[] args) {
-        double tempoParaEncher = 30;  
-        double tempoParaEsvaziar = 30; 
 
-        EclusaSup sup = new EclusaSup(tempoParaEncher, tempoParaEsvaziar);
+        EclusaSup sup = new EclusaSup();
 
         EclusaSupController controller = new EclusaSupController(sup);
 
