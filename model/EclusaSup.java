@@ -69,6 +69,10 @@ public class EclusaSup extends Eclusa{
         return nivelAgua;
     }
 
+    public double getVazao(){
+        return vazao;
+    }
+
     public double getTempoEncher() {
         return tempoEncher;
     }
@@ -305,14 +309,14 @@ public class EclusaSup extends Eclusa{
     }
 
     public float calcularTempoPassarFila() {
-        float tempoPorBarco = getTempo(getQuantidadeCanos()); 
+        float tempoPorBarco = (float) getTempoEncher(); 
         int quantidadeBarcos = filaMar.size() + filaRio.size();
         return tempoPorBarco * quantidadeBarcos;
     }
 
     public void mostrarTempoEncherEsvaziar() {
-        float tempoEncher = getVazao();
-        float tempoEsvaziar = getVazao();
+        float tempoEncher = (float) getVazao();
+        float tempoEsvaziar = (float) getVazao();
         System.out.println("Tempo para encher a eclusa: " + tempoEncher + " minutos.");
         System.out.println("Tempo para esvaziar a eclusa: " + tempoEsvaziar + " minutos.");
     }
