@@ -37,6 +37,8 @@ public class EclusaSup extends Eclusa{
     private boolean comportaMarAberta;
 
     public EclusaSup() {
+        super(); 
+        
         this.naviosEncaixados = new ArrayList<>();
         this.status = EclusaSupStatus.VAZIA;
         this.nivelAgua = 0.0;

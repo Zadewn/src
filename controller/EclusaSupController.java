@@ -75,30 +75,31 @@ public class EclusaSupController {
         }
     }
 
-    public void passarNavio() {
-        try {
-            if (sup.getStatus() == EclusaSupStatus.CHEIA || sup.getStatus() == EclusaSupStatus.VAZIA) {
-    
-                if (!sup.getFilaRio().isEmpty()) {
-                    Embarcacao navio = sup.getFilaRio().poll(); 
-                    sup.adicionarNavioFila(navio); 
-                    System.out.println("Navio da fila do Rio está passando: " + navio);
-                }
-    
-                else if (!sup.getFilaMar().isEmpty()) {
-                    Embarcacao navio = sup.getFilaMar().poll();
-                    sup.adicionarNavioFila(navio); 
-                    System.out.println("Navio da fila do Mar está passando: " + navio);
-                } else {
-                    System.out.println("Não há navios na fila para passar.");
-                }
-            } else {
-                System.out.println("A eclusa não está pronta para a passagem de navios.");
+ public void passarNavio(){
+    try {
+        if (sup.getStatus() == EclusaSupStatus.CHEIA || sup.getStatus() == EclusaSupStatus.VAZIA) {
+
+            if (!sup.getFilaRio().isEmpty()) {
+                Embarcacao navio = sup.getFilaRio().poll();
+                sup.adicionarNavioFila(navio); 
+                System.out.println("Navio da fila do Rio esta passando: " + navio);
             }
-        } catch (Exception e) {
-            System.out.println("Erro ao passar navio: " + e.getMessage());
+
+            else if (!sup.getFilaMar().isEmpty()) {
+                Embarcacao navio = sup.getFilaMar().poll();
+                sup.adicionarNavioFila(navio); 
+                System.out.println("Navio da fila do Mar esta passando: " + navio);
+            } else {
+                System.out.println("Nao ha navios na fila para passar.");
+            }
+        } else {
+            throw new EclusaSupException("A eclusa nao estA pronta para a passagem de navios.");
         }
+    } catch (EclusaSupException e) {
+        System.out.println("Erro ao passar navio: " + e.getMessage());
     }
+}
+
     
     public double getReceitaTotal() {
         return sup.getReceitaTotal();
