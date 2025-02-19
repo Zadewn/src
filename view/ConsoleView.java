@@ -1,9 +1,8 @@
 package view;
 
 import controller.EclusaSupController;
-import model.Pessoa;
-
 import java.util.Scanner;
+import model.Pessoa;
 
 public class ConsoleView {
     private EclusaSupController controller;
@@ -15,37 +14,8 @@ public class ConsoleView {
     }
 
     public void exibirMenu() {
-        int opcao = -1;
+        int opcao = 14;
         while (opcao != 0) {
-            System.out.println("\n=== GESTAO DE ECLUSA ===");
-            System.out.println("[1] Adicionar Lancha");
-            System.out.println("[2] Adicionar Cruzeiro");
-            System.out.println("[3] Adicionar Navio Cargueiro");
-            System.out.println("[4] Exibir Fila de Navios");
-            System.out.println("[5] Encher Eclusa");
-            System.out.println("[6] Esvaziar Eclusa");
-            System.out.println("[7] Passar Navio pela Eclusa");
-            System.out.println("[8] Ver Receita Total");
-            System.out.println("[9] Ver Status da Eclusa");
-            System.out.println("[10] Abrir Comporta do Rio");
-            System.out.println("[11] Abrir Comporta do Mar");
-            System.out.println("[12] Fechar Comporta do Rio");
-            System.out.println("[13] Fechar Comporta do Mar");
-            System.out.println("[14] Modificar Eclusa");
-            System.out.println("[15] Encaixar Navios do Mar");
-            System.out.println("[16] Encaixar Navios do Rio");
-            System.out.println("[17] Ver Tempos de Eclusa");
-            System.out.println("[18] Ver Tempo de Espera na Fila do Rio");
-            System.out.println("[19] Ver Tempo de Espera na Fila do Mar");
-            System.out.println("[0] Sair");
-            System.out.print("Escolha uma opcao: ");
-    
-            try {
-                opcao = Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Opcao invalida! Tente novamente.");
-                continue;
-            }
     
             switch (opcao) {
                 case 1:
@@ -110,6 +80,34 @@ public class ConsoleView {
                     break;
                 default:
                     System.out.println("Opcao invalida! Tente novamente.");
+            }
+            System.out.println("\n=== GESTAO DE ECLUSA ===");
+            System.out.println("[1] Adicionar Lancha");
+            System.out.println("[2] Adicionar Cruzeiro");
+            System.out.println("[3] Adicionar Navio Cargueiro");
+            System.out.println("[4] Exibir Fila de Navios");
+            System.out.println("[5] Encher Eclusa");
+            System.out.println("[6] Esvaziar Eclusa");
+            System.out.println("[7] Passar Navio pela Eclusa");
+            System.out.println("[8] Ver Receita Total");
+            System.out.println("[9] Ver Status da Eclusa");
+            System.out.println("[10] Abrir Comporta do Rio");
+            System.out.println("[11] Abrir Comporta do Mar");
+            System.out.println("[12] Fechar Comporta do Rio");
+            System.out.println("[13] Fechar Comporta do Mar");
+            System.out.println("[14] Modificar Eclusa");
+            System.out.println("[15] Encaixar Navios do Mar");
+            System.out.println("[16] Encaixar Navios do Rio");
+            System.out.println("[17] Ver Tempos de Eclusa");
+            System.out.println("[18] Ver Tempo de Espera na Fila do Rio");
+            System.out.println("[19] Ver Tempo de Espera na Fila do Mar");
+            System.out.println("[0] Sair");
+            System.out.print("Escolha uma opcao: ");
+            try {
+                opcao = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Opcao invalida! Tente novamente.");
+                continue;
             }
         }
     }
