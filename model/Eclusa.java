@@ -8,6 +8,7 @@ public class Eclusa {
     private int quantidadeCanos;
     private double vazao;
 
+
     public float getLargura() { return largura; }
     public float getComprimento() { return comprimento; }
     public float getCapacidadeMAX() { return capacidadeMAX; }
