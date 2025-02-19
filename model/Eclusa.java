@@ -8,8 +8,6 @@ public class Eclusa {
     private int quantidadeCanos;
     private double vazao;
 
-    Eclusa eclusa = new Eclusa();
-
     public Eclusa() {
         this.largura = 70f; 
         this.comprimento = 500f; 
