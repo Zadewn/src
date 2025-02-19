@@ -134,12 +134,21 @@ public class EclusaSup extends Eclusa{
     public void passarNavio() throws EclusaSupException {
         if (!naviosEncaixados.isEmpty()) {
             Embarcacao navio = naviosEncaixados.get(0); 
+
+            if (navio.getSentido().equals("R") && !comportaRioAberta) {
+                throw new EclusaSupException("A comporta do Rio esta fechada! Nao e possível passar o navio.");
+            }
+            if (navio.getSentido().equals("M") && !comportaMarAberta) {
+                throw new EclusaSupException("A comporta do Mar esta fechada! Nao e possível passar o navio.");
+            }
+    
             naviosEncaixados.remove(0);
             System.out.println("Navio " + navio.toString() + " passou pela eclusa.");
         } else {
             throw new EclusaSupException("Nao ha navios encaixados para passar.");
         }
     }
+    
 
     public boolean podeAdicionarNavio(Embarcacao navio) {
         double larguraRestante = getLargura();
@@ -228,6 +237,11 @@ public class EclusaSup extends Eclusa{
     }    
 
     public void encaixarNaviosMar() {
+        if (!comportaMarAberta) { 
+            System.out.println("Nao e possivel encaixar navios com a comporta do Mar fechada.");
+            return;
+        }
+
         if (!filaMar.isEmpty() && comportaMarAberta) { 
             double larguraRestante = getLargura();
             double comprimentoRestante = getComprimento();
@@ -248,6 +262,11 @@ public class EclusaSup extends Eclusa{
     }
 
     public void encaixarNaviosRio() {
+        if (!comportaRioAberta) {  // Verifica se a comporta do Rio está aberta
+            System.out.println("Nao e possível encaixar navios com a comporta do Rio fechada.");
+            return;
+        }
+    
         if (!filaRio.isEmpty() && comportaRioAberta) { 
             double larguraRestante = getLargura();
             double comprimentoRestante = getComprimento();
