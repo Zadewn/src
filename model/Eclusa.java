@@ -21,15 +21,6 @@ public class Eclusa {
     public void setVazao(double vazao) {
         this.vazao = vazao;
     }
-
-    public float getTempo(int canos) {
-        if (canos > 0 && canos <= quantidadeCanos && vazao > 0) {
-            float volume = capacidadeMAX - capacidadeMIN;
-            return volume / (float) (vazao * canos);
-        } else {
-            return 0;
-        }
-    }
     
     public void setLargura(float largura) {
         if (largura >= 5 ) {
