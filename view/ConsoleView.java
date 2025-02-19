@@ -222,15 +222,15 @@ public class ConsoleView {
         System.out.println("Navio Cargueiro adicionado a fila!");
     }
 
-    public void modificarEclusa() {
+    private void modificarEclusa() {
         System.out.println("\n--- Modificar Parametros da Eclusa ---");
     
         System.out.print("Nova largura (metros): ");
         float novaLargura = Float.parseFloat(scanner.nextLine());
-        
+    
         System.out.print("Novo comprimento (metros): ");
         float novoComprimento = Float.parseFloat(scanner.nextLine());
-        
+    
         System.out.print("Nova capacidade minima (m³): ");
         float novaCapacidadeMin = Float.parseFloat(scanner.nextLine());
     
@@ -240,10 +240,14 @@ public class ConsoleView {
         System.out.print("Nova quantidade de canos: ");
         int novaQuantidadeCanos = Integer.parseInt(scanner.nextLine());
     
-        controller.modificarEclusa(novaLargura, novoComprimento, novaCapacidadeMin, novaCapacidadeMax, novaQuantidadeCanos);
-        
+        System.out.print("Informe a vazão da eclusa (m³/segundo): ");
+        double vazao = Double.parseDouble(scanner.nextLine());
+
+        controller.modificarEclusa(novaLargura, novoComprimento, novaCapacidadeMin, novaCapacidadeMax, novaQuantidadeCanos, vazao);
+    
         System.out.println("Eclusa modificada com sucesso!");
     }
+    
 
     private void exibirTempos() {
         double tempoEncher = controller.getTempoEncher();
