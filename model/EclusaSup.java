@@ -315,8 +315,8 @@ public class EclusaSup extends Eclusa{
     }
 
     public void mostrarTempoEncherEsvaziar() {
-        float tempoEncher = (float) getVazao();
-        float tempoEsvaziar = (float) getVazao();
+        float tempoEncher = (float) getTempoEncher();
+        float tempoEsvaziar = (float) getTempoEsvaziar();
         System.out.println("Tempo para encher a eclusa: " + tempoEncher + " minutos.");
         System.out.println("Tempo para esvaziar a eclusa: " + tempoEsvaziar + " minutos.");
     }
