@@ -196,22 +196,19 @@ public class EclusaSup extends Eclusa{
     }
 
     public void encaixarNaviosMar() {
-        if (!filaMar.isEmpty() && comportaMarAberta) {  // Verifica se a fila não está vazia e se a comporta está aberta
+        if (!filaMar.isEmpty() && comportaMarAberta) { 
             double larguraRestante = getLargura();
             double comprimentoRestante = getComprimento();
-            
-            // Processa os navios na fila do mar
+
             while (!filaMar.isEmpty()) {
-                Embarcacao embarcacao = filaMar.poll();  // Remove o navio da fila
+                Embarcacao embarcacao = filaMar.poll(); 
     
-                // Verifica se o navio cabe na eclusa
                 if (embarcacao.getLargura() < larguraRestante && embarcacao.getComprimento() < comprimentoRestante) {
-                    naviosEncaixados.add(embarcacao);  // Encaixa o navio
-                    larguraRestante -= (embarcacao.getLargura() - 3);  // Ajusta a largura restante
-                    comprimentoRestante -= (embarcacao.getComprimento() - 3);  // Ajusta o comprimento restante
+                    naviosEncaixados.add(embarcacao);  
+                    larguraRestante -= (embarcacao.getLargura() - 3);
+                    comprimentoRestante -= (embarcacao.getComprimento() - 3);
                 } else {
-                    // Se o navio não couber, interrompe o encaixe
-                    filaMar.add(embarcacao);  // Recoloca o navio de volta na fila
+                    filaMar.add(embarcacao);
                     break;
                 }
             }
@@ -219,22 +216,20 @@ public class EclusaSup extends Eclusa{
     }
 
     public void encaixarNaviosRio() {
-        if (!filaRio.isEmpty() && comportaRioAberta) {  // Verifica se a fila não está vazia e se a comporta está aberta
+        if (!filaRio.isEmpty() && comportaRioAberta) { 
             double larguraRestante = getLargura();
             double comprimentoRestante = getComprimento();
             
-            // Processa os navios na fila do rio
-            while (!filaRio.isEmpty()) {
-                Embarcacao embarcacao = filaRio.poll();  // Remove o navio da fila
     
-                // Verifica se o navio cabe na eclusa
+            while (!filaRio.isEmpty()) {
+                Embarcacao embarcacao = filaRio.poll(); 
+
                 if (embarcacao.getLargura() < larguraRestante && embarcacao.getComprimento() < comprimentoRestante) {
-                    naviosEncaixados.add(embarcacao);  // Encaixa o navio
-                    larguraRestante -= (embarcacao.getLargura() - 3);  // Ajusta a largura restante
-                    comprimentoRestante -= (embarcacao.getComprimento() - 3);  // Ajusta o comprimento restante
+                    naviosEncaixados.add(embarcacao); 
+                    larguraRestante -= (embarcacao.getLargura() - 3);  
+                    comprimentoRestante -= (embarcacao.getComprimento() - 3);  
                 } else {
-                    // Se o navio não couber, interrompe o encaixe
-                    filaRio.add(embarcacao);  // Recoloca o navio de volta na fila
+                    filaRio.add(embarcacao); 
                     break;
                 }
             }
@@ -279,5 +274,18 @@ public class EclusaSup extends Eclusa{
         }
         comportaMarAberta = false;
         System.out.println("Comporta do Mar fechada.");
+    }
+
+    public float calcularTempoPassarFila() {
+        float tempoPorBarco = getTempo(getQuantidadeCanos()); 
+        int quantidadeBarcos = filaMar.size() + filaRio.size();
+        return tempoPorBarco * quantidadeBarcos;
+    }
+
+    public void mostrarTempoEncherEsvaziar() {
+        float tempoEncher = getTempo(getQuantidadeCanos());
+        float tempoEsvaziar = getTempo(getQuantidadeCanos());
+        System.out.println("Tempo para encher a eclusa: " + tempoEncher + " minutos.");
+        System.out.println("Tempo para esvaziar a eclusa: " + tempoEsvaziar + " minutos.");
     }
 }

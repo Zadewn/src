@@ -32,6 +32,11 @@ public class ConsoleView {
             System.out.println("[12] Fechar Comporta do Rio");
             System.out.println("[13] Fechar Comporta do Mar");
             System.out.println("[14] Modificar Eclusa");
+            System.out.println("[15] Encaixar Navios no Mar");
+            System.out.println("[16] Encaixar Navios no Rio");
+            System.out.println("[17] Ver Tempos de Eclusa");
+            System.out.println("[18] Ver Tempo de Espera na Fila do Rio");
+            System.out.println("[19] Ver Tempo de Espera na Fila do Mar");
             System.out.println("[0] Sair");
             System.out.print("Escolha uma opcao: ");
     
@@ -84,6 +89,21 @@ public class ConsoleView {
                     break;
                 case 14:
                     modificarEclusa();
+                    break;
+                case 15:
+                    controller.encaixarNaviosMar();
+                    break;
+                case 16:
+                    controller.encaixarNaviosRio();  
+                    break;
+                case 17:
+                    exibirTempos();
+                    break;
+                case 18:
+                    exibirTempoFilaRio();
+                    break;
+                case 19:
+                    exibirTempoFilaMar();
                     break;
                 case 0:
                     System.out.println("Saindo do sistema...");
@@ -230,4 +250,25 @@ public class ConsoleView {
         
         System.out.println("Eclusa modificada com sucesso!");
     }
+
+    private void exibirTempos() {
+        double tempoEncher = controller.getTempoEncher();
+        double tempoEsvaziar = controller.getTempoEsvaziar();
+        
+        System.out.printf("Tempo para encher a eclusa: %.2f segundos\n", tempoEncher);
+        System.out.printf("Tempo para esvaziar a eclusa: %.2f segundos\n", tempoEsvaziar);
+    }
+    
+    private void exibirTempoFilaRio() {
+        double tempoFilaRio = controller.getTempoFilaRio();
+        
+        System.out.printf("Tempo de espera na fila do Rio: %.2f minutos\n", tempoFilaRio);
+    }
+    
+    private void exibirTempoFilaMar() {
+        double tempoFilaMar = controller.getTempoFilaMar();
+        
+        System.out.printf("Tempo de espera na fila do Mar: %.2f minutos\n", tempoFilaMar);
+    }
+    
 }

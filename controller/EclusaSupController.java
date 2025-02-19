@@ -28,7 +28,6 @@ public class EclusaSupController {
         }
     }
     
-
     public void adicionarCruzeiro(int codigoID, double comprimento, double largura, double capacidade, String origem, String destino, double tarifa, String sentido, Pessoa capitao) {
         Cruzeiro cruzeiro = new Cruzeiro(codigoID, comprimento, largura, capacidade, origem, destino, tarifa, sentido, capitao);
         if (sup.podeAdicionarNavio(cruzeiro)) {
@@ -153,5 +152,35 @@ public class EclusaSupController {
         } catch (ComportaException e) {
             System.out.println("Erro ao fechar comporta do Mar: " + e.getMessage());
         }
+    }
+
+    public void encaixarNaviosMar() {
+        sup.encaixarNaviosMar();
+        System.out.println("Navios no mar foram encaixados na eclusa.");
+    }
+
+    public void encaixarNaviosRio() {
+        sup.encaixarNaviosRio();
+        System.out.println("Navios no rio foram encaixados na eclusa.");
+    }
+
+    public double getTempoEncher() {
+        return sup.getTempoEncher(); 
+    }
+    
+    public double getTempoEsvaziar() {
+        return sup.getTempoEsvaziar();
+    }
+
+    public double getTempoFilaRio() {
+        double tempoPorBarco = sup.getTempoEncher(); 
+        int quantidadeNaviosFilaRio = sup.getFilaRio().size();
+        return tempoPorBarco * quantidadeNaviosFilaRio; 
+    }
+    
+    public double getTempoFilaMar() {
+        double tempoPorBarco = sup.getTempoEsvaziar();
+        int quantidadeNaviosFilaMar = sup.getFilaMar().size(); 
+        return tempoPorBarco * quantidadeNaviosFilaMar; 
     }
 }
